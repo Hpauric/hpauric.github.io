@@ -12,11 +12,11 @@ Running shell commands with MongoDB is a really useful way to quickly check what
 
 Make sure the MongoDB database is running before attempting to start the `mongo` shell. To start up the database, run `./mongod`. You should see something like this:
 
-![mongod-cli-screenshot.png]({{site.baseurl}}/_posts/mongod-cli-screenshot.png)
 
-![]({{site.baseurl}}/images/show-collections-screenshot.png)
+![mongod cli screenshot]({{site.baseurl}}/images/mongod-cli-screenshot.png)
 
-![]({{site.baseurl}}/images/mongod-cli-screenshot.png)
+
+
 
 ## Shell Prompt
 
