@@ -3,10 +3,6 @@ layout: post
 title: Using the MongoDB Shell
 ---
 
-
-
-# Using the MongoDB Shell
-
 It’s worth getting to know about [the MongoDB `mongo` shell.](https://docs.mongodb.com/manual/mongo/)
 
 Running shell commands with MongoDB is a really useful way to quickly check what’s in your database. You can review and update your database contents directly from the command line.
