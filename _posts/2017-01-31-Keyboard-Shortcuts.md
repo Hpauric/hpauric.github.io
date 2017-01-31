@@ -14,5 +14,5 @@ Holding <kbd>shift</kbd> will select the previous or next word.
 
 Move the cursor to the end of the line or the beginning of the line.
 
-Holding <kbd>shift<kbd> will select the line.
+Holding <kbd>shift</kbd> will select the line.
 
