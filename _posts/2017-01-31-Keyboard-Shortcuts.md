@@ -8,7 +8,7 @@ Keyboard short cuts are invaluable for working effectively. The less friction be
 
 Skip forwards or backwards one word.
 
-Holding <kbd>shift<kbd> will select the previous or next word.
+Holding <kbd>shift</kbd> will select the previous or next word.
 
 <kbd>Alt</kbd>+<kbd>&larr; or &rarr;</kbd>
 
