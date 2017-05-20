@@ -7,8 +7,31 @@ published: true
 ## Creating Components
 
 There are two ways to create a React Component:
-1. Using the class constructor
-2. Declaring a variable (const)
+### 1. Using the class constructor
+
+```javascript
+class componentOne extends React.Component {
+  constructor(props) {
+    super(props);
+  }
+  render() {
+    return (
+      <h1>Hello World!</h1>
+    );
+  }
+}
+```
+
+
+### 2. Declaring a variable 
+
+```javascript
+const componentTwo = function() {
+  return (
+   <h1>Hello World!</h1>
+  );
+};
+```
 
 ## Handling Events
 
