@@ -4,7 +4,7 @@ title: React Notes
 published: true
 ---
 
-##Creating Components
+## Creating Components
 
 There are two ways to create a React Component:
 1. Using the class constructor
