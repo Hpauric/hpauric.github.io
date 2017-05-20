@@ -45,6 +45,27 @@ Then we use this function in the element:
 
 ## Event Bubbling
 
+There’s a lot of different ways to manage event bubbling through nested components.
+
+The `Keypad` is passed in the numberkey in the `Main` class render function
+
+`Keypad` component render:
+
+`{this.props.buttonKey}`
+
+`Main` component render:
+
+`buttonKey={val}`
+
+The container div has the id `“keypad-container”`
+
+Declaring the keypad containers in the render function in the main component
+
+`<Keypad clickHandle={this.numberClick.bind(this)} />`
+
+The `Keypad` and `Main` components both have event functions called `numberClick`. Is this necessary?
+
+
 
 ## Curly Brackets
 
