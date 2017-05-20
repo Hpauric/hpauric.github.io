@@ -74,6 +74,8 @@ http://stackoverflow.com/questions/30477042/react-js-how-to-bind-passed-in-event
 
 ## Curly Brackets
 
+Generally curly brackets create an object literal in javascript.
+
 ### Commenting
 
 > You can use regular `/* Block Comments */`, but they need to be wrapped in curly braces:
