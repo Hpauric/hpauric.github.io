@@ -65,6 +65,11 @@ Declaring the keypad containers in the render function in the main component
 
 The `Keypad` and `Main` components both have event functions called `numberClick`. Is this necessary?
 
+Further reading on event bubbling:
+
+http://stackoverflow.com/questions/32560744/react-event-bubbling-through-nested-components
+
+http://stackoverflow.com/questions/30477042/react-js-how-to-bind-passed-in-event-handlers-this-to-child-component
 
 
 ## Curly Brackets
