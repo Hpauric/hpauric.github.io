@@ -33,7 +33,7 @@ You can throw a function inside the curly brackets.
 
 I.e., you can embed any JavaScript expression in JSX by wrapping it in curly braces.
 
-```
+```javascript
  {
     [1, 2, 3, 4, 5, 6, 7, 8, 9].map((val, i) => {
         return <Keypad 
