@@ -20,6 +20,8 @@ Then we use this function in the element:
 
 `<button onClick={this.eventFunctionManager.bind(this)}`
 
+## Event Bubbling
+
 
 ## Curly Brackets
 
@@ -29,10 +31,9 @@ Then we use this function in the element:
 
 > `{/* A JSX comment */}`
 
+### Functions and Expressions
 
-You can throw a function inside the curly brackets.
-
-I.e., you can embed any JavaScript expression in JSX by wrapping it in curly braces.
+You can place a function inside curly brackets with React. I.e., you can embed any JavaScript expression in JSX by wrapping it in curly braces.
 
 ```javascript
  {
