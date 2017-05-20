@@ -79,7 +79,7 @@ Why do we need this?
 this.handleClick = this.handleClick.bind(this);
 ```
 
-> This is not React-specific behavior; it is a part of how functions work in JavaScript. Generally, if you refer to a method without () after it, such as onClick={this.handleClick}, you should bind that method.
+> This is not React-specific behavior; it is a part of how functions work in JavaScript. Generally, if you refer to a method without `()` after it, such as `onClick={this.handleClick}`, you should bind that method.
 
 ```javascript
 function(){
