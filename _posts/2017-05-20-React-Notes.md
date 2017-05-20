@@ -74,7 +74,8 @@ http://stackoverflow.com/questions/30477042/react-js-how-to-bind-passed-in-event
 
 ## Curly Brackets
 
-Generally curly brackets create an object literal in javascript.
+In javascript curly brackets normally represent a function or an encapsulated piece of code that needs to be executed as one. They can also be used to create an object literal.
+React uses curly brackets extensively.
 
 ### Commenting
 
