@@ -12,8 +12,7 @@ There are two ways to create a React Component:
 
 > When you define a component using an ES6 class, a common pattern is for an event handler to be a method on the class.
 
-You need a method that takes an event as its argument in the `Keypad` class
+We need a method that takes an event as its argument in the `Keypad` class. Let's call this the `EventFunctionManager`.
 
-EventFunctionManager
-
-Then you use this function in the element
+Then we use this function in the element:
+`<button onClick={this.eventFunctionManager.bind(this)}`
