@@ -82,13 +82,13 @@ this.handleClick = this.handleClick.bind(this);
 > This is not React-specific behavior; it is a part of how functions work in JavaScript. Generally, if you refer to a method without `()` after it, such as `onClick={this.handleClick}`, you should bind that method.
 
 ```javascript
-function(){
+(function(){
     this.handleClick();
 });
 ```
 is the same as:
 ```javascript
-this.handleClick.bind(this));
+(this.handleClick.bind(this));
 ```
 
 ## Curly Brackets
