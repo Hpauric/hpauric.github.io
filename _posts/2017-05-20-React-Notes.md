@@ -17,6 +17,7 @@ There are two ways to create a React Component:
 We need a method that takes an event as its argument in the `Keypad` class. Let's call this the `EventFunctionManager`.
 
 Then we use this function in the element:
+
 `<button onClick={this.eventFunctionManager.bind(this)}`
 
 
