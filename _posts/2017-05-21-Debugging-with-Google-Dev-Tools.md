@@ -43,3 +43,7 @@ Let's say I want to see how this code works.
 I can add breakpoints:
 
 ![adding breakpoints]({{site.baseurl}}/images/adding-breakpoints.png)
+
+
+![oreilly.jpg]({{site.baseurl}}/images/oreilly.jpg)
+
