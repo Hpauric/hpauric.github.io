@@ -10,6 +10,8 @@ Click on `+ New Snippet`
 
 You can add whatever code you want. In this case I'm trying out a fibonacci implemetation with dynamic programming.
 
+This is taken from [here](https://www.sitepoint.com/implementing-memoization-in-javascript/)
+
 ```javascript
 var fibonacci = (function() {
   var memo = 
