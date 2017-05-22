@@ -53,5 +53,6 @@ I have a few options at each point it stops:
 3. Step into next function call
 4. Step out of current function
 
+You can only see the call stack and the scope when the program is paused.
 
 
