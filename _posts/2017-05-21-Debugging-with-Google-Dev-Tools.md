@@ -10,7 +10,7 @@ Click on `+ New Snippet`
 
 You can add whatever code you want. In this case I'm trying out a fibonacci implemetation with dynamic programming.
 
-This is taken from [here](https://www.sitepoint.com/implementing-memoization-in-javascript/)
+This is taken from [a guide to implmenting memoization in javascript](https://www.sitepoint.com/implementing-memoization-in-javascript/)
 
 ```javascript
 var fibonacci = (function() {
@@ -40,10 +40,18 @@ fibonacci(10);
 ```
 Let's say I want to see how this code works.
 
-I can add breakpoints:
+I can add breakpoints by clicking on the lines I want to monitor:
 
 ![adding breakpoints]({{site.baseurl}}/images/adding-breakpoints.png)
 
+Now I can click run snippet.
 
-![oreilly.jpg]({{site.baseurl}}/images/oreilly.jpg)
+I have a few options at each point it stops:
+
+1. Resume script execution
+2. Step over next function call
+3. Step into next function call
+4. Step out of current function
+
+
 
