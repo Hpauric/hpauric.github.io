@@ -4,7 +4,7 @@ title: Using Line Of Code Breakpoints with Google Dev Tools
 published: true
 ---
 
-The console tab in Google Dev Tools is a great testing ground for new code. It allows you to step through code and monitor your variables and properties at each step of the execution. This is invaluable for debugging code.
+The Sources tab in Google Dev Tools is a great testing ground for new code. It allows you to step through code and monitor your variables and properties at each step of the execution. This is invaluable for debugging code.
 
 To test a new code snippet, navigate to the Source tab.
 
