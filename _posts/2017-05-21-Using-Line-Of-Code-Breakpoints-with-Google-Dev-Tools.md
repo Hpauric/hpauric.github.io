@@ -1,6 +1,6 @@
 ---
 layout: post
-title: React Notes
+title: Using Line Of Code Breakpoints with Google Dev Tools
 published: true
 ---
 
