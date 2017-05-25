@@ -1,5 +1,7 @@
 
-To test a new code snippet, navigate to Source
+The console tab in Google Dev Tools is a great testing ground for new code. It allows you to step through code and monitor your variables and properties at each step of the execution. This is invaluable for debugging code.
+
+To test a new code snippet, navigate to the Source tab.
 
 Click on `+ New Snippet`
 
@@ -33,11 +35,13 @@ var fibonacci = (function() {
 })();
 fibonacci(10);
 ```
-Let's say I want to see how this code works. There are several different types of breakpoints that I can use. The one I'm looking at today is the most popular: line-of-code breakpoints. I can add breakpoints by clicking on the lines of code I want to monitor:
+Let's say I want to see how this code works. I can set the code to pause at certain points in the execution by using breakpoints. There are several different types of breakpoints that I can use. The one I'm looking at today is the most popular: line-of-code breakpoints. I can add breakpoints by clicking on the lines of code I want to monitor:
 
 ![adding breakpoints]({{site.baseurl}}/images/adding-breakpoints.png)
 
-Now I can click run snippet.
+These are line-of-code breakpoints. Breakpoints can only be added on certain lines of code.
+
+Now I can run this code by clicking `Run snippet`.
 
 I have a few options at each point it stops:
 
@@ -56,8 +60,12 @@ Step over executes the next line and stops at the following line.
 
 Step out completes the rest of the function and stops at the next statement.
 
-## Checking Out the Values
+## View and Edit Properties and Variables
 
 The whole point of using breakpoints is that they allow you to check all of the currently-defined properties. You can even edit properties in the script on the fly.
 
 You can only see the call stack and the scope when the program is paused.
+
+## The Call Stack
+
+The call stack lists all of the functions that have been called, with the most recent  at the top.
