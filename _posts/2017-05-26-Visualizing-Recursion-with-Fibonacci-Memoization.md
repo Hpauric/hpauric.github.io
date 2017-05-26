@@ -55,6 +55,25 @@ function f(n) {...}
   Another visualizer
   
   https://visualgo.net/en/recursion
+  
+  ## Passing Functions
+  
+  We can see how functions are passed with this code:
+  
+  ```javascript
+  function myFunction(n){
+  if(n === 2)
+  console.log("you sent 2");
+  else
+  console.log("not two");
+}
 
-  
-  
+var testIffy = (function() {
+  console.log("Hello");
+  return myFunction;
+})(); 
+testIffy(2);
+```
+
+testIffy is immediately invoked and returns the function `myFunction`. This function is passed testIffy's argument.
+
