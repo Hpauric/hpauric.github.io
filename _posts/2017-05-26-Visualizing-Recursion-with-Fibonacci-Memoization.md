@@ -1,4 +1,6 @@
 ---
+layout: post
+title: Visualizing Recursion with Fibonacci Memoization
 published: true
 ---
 ## Visualizing Recursion with Fibonacci Memoization
