@@ -77,3 +77,4 @@ testIffy(2);
 
 testIffy is immediately invoked and returns the function `myFunction`. This function is passed testIffy's argument.
 
+test addition
