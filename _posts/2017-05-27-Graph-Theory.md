@@ -3,7 +3,14 @@ layout: post
 published: true
 ---
 
-Enter text in [Markdown](http://daringfireball.net/projects/markdown/). Use the toolbar above, or click the **?** button for formatting help.
+> There are generally two standard representations of graphs that are used in graph algorithms, depending on which question is more important.
 
+## Adjacency lists
 
-test
+> Adjacency lists are most useful when we mostly want to enumerate outgoing edges of each node. This is common in search tasks, where we want to find a path from one node to another or compute the distances between pairs of nodes. 
+
+## Adjacency Matrices
+
+## Path Searches
+
+The two most popular algorithms are depth-first search and breadth-first search.
