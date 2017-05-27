@@ -14,3 +14,10 @@ published: true
 ## Path Searches
 
 The two most popular algorithms are depth-first search and breadth-first search.
+
+## Resources
+
+
+https://visualgo.net/en/graphds
+
+http://graphonline.ru/en/
