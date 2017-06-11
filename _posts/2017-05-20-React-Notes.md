@@ -90,14 +90,17 @@ The `Main` component's event handling method, `keypadClick` is defined as follow
 ```javascript
 keypadClick(e) {
     let pressedButton = e.target.innerHTML;
-      if (this.state.number == "0") {				// The default number on display is 0. 	
-        this.setState({								//If 0 is present, replace it with the new number
+      if (this.state.number == "0") {
+      // The default number on display is 0.
+      //If 0 is present, replace it with the new number
+        this.setState({								
           number: pressedButton,
         });
       } else {
+      //Otherwise, append the text to the number
         let number = this.state.number + pressedButton;
         this.setState({
-          number,									//Otherwise, append the text to the number	
+          number,										
         });
       }     
   }
