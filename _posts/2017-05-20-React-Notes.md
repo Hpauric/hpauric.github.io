@@ -9,9 +9,7 @@ I'm going to create a calculator using React.
 
 ## Creating Components
 
-The first thing I need to do is create components.
-
-There are two ways to create a React Component:
+The first thing I need to do is create components. There are two ways to create a React Component:
 ### 1. Using the class constructor
 
 ```javascript
@@ -79,7 +77,7 @@ Then we use this function in the element:
 
 ## Event Bubbling
 
-Now we want to access this event in the `Main` component. We can do this by binding the event to the `Main` component when we declare the component.
+Now we want to access this event in the `Main` component. The 'Keypad' components are children of the 'Main' component. We can do this by binding the event to the `Main` method we want to handle the event when we declare the component.
 
 ```javascript
 <Keypad 
@@ -106,6 +104,15 @@ keypadClick(e) {
         });
       }     
   }
+```
+
+If we want the Keypad event to use a different event method, for example, the clear button, we bind `clickHandle` to `displayClear` instead of `keypadClick`.
+
+```javascript
+<Keypad
+        type='clear' 
+        clickHandle={this.displayClear.bind(this)} 
+        buttonText={'Clear'} />
 ```
 
 Further reading on event bubbling:
