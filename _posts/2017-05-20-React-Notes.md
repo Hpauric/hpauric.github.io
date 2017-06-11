@@ -106,7 +106,7 @@ keypadClick(e) {
   }
 ```
 
-If we want the Keypad event to use a different event method, for example, the clear button, we bind `clickHandle` to `displayClear` instead of `keypadClick`.
+If we want the Keypad event to use a different event method - for example, the clear button - we bind `clickHandle` to `displayClear` instead of `keypadClick`.
 
 ```javascript
 <Keypad
