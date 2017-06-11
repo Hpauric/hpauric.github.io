@@ -119,7 +119,7 @@ It seems it can be even easier to pass props from child to parent.
 [Passing Props to Parent Component](https://stackoverflow.com/questions/22639534/pass-props-to-parent-component-in-react-js)
 
 
-Further reading on event bubbling. These may or may not be relevant.
+Further reading on event bubbling. These may or may not be useful. A lot of people on the internet have opinions.
 
 [React Event Bubbling Through Nested Components](http://stackoverflow.com/questions/32560744/react-event-bubbling-through-nested-components)
 
