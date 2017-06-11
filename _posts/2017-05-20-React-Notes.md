@@ -77,8 +77,7 @@ Then we use this function in the element:
 
 ## Event Bubbling
 
-Now we want to access this event in the `Main` component. We can do this by binding the event to the `Main` component
-
+Now we want to access this event in the `Main` component. We can do this by binding the event to the `Main` component when we declare the component.
 
 ```javascript
 <Keypad 
@@ -86,7 +85,7 @@ Now we want to access this event in the `Main` component. We can do this by bind
 	buttonText={val} />
 ```
 
-The `Main` component's event handling method is defined as follows:
+The `Main` component's event handling method, `keypadClick` is defined as follows:
 
 ```javascript
 keypadClick(e) {
@@ -103,7 +102,6 @@ keypadClick(e) {
       }     
   }
 ```
-
 
 Further reading on event bubbling:
 
