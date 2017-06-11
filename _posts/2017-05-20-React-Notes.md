@@ -39,13 +39,9 @@ Say I render the `componentOne` class I created earlier as follows:
 
 ```javascript
 <button id={this.props.type} 
-        onClick={this.manageEvent.bind(this)}
-        
-        // This doesn't work
-        //onClick={this.props.clickHandle(e)}
-        >
-        {this.props.buttonText}
-      </button>
+	onClick={this.manageEvent.bind(this)}>
+{this.props.buttonText}
+</button>
   ```
   
   When I am using the component, I can pass values to the props by assigning them in the component declaration:
