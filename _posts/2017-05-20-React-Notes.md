@@ -143,7 +143,7 @@ is the same as:
 
 ## Curly Brackets
 
-In javascript curly brackets normally represent a function or an encapsulated piece of code that needs to be executed as one. They can also be used to create an object literal.
+In javascript curly brackets normally represent a function or an encapsulated piece of code that needs to be executed as one. (They can also be used to create an object literals.)
 React uses curly brackets extensively.
 
 ### Commenting
@@ -165,3 +165,5 @@ You can place a function inside curly brackets with React. You can actually embe
      })
  }
 ```
+
+This function is invoked.
