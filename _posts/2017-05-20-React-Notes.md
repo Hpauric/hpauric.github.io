@@ -22,7 +22,6 @@ class componentOne extends React.Component {
 }
 ```
 
-
 ### 2. Declaring a variable 
 
 ```javascript
@@ -32,6 +31,32 @@ const componentTwo = function() {
   );
 };
 ```
+## Using Props
+
+Props are just the way to identify the html component attributes.
+
+Say I render the `componentOne` class I created earlier as follows:
+
+```javascript
+<button id={this.props.type} 
+        onClick={this.manageEvent.bind(this)}
+        
+        // This doesn't work
+        //onClick={this.props.clickHandle(e)}
+        >
+        {this.props.buttonText}
+      </button>
+  ```
+  
+  When I am using the component, I can pass values to the props by assigning them in the component declaration:
+ 
+ ```javascript
+        <componentOne
+        type='clear' 
+        clickHandle={this.displayClear.bind(this)} 
+        buttonText={'Clear'} />
+          ```
+
 
 ## Handling Events
 
@@ -115,8 +140,3 @@ You can place a function inside curly brackets with React. I.e., you can embed a
      })
  }
 ```
-
-
-
-
-
