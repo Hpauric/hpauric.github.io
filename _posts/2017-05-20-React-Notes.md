@@ -9,6 +9,8 @@ I'm going to create a calculator using React.
 
 ## Creating Components
 
+The first thing I need to do is create components.
+
 There are two ways to create a React Component:
 ### 1. Using the class constructor
 
