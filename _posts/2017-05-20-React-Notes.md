@@ -1,8 +1,11 @@
 ---
 layout: post
-title: React Notes
+title: Learning How to Use React By Creating a Calculator
 published: true
 ---
+
+
+I'm going to create a calculator using React.
 
 ## Creating Components
 
