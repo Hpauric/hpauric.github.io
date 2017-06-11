@@ -25,7 +25,7 @@ class componentOne extends React.Component {
 }
 ```
 
-### 2. Declaring a variable 
+### 2. Declaring a component
 
 ```javascript
 const componentTwo = function() {
