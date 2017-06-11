@@ -46,23 +46,31 @@ Say I render the `componentOne` class I created earlier as follows:
   
   When I am using the component, I can pass values to the props by assigning them in the component declaration:
  
- ```javascript
+```javascript
         <componentOne
         type='clear' 
         clickHandle={this.displayClear.bind(this)} 
         buttonText={'Clear'} />
- ```
+```
 
 
 ## Handling Events
 
 > When you define a component using an ES6 class, a common pattern is for an event handler to be a method on the class.
 
-We need a method that takes an event as its argument in the `Keypad` class. Let's call this the `EventFunctionManager`.
+We need a method that takes an event as its argument in the `Keypad` class. Let's call this `manageEvent`.
+
+```javascript
+manageEvent(e) {
+    this.props.clickHandle(e);
+  }
+```
 
 Then we use this function in the element:
 
-`<button onClick={this.eventFunctionManager.bind(this)}`
+```javascript
+<button onClick={this.manageEvent.bind(this)}>
+```
 
 ## Event Bubbling
 
@@ -88,11 +96,11 @@ The `Keypad` and `Main` components both have event functions called `numberClick
 
 Further reading on event bubbling:
 
-http://stackoverflow.com/questions/32560744/react-event-bubbling-through-nested-components
+[React Event Bubbling Through Nested Components](http://stackoverflow.com/questions/32560744/react-event-bubbling-through-nested-components)
 
-http://stackoverflow.com/questions/30477042/react-js-how-to-bind-passed-in-event-handlers-this-to-child-component
+[How to Bind Passed-In Event Handlers](http://stackoverflow.com/questions/30477042/react-js-how-to-bind-passed-in-event-handlers-this-to-child-component)
 
-### Binding
+### More Info on Binding
 
 Why do we need this?
 
@@ -125,7 +133,7 @@ React uses curly brackets extensively.
 
 ### Functions and Expressions
 
-You can place a function inside curly brackets with React. I.e., you can embed any JavaScript expression in JSX by wrapping it in curly braces.
+You can place a function inside curly brackets with React. You can actually embed **any JavaScript expression** in JSX by wrapping it in curly braces.
 
 ```javascript
  {
