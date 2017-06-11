@@ -51,7 +51,7 @@ Say I render the `componentOne` class I created earlier as follows:
         type='clear' 
         clickHandle={this.displayClear.bind(this)} 
         buttonText={'Clear'} />
-          ```
+ ```
 
 
 ## Handling Events
