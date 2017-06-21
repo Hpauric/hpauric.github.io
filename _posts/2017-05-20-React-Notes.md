@@ -178,7 +178,7 @@ This function is invoked.
 `setState()` is **asynchronous**.
 That means you have to be careful about updating it. If you are updating it in different places, and the variables are depdendant on one another, you're in for a bad time.
 
-> Think of setState() as a request rather than an immediate command to update the component. For better perceived performance, React may delay it, and then update several components in a single pass. React does not guarantee that the state changes are applied immediately.
+> Think of `setState()` as a request rather than an immediate command to update the component. For better perceived performance, React may delay it, and then update several components in a single pass. React does not guarantee that the state changes are applied immediately.
 
 There are two ways to use `setState()`. You can pass an object to it.
 
@@ -190,3 +190,5 @@ this.setState({
 ```
 
 Or you can pass a function to it
+
+> `setState()` does not always immediately update the component. It may batch or defer the update until later. This makes reading this.state right after calling ``setState()`` a potential pitfall. Instead, use `componentDidUpdate` or a `setState` callback (`setState(updater, callback)`), either of which are guaranteed to fire after the update has been applied. 
