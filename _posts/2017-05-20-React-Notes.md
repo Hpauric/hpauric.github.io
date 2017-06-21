@@ -171,3 +171,22 @@ You can place a function inside curly brackets with React. You can actually embe
 ```
 
 This function is invoked.
+
+
+## React setState
+
+`setState()` is **asynchronous**.
+That means you have to be careful about updating it. If you are updating it in different places, and the variables are depdendant on one another, you're in for a bad time.
+
+> Think of setState() as a request rather than an immediate command to update the component. For better perceived performance, React may delay it, and then update several components in a single pass. React does not guarantee that the state changes are applied immediately.
+
+There are two ways to use `setState()`. You can pass an object to it.
+
+```javascript
+this.setState({
+        number: newNumber,
+        newNumberFlag: false,
+      });
+```
+
+Or you can pass a function to it
