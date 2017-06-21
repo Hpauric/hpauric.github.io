@@ -2,7 +2,6 @@
 published: true
 layout: post
 ---
-## React setState
 
 `setState()` is **asynchronous**.
 That means you have to be careful about updating it. If you are updating it in different places, and the variables are depdendant on one another, you're in for a bad time.
