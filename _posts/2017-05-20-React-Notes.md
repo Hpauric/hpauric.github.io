@@ -198,3 +198,16 @@ this.setState((prevState, props) => {
 ```
 
 > `setState()` does not always immediately update the component. It may batch or defer the update until later. This makes reading this.state right after calling ``setState()`` a potential pitfall. Instead, use `componentDidUpdate` or a `setState` callback (`setState(updater, callback)`), either of which are guaranteed to fire after the update has been applied. 
+
+You can also include a callback with `setState()`, to be implemented after it's been implemented.
+
+```javascript
+this.setState((prevState, props) => {
+  return {counter: prevState.number + 5};
+}, callbackFunction(){
+	this.setState({
+        number: this.state.number + 5,
+        newNumberFlag: false,
+      });
+});
+```
