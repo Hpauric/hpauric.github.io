@@ -1,0 +1,9 @@
+---
+published: false
+---
+
+JSX  will never be part of the official Javascript canon. [Quote the website](https://facebook.github.io/jsx/):
+
+> **It's NOT a proposal to incorporate JSX into the ECMAScript spec itself**. It's intended to be used by various preprocessors (transpilers) to transform these tokens into standard ECMAScript.
+
+
