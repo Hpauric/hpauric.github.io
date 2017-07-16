@@ -3,7 +3,6 @@ layout: post
 title: Visualizing Recursion with Fibonacci Memoization
 published: true
 ---
-## Visualizing Recursion with Fibonacci Memoization
 
 How exactly does this code work?
 
@@ -135,9 +134,3 @@ fibonacciModified(4,0,1);
 
 //t(i) = t(n-2) + Math.pow(t(n+1),2);
 ```
-
-
-
-
-
-
