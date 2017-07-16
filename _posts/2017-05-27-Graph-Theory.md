@@ -3,6 +3,15 @@ layout: post
 published: true
 ---
 
+Why use Graph Theory?
+
+Here's an example from [the firehose project](http://blog.thefirehoseproject.com):
+
+> Say you want to build a data representation of a tweet.  How would you represent retweets and favorites?
+This problem sounds easy in theory, but naturally starts moving towards advanced graph theory searching algorithms.  For example, for a particular tweet you may need to write a depth-first-search algorithm to determine if someone with the twitter handle “barackobama” retweeted the tweet that is supplied.
+
+
+
 > There are generally two standard representations of graphs that are used in graph algorithms, depending on which question is more important.
 
 ## Adjacency lists
