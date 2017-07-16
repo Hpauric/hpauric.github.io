@@ -76,3 +76,68 @@ testIffy(2);
 ```
 
 testIffy is immediately invoked and returns the function `myFunction`. This function is passed testIffy's argument.
+```javascript
+
+
+function memoize(func) {
+  var memo = {};
+  var slice = Array.prototype.slice;
+
+  return function() {
+    var args = slice.call(arguments);
+
+    if (args in memo)
+      return memo[args];
+    else
+      return (memo[args] = func.apply(this, args));
+
+  }
+}
+
+
+var fibonacci = (function() {
+
+  function f(n) {
+    var value;
+      if (n === 0 || n === 1)
+        value = n;
+      else
+        value = f(n - 1) + f(n - 2);
+    
+
+    return value;
+    }
+
+  return memoize(f);
+})();
+fibonacci(10);
+
+var fibonacciModified = (function() {
+
+  function t(n, t1, t2) {
+    var value;
+      if (n === 0)
+        value = t1;
+      else if(n === 1)
+        value = t2;
+      else   
+        value = t(n - 2,t1,t2) + Math.pow(t(n-1,t1,t2),2);
+    
+
+    return value;
+    }
+
+  return memoize(t);
+})();
+
+fibonacciModified(4,0,1);
+//F(n) = F(n-1) + F(n-2), n>1
+
+//t(i) = t(n-2) + Math.pow(t(n+1),2);
+```
+
+
+
+
+
+
