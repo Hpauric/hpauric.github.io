@@ -3,8 +3,10 @@ published: true
 layout: post
 ---
 
-bash --login
+`gem install rvm`
 
-rvm use "version"
+`bash --login`
+
+`rvm use "version"`
 
 you may need to use `rvm install 2.3.1` beforehand.
