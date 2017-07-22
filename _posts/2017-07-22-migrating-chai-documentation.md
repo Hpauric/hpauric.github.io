@@ -1,26 +1,22 @@
 ---
 published: true
 ---
-chai documentation
+I wanted to make Chai's documentation easier to scroll through.
 
-Slate's features are: 
+I had a look around for API templates and the best seems to be Slate.
+
+Slate's winning features are: 
 
 - Everything on a single page
 - Automatic, smoothly scrolling table of contents
 
-However it doesn't seem to autoscroll the table of contents when it goes below the visible page.
-
-[Woocommerce works for this actually](http://woocommerce.github.io/woocommerce-rest-api-docs/#delete-a-tax-rate)
-
-On further reflection, it doesn't. The problem is that it doesn't dynamically scroll into view in the table-of-contents when a second-layer item is scrolled into view.
+However I've noticed it doesn't dynamically scroll into view the active table-of-contents section for second-layer items.
 
 ## the original documentation
 
 The documentation is open source. They use some kind of package that automatically generates documentation from the comments.
 
 [You can see it here.](https://github.com/chaijs/chai-docs/blob/8620abe8ba41574bd849899d147701c5b0209d8d/chai.js#L2175)
-
-
 
 It uses [codex, A static site generator](https://www.npmjs.com/package/codex) and [dox, a documentation generator](https://www.npmjs.com/package/dox).
 
