@@ -76,7 +76,7 @@ Now I needed to figure out how to convert it to markdown. I found several tools 
  
 The JSON I have already has markdown, so these tools aren’t that useful. 
 
-```javascript
+```
 var jsonData = require('./_data/chai.json');
 
 for (var i = 0; i < jsonData.length; i++) {
