@@ -52,17 +52,6 @@ The documentation is generated with:
 @./node_modules/.bin/dox --raw < ./node_modules/chai/chai.js > _data/chai.json
 ```
 
-```c
-@./node_modules/.bin/dox --raw < ./node_modules/chai/chai.js > _data/chai.json
-```
-
-```ruby
-@./node_modules/.bin/dox --raw < ./node_modules/chai/chai.js > _data/chai.json
-```
-
-
-
-
 The arrows (`<`, `>`) are input/output redirections.
 This command runs `dox` with the input of `chai.js` and the output of `data/chai.json`.
  
