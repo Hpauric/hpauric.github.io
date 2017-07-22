@@ -3,6 +3,11 @@ img + em {
 text-align: center;
 }
 
+*::selection {
+ background-color: #4183C4;
+ color: white; 
+}
+
 .highlight {
   background-color: #efefef;
   padding: 7px 7px 7px 10px;
