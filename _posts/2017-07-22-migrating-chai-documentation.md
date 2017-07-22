@@ -26,12 +26,12 @@ It uses [codex, A static site generator](https://www.npmjs.com/package/codex) an
 
 First of all I had to figure out how the project is compiled. The makefile looked promising.
 
-http://www.tutorialspoint.com/unix_commands/make.htm
+[Unix Guide](http://www.tutorialspoint.com/unix_commands/make.htm)
 
 > The purpose of the make utility is to determine automatically which pieces of a large program need to be recompiled, and issue the commands to recompile them. you can use make with any programming language whose compiler can be run with a shell command. In fact, make is not limited to programs. You can use it to describe any task where some files must be updated automatically from others whenever the others change. 
 To prepare to use make, you must write a file called the makefile that describes the relationships among files in your program, and the states the commands for updating each file. In a program, typically the executable file is updated from object files, which are in turn made by compiling source files.
 
-https://blog.jcoglan.com/2014/02/05/building-javascript-projects-with-make/
+[building javascript with make](https://blog.jcoglan.com/2014/02/05/building-javascript-projects-with-make/)
 
 > Make does not have any baked-in assumptions about what type of project you have or what languages you’re using, it’s simply a tool for organising sets of shell commands. It has a very simple model: you describe which files each build file in your project depends on, and how to regenerate build files if they are out of date. 
 
@@ -41,21 +41,19 @@ a.txt: b.txt c.txt
 	cat b.txt c.txt > a.txt
 ```
 
-> The first line says that a.txt (the target) is generated from b.txt and c.txt(the dependencies). a.txt will only be rebuilt if one of its dependencies was changed since a.txt was last changed
+> The first line says that `a.txt` (the target) is generated from `b.txt` and `c.txt`(the dependencies). `a.txt` will only be rebuilt if one of its dependencies was changed since a.txt was last changed
 
 > The second line (the recipe) says how to regenerate the target if it’s out of date, which in this case is a simple matter of piping cat into the target file.
 
 It’s customary to make a target called `all` that depends on all your project’s compiled files, and make this the first rule in the Makefile so that running make will run this rule.
 
-So `all: generated_data docs-server`
-Means that “all” is generated from generated data and docs-server
-
+So `all: generated_data docs-server` means that `all` is generated from `generated_data` and `docs-server`.
 
 `@./node_modules/.bin/dox --raw < ./node_modules/chai/chai.js > _data/chai.json`
 The arrows are Input/Output Redirections
-This runs dox with the input of chai.js, and the output of data/chai.json
+This runs `dox` with the input of `chai.js` and the output of `data/chai.json`.
  
-I don’t know how it’s using codex. It’s not listed anywhere in the codebase, apart from listed as a dependency in the package json.
+I don’t know how it’s using `codex`. It’s not listed anywhere in the codebase, apart from listed as a dependency in the package json.
 
 For my purposes I don't really need to. Now I know where the documentation json is, I can run the file and extract the data I need.
 
@@ -79,4 +77,3 @@ The JSON I have already has markdown, so these tools aren’t that useful. All t
 I could probably write something simple myself that parses the JSON and outputs what I need.
 https://stackoverflow.com/documentation/json/3878/parsing-json-string#t=201707181303005235995
 https://stackoverflow.com/documentation/json/7824/stringify-convert-json-to-string#t=201707181303025545515
-
