@@ -49,9 +49,10 @@ Itâ€™s customary to make a target called `all` that depends on all your projectâ
 
 So `all: generated_data docs-server` means that `all` is generated from `generated_data` and `docs-server`.
 
-```shell
+```shell_session
 @./node_modules/.bin/dox --raw < ./node_modules/chai/chai.js > _data/chai.json
 ```
+
 The arrows are Input/Output Redirections
 This runs `dox` with the input of `chai.js` and the output of `data/chai.json`.
  
