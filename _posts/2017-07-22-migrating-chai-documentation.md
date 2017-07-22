@@ -41,18 +41,23 @@ a.txt: b.txt c.txt
 	cat b.txt c.txt > a.txt
 ```
 
-The first line says that a.txt (the target) is generated from b.txt and c.txt(the dependencies). a.txt will only be rebuilt if one of its dependencies was changed since a.txt was last changed
+> The first line says that a.txt (the target) is generated from b.txt and c.txt(the dependencies). a.txt will only be rebuilt if one of its dependencies was changed since a.txt was last changed
 
-So all: generated_data docs-server
+> The second line (the recipe) says how to regenerate the target if it’s out of date, which in this case is a simple matter of piping cat into the target file.
+
+It’s customary to make a target called `all` that depends on all your project’s compiled files, and make this the first rule in the Makefile so that running make will run this rule.
+
+So `all: generated_data docs-server`
 Means that “all” is generated from generated data and docs-server
- 
-The second line (the recipe) says how to regenerate the target if it’s out of date, which in this case is a simple matter of piping cat into the target file.
-It’s customary to make a target called all that depends on all your project’s compiled files, and make this the first rule in the Makefile so that running makewill run this rule.
-@./node_modules/.bin/dox --raw < ./node_modules/chai/chai.js > _data/chai.json
+
+
+`@./node_modules/.bin/dox --raw < ./node_modules/chai/chai.js > _data/chai.json`
 The arrows are Input/Output Redirections
 This runs dox with the input of chai.js, and the output of data/chai.json
  
 I don’t know how it’s using codex. It’s not listed anywhere in the codebase, apart from listed as a dependency in the package json.
+
+For my purposes I don't really need to. Now I know where the documentation json is, I can run the file and extract the data I need.
 
 ## Using JSON
 
