@@ -66,17 +66,25 @@ Converting JSON to markdown
 Let’s forget about how it’s built and just focus on how to get the JSON file.
 It’s not in the _data file. I thought it was at first.
 Ok, it actually is!
-/_data/chai.json
-I searched for assert.isNotTrue(tea and found it there.
+`/_data/chai.json`
+I searched for `assert.isNotTrue` and found it there.
 The JSON is just over 20 thousand lines long.
-notEqual for example, contains
-Tools to convert JSON to markdown
-https://www.npmjs.com/package/json-schema-to-markdown
-https://www.npmjs.com/package/json-to-markdown
-https://github.com/IonicaBizau/json2md
-https://www.codementor.io/johnnyb/how-to-convert-json-to-markdown-using-json2md-du107w74l
+`notEqual` for example, contains
+
+
+I tried several tools to convert JSON to markdown, but then I realized I could do it myself quite easily.
  
 The JSON I have already has markdown, so these tools aren’t that useful. All that messing around with JSON is just too messy.
 I could probably write something simple myself that parses the JSON and outputs what I need.
-https://stackoverflow.com/documentation/json/3878/parsing-json-string#t=201707181303005235995
-https://stackoverflow.com/documentation/json/7824/stringify-convert-json-to-string#t=201707181303025545515
+
+```javascript
+var jsonData = require('./_data/chai.json');
+
+for (var i = 0; i < jsonData.length; i++) {
+    
+    const regex = /###/g;
+    let description = jsonData[i].description.full;
+    description = description.replace(regex, '##');
+    console.log(description);
+    }
+```
