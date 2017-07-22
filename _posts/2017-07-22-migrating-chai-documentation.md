@@ -88,3 +88,5 @@ for (var i = 0; i < jsonData.length; i++) {
     console.log(description);
     }
 ```
+
+I was able to interate through the JSON.
