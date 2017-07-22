@@ -2,14 +2,21 @@
 layout: page
 title: About
 permalink: /about/
+published: true
 ---
 
-Some information about you!
 
-### More Information
 
-A place to include any other types of information that you'd like to include about yourself.
+Hi, I’m Pauric Holleran, a web developer with experience in API Design, Node, HTML, SASS, CSS, data visualization, responsive design, build tools and testing.
 
-### Contact me
+I work with code, data, and computation to craft interactive experiences.
 
-[email@domain.com](mailto:email@domain.com)
+I’m interested in learning, teaching, design, visualization, art, and culture.
+
+I work as the Assitive Technology Officer in UCD, where I promote the use of technology tools to improve students academic performance.
+
+I studied Electronic Engineering at DCU (B.Eng 2007).
+
+I live in Dublin, Ireland.
+
+[You can see my portfolio here](http://www.pauricholleran.com/)
