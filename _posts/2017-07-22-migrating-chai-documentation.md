@@ -126,3 +126,5 @@ Each JSON Object contains the following:
 ```
 
 JSON can start with either a left brace (an array)) or left curly brace (an object).
+
+I think we can find the assert functions by the namespace tag. Yeah that works. There's three different types of namespace: Assert, BDD, and Utils.
