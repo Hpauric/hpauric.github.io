@@ -1,3 +1,6 @@
+---
+published: false
+---
 Keyboard short cuts are invaluable for working effectively. The less friction between your mind and the code the better! Here are some of my favorites.
 
 <kbd>Ctrl</kbd> + <kbd>&larr; or &rarr; </kbd>: Skip forwards or backwards one word.
@@ -8,3 +11,4 @@ Holding <kbd>shift</kbd> will select the previous or next word.
 
 Holding <kbd>shift</kbd> will select the line.
 
+[https://docs.c9.io/docs/keybindings](Cloud 9 key bindings)
