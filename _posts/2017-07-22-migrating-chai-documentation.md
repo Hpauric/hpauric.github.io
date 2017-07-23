@@ -81,7 +81,7 @@ I was able to interate through the JSON.
 
 Each JSON Object contains the following:
 
-```javascript
+```json
 { tags: 
    [ { type: 'name', string: 'isNotTrue' },
      { type: 'param',
@@ -123,4 +123,4 @@ Each JSON Object contains the following:
      receiver: 'assert',
      name: 'isNotTrue',
      string: 'assert.isNotTrue()' } }
-```javascript
+```
