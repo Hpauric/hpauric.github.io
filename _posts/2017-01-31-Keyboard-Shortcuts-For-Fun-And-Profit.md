@@ -1,5 +1,5 @@
 ---
-published: false
+published: true
 ---
 Keyboard short cuts are invaluable for working effectively. The less friction between your mind and the code the better! Here are some of my favorites.
 
