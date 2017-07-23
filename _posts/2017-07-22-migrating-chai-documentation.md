@@ -78,3 +78,49 @@ for (var i = 0; i < jsonData.length; i++) {
 ```
 
 I was able to interate through the JSON.
+
+Each JSON Object contains the following:
+
+```javascript
+{ tags: 
+   [ { type: 'name', string: 'isNotTrue' },
+     { type: 'param',
+       string: '{Mixed} value',
+       name: 'value',
+       description: '',
+       types: [Object],
+       typesDescription: '<a href="Mixed.html">Mixed</a>',
+       optional: false,
+       nullable: false,
+       nonNullable: false,
+       variable: false },
+     { type: 'param',
+       string: '{String} message',
+       name: 'message',
+       description: '',
+       types: [Object],
+       typesDescription: '<code>String</code>',
+       optional: false,
+       nullable: false,
+       nonNullable: false,
+       variable: false },
+     { type: 'namespace', string: 'Assert' },
+     { type: 'api', string: 'public', visibility: 'public' } ],
+  description: 
+   { full: '### .isNotTrue(value, [message])\n\nAsserts that `value` is not true.\n\n    var tea = \'tasty chai\';\n    assert.isNotTrue(tea, \'great, time for tea!\');',
+     summary: '### .isNotTrue(value, [message])',
+     body: 'Asserts that `value` is not true.\n\n    var tea = \'tasty chai\';\n    assert.isNotTrue(tea, \'great, time for tea!\');' },
+  isPrivate: false,
+  isConstructor: false,
+  isClass: false,
+  isEvent: false,
+  ignore: false,
+  line: 4425,
+  codeStart: 4440,
+  code: 'assert.isNotTrue = function (val, msg) {\n  new Assertion(val, msg, assert.isNotTrue, true).to.not.equal(true);\n};',
+  ctx: 
+   { type: 'method',
+     receiver: 'assert',
+     name: 'isNotTrue',
+     string: 'assert.isNotTrue()' } }
+```javascript
