@@ -124,3 +124,5 @@ Each JSON Object contains the following:
      name: 'isNotTrue',
      string: 'assert.isNotTrue()' } }
 ```
+
+JSON can start with either a left brace (an array)) or left curly brace (an object).
