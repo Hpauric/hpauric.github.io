@@ -1,5 +1,6 @@
 ---
 published: true
+tags: 'test, one, two'
 ---
 I wanted to make Chai's documentation easier to scroll through.
 
