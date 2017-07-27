@@ -21,7 +21,7 @@ The biggest impact will be gzip compression. This is the best bang for your buck
 
 This was really easy to set up. I just had to `npm install compression` and call it in my `app.js` file.
 
-'''javascript
+```javascript
 const express = require('express');
 const app = express();
 const compression = require('compression');
@@ -29,3 +29,5 @@ const compression = require('compression');
 // compress all responses
 app.use(compression());
 ```
+
+This alone got me to a Google score of 87/100 for Desktop!
