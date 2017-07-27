@@ -7,8 +7,9 @@ I got a 47 / 100 score (Desktop) from [Google's Pagespeed Insights](https://deve
 
 [GTMetrix](https://gtmetrix.com/) gave me the following stats.
 
-| Fully Loaded Time  | 4.9s   |
+|   |   |
 |--------------------|--------|
+| Fully Loaded Time  | 4.9s   |
 | Total Page Size    | 2.92MB |
 | Requests           | 57     |
 
@@ -36,8 +37,9 @@ This alone got me to a Google score of 87/100 for Desktop!
 This one step cut about a third of the load time and page size.
 
 
-| Fully Loaded Time  | 3.0s    |
+| Metric  | Score    |
 |--------------------|--------|
+| Fully Loaded Time  | 3.0s    |
 | Total Page Size    | 1.93MB |
 | Requests           | 58      |
 
