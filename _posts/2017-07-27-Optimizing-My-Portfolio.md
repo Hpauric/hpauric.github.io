@@ -1,5 +1,5 @@
 ---
-published: false
+published: true
 ---
 I ran a couple of speed tests for my portfolio site. The results weren't pretty.
 
