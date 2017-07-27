@@ -37,3 +37,7 @@ This one step cut about a third of the load time and page size.
 Fully Loaded Time 3.0s 
 Total Page Size 1.93MB 
 Requests 58 
+
+## Eliminate render-blocking JavaScript and CSS in above-the-fold content
+
+This is the next piece of advice for me from Google.
