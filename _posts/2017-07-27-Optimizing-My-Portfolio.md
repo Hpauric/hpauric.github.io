@@ -31,3 +31,9 @@ app.use(compression());
 ```
 
 This alone got me to a Google score of 87/100 for Desktop!
+
+This one step cut about a third of the load time and page size.
+
+Fully Loaded Time 3.0s 
+Total Page Size 1.93MB 
+Requests 58 
