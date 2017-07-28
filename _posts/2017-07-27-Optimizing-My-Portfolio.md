@@ -46,4 +46,9 @@ This one step cut about a third of the load time and page size.
 
 ## Eliminate render-blocking JavaScript and CSS in above-the-fold content
 
-This is the next piece of advice for me from Google.
+This is the next piece of advice for me from Google. These are actually two separate tasks:
+
+1. [Remove Render-Blocking JavaScript](https://developers.google.com/speed/docs/insights/BlockingJS)
+2. [Optimize CSS Delivery](https://developers.google.com/speed/docs/insights/OptimizeCSSDelivery)
+
+[How to defer CSS loading](https://www.giftofspeed.com/defer-loading-css/)
