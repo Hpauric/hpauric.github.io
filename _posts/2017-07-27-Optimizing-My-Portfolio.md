@@ -53,5 +53,6 @@ This is the next piece of advice for me from Google. These are actually two sepa
 
 [How to defer CSS loading](https://www.giftofspeed.com/defer-loading-css/)
 
-![network-overview.png]({{site.baseurl}}/_posts/network-overview.png)
+![network-overview.png]({{site.baseurl}}/images/network-overview.png)
+
 
