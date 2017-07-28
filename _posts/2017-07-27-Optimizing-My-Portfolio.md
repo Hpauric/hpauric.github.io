@@ -52,3 +52,6 @@ This is the next piece of advice for me from Google. These are actually two sepa
 2. [Optimize CSS Delivery](https://developers.google.com/speed/docs/insights/OptimizeCSSDelivery)
 
 [How to defer CSS loading](https://www.giftofspeed.com/defer-loading-css/)
+
+![network-overview.png]({{site.baseurl}}/_posts/network-overview.png)
+
