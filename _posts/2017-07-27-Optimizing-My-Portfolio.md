@@ -53,6 +53,8 @@ This is the next piece of advice for me from Google. These are actually two sepa
 
 [How to defer CSS loading](https://www.giftofspeed.com/defer-loading-css/)
 
+I can check the size and load time of each asset on the network tab of Google Dev Tools.
+
 ![network-overview.png]({{site.baseurl}}/images/network-overview.png)
 
 
