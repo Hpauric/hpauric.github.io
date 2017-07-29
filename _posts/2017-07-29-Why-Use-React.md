@@ -9,5 +9,10 @@ Bundling the view and functionality together makes sense. It's easier to articul
 
 ## Sidenote - What is Flux?
 
-> The concept "Flux" is simply that your view triggers an event (say, after user types a name in a text field), that event updates a model, then the model triggers an event, and the view responds to that model's event by re-rendering with the latest data. That's it.
+> The concept "Flux" is simply that 
+1. your  view triggers an event (say, after user types a name in a text field)
+2. that event updates a model
+3. then the model triggers an event
+4. the view responds to that model's event by re-rendering with the latest data. 
+That's it.
 This one way data flow / decoupled observer pattern is designed to guarantee that your source of truth always stays in your stores / models. It's a Good Thing™.
