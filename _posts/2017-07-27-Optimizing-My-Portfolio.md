@@ -68,6 +68,6 @@ They are 279 KB and 325 KB. I could probably cut those numbers in four by changi
 
 > JPEG format is suited for photographic images where color may change from pixel to pixel. This format can reduce file size by a huge margin.
 
-### Resize for
+### Resize for Mobile
 
-Can use 
+Can use [hisrc](https://github.com/teleject/hisrc)
