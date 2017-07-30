@@ -71,3 +71,7 @@ They are 279 KB and 325 KB. I could probably cut those numbers in four by changi
 ### Resize for Mobile
 
 Can use [hisrc](https://github.com/teleject/hisrc)
+
+### Lazy Loading
+
+There are several ways to implement lazy-loading. [Here are five.](https://www.sitepoint.com/five-techniques-lazy-load-images-website-performance/)
