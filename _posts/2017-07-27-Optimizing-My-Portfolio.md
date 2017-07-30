@@ -60,8 +60,14 @@ I can check the size and load time of each asset on the network tab of Google De
 
 ## Image Optimization
 
+### Optimize file format
+
 To be honest though, I think I'd get better results optimizing my images first. I have two photographic images that are saved as PNG. 
 
 They are 279 KB and 325 KB. I could probably cut those numbers in four by changing the file format to JPEG.
 
 > JPEG format is suited for photographic images where color may change from pixel to pixel. This format can reduce file size by a huge margin.
+
+### Resize for
+
+Can use 
