@@ -1,5 +1,5 @@
 ---
-published: true
+published: false
 layout: post
 ---
 
@@ -21,5 +21,4 @@ you may need to use `rvm install 2.3.1` beforehand.
 
 > If you prefix “sudo” with any linux command, it will run that command with elevated privileges.
 
-[Intro to sudo](https://linuxacademy.com/blog/linux/linux-commands-for-beginners-sudo/) 
-
+[Intro to sudo](https://linuxacademy.com/blog/linux/linux-commands-for-beginners-sudo/)
