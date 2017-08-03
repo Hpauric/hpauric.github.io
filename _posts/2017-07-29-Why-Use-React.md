@@ -5,12 +5,12 @@ To a beginner, the advantages of React are not immediately obvious. Here are a f
 
 1. You can always tell how your component will look render by looking at one source file.
 
-> If you know the state, you know the rendered output. You don't have to trace program flow. When working on complex applications, especially in teams, this is critically important.
+	> If you know the state, you know the rendered output. You don't have to trace program flow. When working on complex applications, especially in teams, this is critically important.
 
 2. Bundling the view and functionality together makes sense. It's easier to articulate the functionality of a self-contained component, rather than switching between HTML and Javascript files.
 
-> UI code is readable and maintainable.
-> Componentized UI is the future of web development, and you need to start doing it now.
+	> UI code is readable and maintainable.
+	> Componentized UI is the future of web development, and you need to start doing it now.
 
 ## Sidenote - What is Flux?
 
