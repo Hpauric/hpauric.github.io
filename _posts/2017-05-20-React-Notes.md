@@ -1,12 +1,15 @@
 ---
 layout: post
-title: React Notes
+title: Learning How to Use React By Creating a Calculator
 published: true
 ---
 
+
+I'm going to create a calculator using React.
+
 ## Creating Components
 
-There are two ways to create a React Component:
+The first thing I need to do is create components. There are two ways to create a React Component:
 ### 1. Using the class constructor
 
 ```javascript
@@ -22,8 +25,7 @@ class componentOne extends React.Component {
 }
 ```
 
-
-### 2. Declaring a variable 
+### 2. Declaring a component
 
 ```javascript
 const componentTwo = function() {
@@ -32,46 +34,98 @@ const componentTwo = function() {
   );
 };
 ```
+## Using Props
+
+Props are just the way to identify the html component attributes.
+
+Say I render the `componentOne` class I created earlier as follows:
+
+```javascript
+<button id={this.props.type} 
+	onClick={this.manageEvent.bind(this)}>
+{this.props.buttonText}
+</button>
+  ```
+  
+  When I am using the component, I can pass values to the props by assigning them in the component declaration:
+ 
+```javascript
+        <componentOne
+        type='clear' 
+        clickHandle={this.displayClear.bind(this)} 
+        buttonText={'Clear'} />
+```
+
 
 ## Handling Events
 
 > When you define a component using an ES6 class, a common pattern is for an event handler to be a method on the class.
 
-We need a method that takes an event as its argument in the `Keypad` class. Let's call this the `EventFunctionManager`.
+We need a method that takes an event as its argument in the `Keypad` class. Let's call this `manageEvent`.
+
+```javascript
+manageEvent(e) {
+    this.props.clickHandle(e);
+  }
+```
 
 Then we use this function in the element:
 
-`<button onClick={this.eventFunctionManager.bind(this)}`
+```javascript
+<button onClick={this.manageEvent.bind(this)}>
+```
 
 ## Event Bubbling
 
-There’s a lot of different ways to manage event bubbling through nested components.
+Now we want to access this event in the `Main` component. The `Keypad` components are children of the `Main` component. We can do this by binding the event to the `Main` method we want to handle the event when we declare the component.
 
-The `Keypad` is passed in the numberkey in the `Main` class render function
+```javascript
+<Keypad 
+	clickHandle={this.keypadClick.bind(this)} 
+	buttonText={val} />
+```
+In this case, we've bound `clickHandle` to `keypadClick`, one of `Main` component's event handling methods.
 
-`Keypad` component render:
+```javascript
+keypadClick(e) {
+    let pressedButton = e.target.innerHTML;
+      if (this.state.number == "0") {
+      // The default number on display is 0.
+      //If 0 is present, replace it with the new number
+        this.setState({								
+          number: pressedButton,
+        });
+      } else {
+      //Otherwise, append the text to the number
+        let number = this.state.number + pressedButton;
+        this.setState({
+          number,										
+        });
+      }     
+  }
+```
 
-`{this.props.buttonKey}`
+If we want the Keypad event to use a different event method - for example, the clear button - we bind `clickHandle` to `displayClear` instead of `keypadClick`.
 
-`Main` component render:
+```javascript
+<Keypad
+        type='clear' 
+        clickHandle={this.displayClear.bind(this)} 
+        buttonText={'Clear'} />
+```
 
-`buttonKey={val}`
+It seems it can be even easier to pass props from child to parent.
 
-The container div has the id `“keypad-container”`
+[Passing Props to Parent Component](https://stackoverflow.com/questions/22639534/pass-props-to-parent-component-in-react-js)
 
-Declaring the keypad containers in the render function in the main component
 
-`<Keypad clickHandle={this.numberClick.bind(this)} />`
+Further reading on event bubbling. These may or may not be useful. A lot of people on the internet have opinions.
 
-The `Keypad` and `Main` components both have event functions called `numberClick`. Is this necessary?
+[React Event Bubbling Through Nested Components](http://stackoverflow.com/questions/32560744/react-event-bubbling-through-nested-components)
 
-Further reading on event bubbling:
+[How to Bind Passed-In Event Handlers](http://stackoverflow.com/questions/30477042/react-js-how-to-bind-passed-in-event-handlers-this-to-child-component)
 
-http://stackoverflow.com/questions/32560744/react-event-bubbling-through-nested-components
-
-http://stackoverflow.com/questions/30477042/react-js-how-to-bind-passed-in-event-handlers-this-to-child-component
-
-### Binding
+### More Info on Binding
 
 Why do we need this?
 
@@ -93,7 +147,7 @@ is the same as:
 
 ## Curly Brackets
 
-In javascript curly brackets normally represent a function or an encapsulated piece of code that needs to be executed as one. They can also be used to create an object literal.
+In javascript curly brackets normally represent a function or an encapsulated piece of code that needs to be executed as one. (They can also be used to create an object literals.)
 React uses curly brackets extensively.
 
 ### Commenting
@@ -104,7 +158,7 @@ React uses curly brackets extensively.
 
 ### Functions and Expressions
 
-You can place a function inside curly brackets with React. I.e., you can embed any JavaScript expression in JSX by wrapping it in curly braces.
+You can place a function inside curly brackets with React. You can actually embed **any JavaScript expression** in JSX by wrapping it in curly braces.
 
 ```javascript
  {
@@ -116,7 +170,44 @@ You can place a function inside curly brackets with React. I.e., you can embed a
  }
 ```
 
+This function is invoked.
 
 
+## React setState
 
+`setState()` is **asynchronous**.
+That means you have to be careful about updating it. If you are updating it in different places, and the variables are depdendant on one another, you're in for a bad time.
 
+> Think of `setState()` as a request rather than an immediate command to update the component. For better perceived performance, React may delay it, and then update several components in a single pass. React does not guarantee that the state changes are applied immediately.
+
+There are two ways to use `setState()`. You can pass an object to it.
+
+```javascript
+this.setState({
+        number: this.state.number + 5,
+        newNumberFlag: false,
+      });
+```
+
+Or you can pass a function to it
+
+```javascript
+this.setState((prevState, props) => {
+  return {counter: prevState.number + 5};
+});
+```
+
+> `setState()` does not always immediately update the component. It may batch or defer the update until later. This makes reading this.state right after calling ``setState()`` a potential pitfall. Instead, use `componentDidUpdate` or a `setState` callback (`setState(updater, callback)`), either of which are guaranteed to fire after the update has been applied. 
+
+You can also include a callback with `setState()`, to be implemented after it's been implemented.
+
+```javascript
+this.setState((prevState, props) => {
+  return {counter: prevState.number + 5};
+}, callbackFunction(){
+	this.setState({
+        number: this.state.number + 5,
+        newNumberFlag: false,
+      });
+});
+```
