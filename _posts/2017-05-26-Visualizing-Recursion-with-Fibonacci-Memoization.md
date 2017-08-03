@@ -107,6 +107,40 @@ var fibonacci = (function() {
     return value;
     }
 
+
+```javascript
+
+
+function memoize(func) {
+  var memo = {};
+  var slice = Array.prototype.slice;
+
+  return function() {
+    var args = slice.call(arguments);
+
+    if (args in memo)
+      return memo[args];
+    else
+      return (memo[args] = func.apply(this, args));
+
+  }
+}
+
+
+var fibonacci = (function() {
+
+  function f(n) {
+    var value;
+      if (n === 0 || n === 1)
+        value = n;
+      else
+        value = f(n - 1) + f(n - 2);
+    
+
+    return value;
+    }
+
+
   return memoize(f);
 })();
 fibonacci(10);
