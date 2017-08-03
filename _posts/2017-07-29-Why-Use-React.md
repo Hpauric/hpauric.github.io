@@ -1,7 +1,7 @@
 ---
 published: true
 ---
-The advantages of React are not immediately obvious. Here are a few reasons to use React.
+To a beginner, the advantages of React are not immediately obvious. Here are a few reasons to use React.
 
 1. You can always tell how your component will look render by looking at one source file.
 
