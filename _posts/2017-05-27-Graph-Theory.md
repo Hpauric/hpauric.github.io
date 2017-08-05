@@ -45,7 +45,7 @@ var adjList = [
 With an adjacency matrix, every single possible connect between every node is listed. If there is no edge (connection), a `0` is used. If there is an edge (connection), a `1` is used.
 
 ```javascript
-var adjList = [
+var adjMatrix = [
     [0, 1, 0, 0], 	// Node 0 is only connected to Node 1
     [1, 0, 1, 0], 	// Node 1 is connected to everyone 
                		// (except itself!)
@@ -53,6 +53,20 @@ var adjList = [
     [0, 1, 0, 0],	// You get the idea	
     ];
 ```
+
+## Edge Lists
+
+Edge lists, as the name implies, just lists the edges (connections) between each node.
+
+```javascript
+var edgeList = [
+  [0, 1]	// The first edge is from 0 to 1
+  [1, 2]	// The second edge is from 1 to 2
+  [1, 3]	// The third list is from 1 to 3
+  ];		// And that's it! Show's over, folks.
+```
+You can see that the edge lists are often the most efficient way to represent a graph.
+
 
 ## Path Searches
 
