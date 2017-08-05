@@ -20,22 +20,26 @@ The first thing you need to do is use a tool to represent these graphs, otherwis
 
 My favorite tool is [VisuAlgo](https://visualgo.net/en/graphds) (see what they did there?). The runner-up prize goes to [Graph Online](http://graphonline.ru/en/).
 
+VisuAlgo is great because you can see the graph and it's representation in the three main forms:
+
+![VisuAlgo]({{site.baseurl}}/images/visual-algo.png)
+
 ## Adjacency lists
 
 > Adjacency lists are most useful when we mostly want to enumerate outgoing edges of each node. This is common in search tasks, where we want to find a path from one node to another or compute the distances between pairs of nodes. 
 
+So with adjacency, you list the connections for each node in a separate array, starting with node 0:
+
 ```javascript
 var adjList = [
-    [1],
-    [0, 4, 5],
-    [3, 4, 5],
-    [2, 6],
-    [1, 2],
-    [1, 2, 6],
-    [3, 5],
-    []
+    [1], 		// Node 0 is only connected to Node 1
+    [0, 2, 3], 	// Node 1 is connected to everyone (except themselves)
+    [1],		// Node 2 is connected to Node 1		
+    [1],		// You get the idea	
     ];
   ```
+  
+  Node 0 is on
 
 ## Adjacency Matrices
 
