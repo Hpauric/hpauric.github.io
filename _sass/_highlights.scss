@@ -21,7 +21,7 @@ text-align: center;
 }
 
 code {
-  //font-family:'Bitstream Vera Sans Mono','Courier', monospace;
+  font-family:'Bitstream Vera Sans Mono','Courier', monospace;
   background-color: #efefef;
 }
 
@@ -35,6 +35,11 @@ pre.highlight {
 
 .highlight pre {
     background: #282c34
+     
+     code {
+  background: #282c34
+}
+
 }
 
 .highlight .hll {
