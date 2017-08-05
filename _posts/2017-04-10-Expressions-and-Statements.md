@@ -42,7 +42,7 @@ So we can immediately invoke our function expression from earlier by wrapping it
 ```javascript
 /*const functionOne = */(function() {console.log("Hello!"); })();
 ```
-So now that we know what IIFEs are, we have to figure out why we would want to use them? IIFEs are useful when you just want to run a function once, and you don't need to return a value.
+So now that we know what IIFEs are, all we have to do is find a reason to use them! IIFEs are useful when you just want to run a function once, and you don't need to return a value.
 
 
 
