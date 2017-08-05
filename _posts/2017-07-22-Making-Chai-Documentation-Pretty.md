@@ -13,7 +13,7 @@ Slate's winning features are:
 
 It's not perfect - I've noticed it doesn't dynamically scroll into view the active table-of-contents section for second-layer items - but it's a good start.
 
-## the original documentation
+## The original documentation
 
 The documentation build is open source and hosted on Github. They use some kind of package that automatically generates documentation from the comments.
 
