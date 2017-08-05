@@ -12,9 +12,7 @@ Here's an example from [the firehose project](http://blog.thefirehoseproject.com
 
 So what exactly is graph theory? Well first of all, computer science graphs have nothing to do with your garden variety real-life graphs. These graphs are effectively ways to represent a bunch of dots connected by lines. Think of a map of cities connected by roads. Got that? Now replace "city" with "node", and "road" with "edge". Now you're talking graph language! 
 
-The first thing you need to do to understand graphy theory is use a tool to represent these graphs, otherwise you'll go insane with confusion.
-
-My favorite tool is [VisuAlgo](https://visualgo.net/en/graphds) (see what they did there?). The runner-up prize goes to [Graph Online](http://graphonline.ru/en/).
+The first thing you need to do to understand graph theory is use a tool to visually represent graphs, otherwise you'll go insane with confusion. My favorite tool is [VisuAlgo](https://visualgo.net/en/graphds) (see what they did there?). The runner-up prize goes to [Graph Online](http://graphonline.ru/en/).
 
 VisuAlgo is great because you can create your own graphs and see how they are represented in the three different ways:
 
