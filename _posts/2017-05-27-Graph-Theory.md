@@ -24,35 +24,41 @@ VisuAlgo is great because you can create your own graphs and see how they are re
 
 ![VisuAlgo]({{site.baseurl}}/images/visual-algo.png)
 
-## Adjacency lists
+## Adjacency Lists
 
 > Adjacency lists are most useful when we mostly want to enumerate outgoing edges of each node. This is common in search tasks, where we want to find a path from one node to another or compute the distances between pairs of nodes. 
 
-So with adjacency, you list the connections for each node in a separate array, starting with node 0:
+So with adjacency lists, you *list* the edges (connections) for each node in a separate array, starting with node 0:
 
 ```javascript
 var adjList = [
     [1], 		// Node 0 is only connected to Node 1
-    [0, 2, 3], 	// Node 1 is connected to everyone (except themselves)
+    [0, 2, 3], 	// Node 1 is connected to everyone 
+               	// (except themselves)
     [1],		// Node 2 is connected to Node 1		
     [1],		// You get the idea	
     ];
   ```
-  
-  Node 0 is on
 
 ## Adjacency Matrices
+
+With an adjacency matrix, every single possible connect between every node is listed. If there is no edge (connection), a 0 is used. If there is an edge (connection), a 1 is used.
+
+```javascript
+var adjList = [
+    [0, 1, 0, 0], 	// Node 0 is only connected to Node 1
+    [1, 0, 1, 0], 	// Node 1 is connected to everyone 
+               		// (except itself!)
+    [0, 1, 0, 0],	// Node 2 is connected to Node 1		
+    [0, 1, 0, 0],	// You get the idea	
+    ];
+```
 
 ## Path Searches
 
 The two most popular algorithms are depth-first search and breadth-first search.
 
 ## Resources
-
-
-https://visualgo.net/en/graphds
-
-http://graphonline.ru/en/
 
 
 Code from Khan Academy on Breadth-First Search
