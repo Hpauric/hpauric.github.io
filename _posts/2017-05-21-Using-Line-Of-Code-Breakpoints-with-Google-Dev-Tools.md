@@ -75,6 +75,10 @@ The scope pane allows you to see the all variables (and functions and objects) i
 
 ![scope pane]({{site.baseurl}}/images/scope-pane.png)
 
+For example, I can examine my `memo` object and check it's properties:
+
+![Memo Object]({{site.baseurl}}/images/memo-object.png)
+
 
 ## The Call Stack
 
