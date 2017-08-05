@@ -14,7 +14,7 @@ So what exactly is graph theory? Well first of all, computer science graphs have
 
 The first thing you need to do to understand graph theory is use a tool to visually represent graphs, otherwise you'll go insane with confusion. My favorite tool is [VisuAlgo](https://visualgo.net/en/graphds) (see what they did there?). The runner-up prize goes to [Graph Online](http://graphonline.ru/en/).
 
-VisuAlgo is great because you can create your own graphs and see how they are represented in the three different ways:
+VisuAlgo is great because you can create your own graphs and see how they are represented in the three standard varieties:
 
 - adjacency list
 - adjacency matrix
