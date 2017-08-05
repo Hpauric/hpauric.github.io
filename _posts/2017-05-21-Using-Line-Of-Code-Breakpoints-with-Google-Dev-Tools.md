@@ -78,4 +78,4 @@ The scope pane allows you to see the all variables (and functions and objects) i
 
 ## The Call Stack
 
-The call stack lists all of the functions that have been called, with the most recent  at the top.
+I can also see the call stack on the left pane. The call stack lists all of the functions that have been called, with the most recent at the top. It might not seem that useful in this case, because all of the functions recently called have been `f`! However, I can click on these previous-called functions to see the state of the variables and objects at that time.
