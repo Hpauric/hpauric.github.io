@@ -4,6 +4,10 @@ title: Using Line Of Code Breakpoints with Google Dev Tools
 published: true
 ---
 
+Google Dev Tools are like x-ray specs for code. Nowhere is this more true than in the sources tab.
+
+![x-ray specs]({{site.baseurl}}/images/x-ray-specs.jpg)
+
 The Sources tab in Google Dev Tools is a great testing ground for new code. It allows you to step through code and monitor your variables and properties at each step of the execution. This is invaluable for debugging code.
 
 To test a new code snippet, navigate to the Source tab.
