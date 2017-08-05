@@ -66,26 +66,8 @@ var edgeList = [
 You can see that the edge lists are often the most efficient way to represent a graph.
 
 
-## Path Searches
+## What Next?
 
-The two most popular algorithms are depth-first search and breadth-first search.
+So now we know how to represent graphs. What do we do with them? We can use them to repesent all kinds of network relationships.
 
-## Resources
-
-
-Code from Khan Academy on Breadth-First Search
-
-// Traverse the graph
-while (!queue.isEmpty()) {
-    var  = queue.dequeue();
-
-    for (; ; ) {
-	var  = graph[][];
-
-	if (bfsInfo[]. === ) {
-	    ;
-	    ;
-	    ;
-	}
-    }
-}
+The two most popular algorithms to use with graphs are depth-first search and breadth-first search. I'm going to look at implementing a breath-first search in the next part. If you can't wait for that, you can look at [Khan Academy's excellent introduction to depth-first search](https://www.khanacademy.org/computing/computer-science/algorithms/breadth-first-search/a/breadth-first-search-and-its-uses).
