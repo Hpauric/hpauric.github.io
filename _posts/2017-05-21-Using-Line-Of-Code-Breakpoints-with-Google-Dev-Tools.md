@@ -10,7 +10,7 @@ To test a new code snippet, navigate to the Source tab.
 
 Click on `+ New Snippet`
 
-You can add whatever code you want. In this case I'm trying out a fibonacci implemetation with dynamic programming.
+You can add whatever code you want. In this case I'm trying out a fibonacci implementation with dynamic programming.
 
 This is taken from [a guide to implementing memoization in javascript](https://www.sitepoint.com/implementing-memoization-in-javascript/)
 
