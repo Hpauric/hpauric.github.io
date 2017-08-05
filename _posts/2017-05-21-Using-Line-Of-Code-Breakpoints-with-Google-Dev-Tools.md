@@ -77,6 +77,7 @@ The scope pane allows you to see the all variables (and functions and objects) i
 
 For example, I can examine my `memo` object and check it's properties:
 
+![memo-object.png]({{site.baseurl}}/images/memo-object.png)
 
 
 
