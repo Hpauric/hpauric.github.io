@@ -10,7 +10,7 @@ Here's an example from [the firehose project](http://blog.thefirehoseproject.com
 > Say you want to build a data representation of a tweet.  How would you represent retweets and favorites?
 **This problem sounds easy in theory**, but naturally starts moving towards **advanced graph theory searching algorithms**.  For example, for a particular tweet you may need to write a depth-first-search algorithm to determine if someone with the twitter handle “barackobama” retweeted the tweet that is supplied.
 
-So what exactly is graph theory? Well first of all, computer science graphs have nothing to do with your garden variety real-life graphs. These graphs are effectively ways to represent a bunch of dots connected by lines. Think of a map of cities connected by roads. Got that? Now replace "city" with "node", and "road" with "line". Now you're talking graph language! 
+So what exactly is graph theory? Well first of all, computer science graphs have nothing to do with your garden variety real-life graphs. These graphs are effectively ways to represent a bunch of dots connected by lines. Think of a map of cities connected by roads. Got that? Now replace "city" with "node", and "road" with "edge". Now you're talking graph language! 
 
 The first thing you need to do to understand graphy theory is use a tool to represent these graphs, otherwise you'll go insane with confusion.
 
