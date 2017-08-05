@@ -31,8 +31,8 @@ So with adjacency lists, you *list* the edges (connections) for each node in a s
 ```javascript
 var adjList = [
     [1], 		// Node 0 is only connected to Node 1
-    [0, 2, 3],	// Node 1 is connected to everyone 
-    			// (except themselves)
+    [0, 2, 3],		// Node 1 is connected to everyone 
+    			// (except itself!)
     [1],		// Node 2 is connected to Node 1
     [1],		// You get the idea	
     ];
