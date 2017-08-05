@@ -10,9 +10,15 @@ Here's an example from [the firehose project](http://blog.thefirehoseproject.com
 > Say you want to build a data representation of a tweet.  How would you represent retweets and favorites?
 This problem sounds easy in theory, but naturally starts moving towards advanced graph theory searching algorithms.  For example, for a particular tweet you may need to write a depth-first-search algorithm to determine if someone with the twitter handle “barackobama” retweeted the tweet that is supplied.
 
+So what exactly is graph theory? Well first of all, they have nothing to do with normal graphs. The best way to think of these graphs is as representations of connected dots. Think cities and roads. How do you represent these connected dots? You can do it in three ways:
 
+- adjacency list
+- adjacency matrix
+- edge list
 
-> There are generally two standard representations of graphs that are used in graph algorithms, depending on which question is more important.
+The first thing you need to do is use a tool to represent these graphs, otherwise you'll go insane.
+
+My favorite tool is [VisuAlgo](https://visualgo.net/en/graphds) (see what they did there?). The runner-up prize goes to [Graph Online](http://graphonline.ru/en/).
 
 ## Adjacency lists
 
