@@ -35,7 +35,7 @@ var adjList = [
     [1], 		// Node 0 is only connected to Node 1
     [0, 2, 3], 	// Node 1 is connected to everyone 
                	// (except themselves)
-    [1],		// Node 2 is connected to Node 1		
+    [1],		// Node 2 is connected to Node 1
     [1],		// You get the idea	
     ];
   ```
@@ -49,7 +49,7 @@ var adjList = [
     [0, 1, 0, 0], 	// Node 0 is only connected to Node 1
     [1, 0, 1, 0], 	// Node 1 is connected to everyone 
                		// (except itself!)
-    [0, 1, 0, 0],	// Node 2 is connected to Node 1		
+    [0, 1, 0, 0],	// Node 2 is connected to Node 1
     [0, 1, 0, 0],	// You get the idea	
     ];
 ```
