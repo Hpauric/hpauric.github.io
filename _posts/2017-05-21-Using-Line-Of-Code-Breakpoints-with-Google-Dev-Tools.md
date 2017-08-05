@@ -59,17 +59,17 @@ There's a detailed breakdown of how these actions differ on the [Google Dev Page
 
 The most important thing to know is: 
 
-> Use step into as your typical "one line at a time" action, as it ensures that only one statement gets executed, no matter what functions you step in and out of.
+> Use `step into` as your typical "one line at a time" action, as it ensures that only one statement gets executed, no matter what functions you step in and out of.
 
-Step over executes the next line and stops at the following line.
+`Step over` executes the next line and stops at the following line.
 
-Step out completes the rest of the function and stops at the next statement.
+`Step out` completes the rest of the function and stops at the next statement.
 
 ## View and Edit Properties and Variables
 
 The whole point of using breakpoints is that they allow you to check all of the currently-defined properties. You can even edit properties in the script on the fly.
 
-You can only see the call stack and the scope when the program is paused.
+### Scope
 
 > The three most important aspects of debugging and real estate are the same: Location, Location, and Location.
 
@@ -81,8 +81,9 @@ For example, I can examine my `memo` object and check it's properties:
 
 ![memo-object.png]({{site.baseurl}}/images/memo-object.png)
 
+It's important to note that you can only see the scope (and the call stack) when the program is paused.
 
-## The Call Stack
+### The Call Stack
 
 I can also see the call stack on the left pane. The call stack lists all of the functions that have been called, with the most recent at the top. It might not seem that useful in this case, because all of the functions recently called have been `f`! However, I can click on these previous-called functions to see the state of the variables and objects at that time.
 
