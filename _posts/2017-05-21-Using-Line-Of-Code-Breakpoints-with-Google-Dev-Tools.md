@@ -71,6 +71,11 @@ The whole point of using breakpoints is that they allow you to check all of the 
 
 You can only see the call stack and the scope when the program is paused.
 
+The scope pane allows you to see the all variables (and functions and objects) in the local, closure and global scope.
+
+![scope pane]({{site.baseurl}}/images/scope-pane.png)
+
+
 ## The Call Stack
 
 The call stack lists all of the functions that have been called, with the most recent  at the top.
