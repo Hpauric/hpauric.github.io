@@ -88,4 +88,4 @@ I can also see the call stack on the left pane. The call stack lists all of the 
 
 ## Conclusion
 
-Using breakpoints, checking the scope pane and the call stack - these are all powerful tools for debugging programs. But they are also invaluable to understand code you didn't write yourself!
+Using breakpoints, checking the scope pane and the call stack - these are all powerful tools for debugging programs. But they are also invaluable tools to understand code you didn't write yourself!
