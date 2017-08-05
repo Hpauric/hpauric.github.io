@@ -73,11 +73,11 @@ You can only see the call stack and the scope when the program is paused.
 
 The scope pane allows you to see the all variables (and functions and objects) in the local, closure and global scope.
 
-![Scope Pane]({{site.baseurl}}/.images/scope-pane.png)
+![]({{site.baseurl}}/images/scope-pane.png)
 
 For example, I can examine my `memo` object and check it's properties:
 
-![Memo Object]({{site.baseurl}}/_posts/memo-object.png)
+
 
 
 
