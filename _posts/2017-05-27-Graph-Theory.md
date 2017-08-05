@@ -47,7 +47,7 @@ With an adjacency matrix, every single possible connect between every node is li
 ```javascript
 var adjMatrix = [
     [0, 1, 0, 0], 	// Node 0 is only connected to Node 1
-    [1, 0, 1, 0], 	// Node 1 is connected to everyone 
+    [1, 0, 1, 1], 	// Node 1 is connected to everyone 
                		// (except itself!)
     [0, 1, 0, 0],	// Node 2 is connected to Node 1
     [0, 1, 0, 0],	// You get the idea	
