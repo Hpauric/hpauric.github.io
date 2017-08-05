@@ -71,7 +71,9 @@ The whole point of using breakpoints is that they allow you to check all of the 
 
 You can only see the call stack and the scope when the program is paused.
 
-The scope pane allows you to see the all variables (and functions and objects) in the local, closure and global scope.
+> The three most important aspects of debugging and real estate are the same: Location, Location, and Location.
+
+Scope matters! The scope pane allows you to see the all variables (and functions and objects) in the local, closure and global scope.
 
 ![]({{site.baseurl}}/images/scope-pane.png)
 
@@ -80,8 +82,10 @@ For example, I can examine my `memo` object and check it's properties:
 ![memo-object.png]({{site.baseurl}}/images/memo-object.png)
 
 
-
-
 ## The Call Stack
 
 I can also see the call stack on the left pane. The call stack lists all of the functions that have been called, with the most recent at the top. It might not seem that useful in this case, because all of the functions recently called have been `f`! However, I can click on these previous-called functions to see the state of the variables and objects at that time.
+
+## Conclusion
+
+Using breakpoints, checking the scope pane and the call stack - these are all powerful tools for debugging programs. But they are also invaluable to understand code you didn't write yourself!
