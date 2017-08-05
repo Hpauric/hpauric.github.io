@@ -42,7 +42,7 @@ var adjList = [
 
 ## Adjacency Matrices
 
-With an adjacency matrix, every single possible connect between every node is listed. If there is no edge (connection), a 0 is used. If there is an edge (connection), a 1 is used.
+With an adjacency matrix, every single possible connect between every node is listed. If there is no edge (connection), a `0` is used. If there is an edge (connection), a `1` is used.
 
 ```javascript
 var adjList = [
