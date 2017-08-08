@@ -1,6 +1,7 @@
 ---
 layout: post
 published: true
+title: 'Graph Theory I&#58; Intro And Data Structure Examples'
 ---
 
 ![mario-overworld]({{site.baseurl}}/images/graph-theory-mario.png)
