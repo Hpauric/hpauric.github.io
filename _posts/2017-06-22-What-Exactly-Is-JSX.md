@@ -1,5 +1,6 @@
 ---
 published: true
+title: What Exactly Is JSX?
 ---
 
 JSX  will never be part of the official Javascript canon. [Quote the website](https://facebook.github.io/jsx/):
