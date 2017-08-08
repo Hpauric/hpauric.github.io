@@ -1,7 +1,7 @@
 ---
 published: true
 layout: post
-title: React setState
+title: React State Management with setState
 ---
 
 `setState()` is **asynchronous**.
