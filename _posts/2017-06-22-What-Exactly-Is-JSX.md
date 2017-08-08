@@ -3,6 +3,8 @@ published: true
 title: What Exactly Is JSX?
 ---
 
+It's the peanut-butter and jelly sandwich of the web development world. Javascript is the jelly, HTML is the peanut-butter, and it's all held together with some...
+
 ## Curly Brackets
 
 In javascript, curly brackets normally represent a function or an encapsulated piece of code that needs to be executed as one. (They can also be used to create an object literals.)
