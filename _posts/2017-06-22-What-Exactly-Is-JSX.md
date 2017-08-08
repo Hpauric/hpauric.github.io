@@ -28,7 +28,11 @@ You can place a function inside curly brackets with React. You can actually embe
  }
 ```
 
-JSX  will never be part of the official Javascript canon. [Quote the website](https://facebook.github.io/jsx/):
+## So Is It Official Javascript?
+
+Since Babel transpiles JSX to standard Javascript, you can be forgiven for thinking that some day JSX will be a fully-accredited Javascript member.
+
+Sadly, JSX  will never be part of the official Javascript canon. [Quote the website](https://facebook.github.io/jsx/):
 
 > **It's NOT a proposal to incorporate JSX into the ECMAScript spec itself**. It's intended to be used by various preprocessors (transpilers) to transform these tokens into standard ECMAScript.
 
