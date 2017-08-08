@@ -6,7 +6,7 @@ title: What Exactly Is JSX?
 ## Curly Brackets
 
 In javascript, curly brackets normally represent a function or an encapsulated piece of code that needs to be executed as one. (They can also be used to create an object literals.)
-React uses curly brackets extensively.
+React uses curly brackets extensively in the same manner, but in a markup context.
 
 ### Commenting
 
