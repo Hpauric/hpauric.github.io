@@ -145,29 +145,3 @@ is the same as:
 (this.handleClick.bind(this));
 ```
 
-## Curly Brackets
-
-In javascript curly brackets normally represent a function or an encapsulated piece of code that needs to be executed as one. (They can also be used to create an object literals.)
-React uses curly brackets extensively.
-
-### Commenting
-
-> You can use regular `/* Block Comments */`, but they need to be wrapped in curly braces:
-
-> `{/* A JSX comment */}`
-
-### Functions and Expressions
-
-You can place a function inside curly brackets with React. You can actually embed **any JavaScript expression** in JSX by wrapping it in curly braces.
-
-```javascript
- {
-    [1, 2, 3, 4, 5, 6, 7, 8, 9].map((val, i) => {
-        return <Keypad 
-                clickHandle={this.keypadClick.bind(this)}
-                buttonText={val} />
-     })
- }
-```
-
-This function is invoked.
