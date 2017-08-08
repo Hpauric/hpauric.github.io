@@ -1,6 +1,7 @@
 ---
 published: true
 layout: post
+title: React setState
 ---
 
 `setState()` is **asynchronous**.
@@ -39,7 +40,3 @@ this.setState((prevState, props) => {
       });
 });
 ```
-
-
-
-
