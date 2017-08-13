@@ -10,5 +10,7 @@ registration
 
 page 81
 
+## Views
+
 > The key transition character in Razor is the “at” sign (@). This single character is used to transition
 from markup to code
