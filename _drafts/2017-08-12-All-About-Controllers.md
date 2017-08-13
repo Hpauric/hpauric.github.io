@@ -9,3 +9,6 @@ drive, a relationship exists between the URL and a method on a controller class
 registration
 
 page 81
+
+> The key transition character in Razor is the “at” sign (@). This single character is used to transition
+from markup to code
