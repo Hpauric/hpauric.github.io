@@ -18,4 +18,4 @@ I studied Electronic Engineering at DCU (B.Eng 2007).
 
 I live in Dublin, Ireland.
 
-[You can see my portfolio here](http://www.pauricholleran.com/)
+[You can see my portfolio here.](http://www.pauricholleran.com/)
