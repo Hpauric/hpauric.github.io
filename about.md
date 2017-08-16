@@ -7,6 +7,7 @@ published: true
 
 ![Pauric Holleran]({{site.baseurl}}/images/pauric-470.png)
 
+
 Hi, I’m Pauric Holleran, a web developer with experience in API Design, Node, HTML, SASS, CSS, data visualization, responsive design, build tools and testing.
 
 I work with code, data, and computation to craft interactive experiences.
