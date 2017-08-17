@@ -40,4 +40,4 @@ I can see exactly what’s in the storedLinks collection by running a `find()` m
 
 ![]({{site.baseurl}}/images/storedlinks-find-screenshot.png)
 
-There's a multitude of entries in the collection with the same URL that I entered while testing the interface. This is useful to know!
+There's a multitude of entries in the collection with the same URL that I entered while testing the interface. This is useful to know! Without the shell, I would have had to run a script to find this out.
