@@ -1,0 +1,17 @@
+---
+published: false
+---
+How much of a difference is there, really?
+
+Code for static files:
+
+```c
+app.UseStaticFiles();
+```
+
+```javascript
+app.use(express.static(path.join(__dirname, 'public')));
+```
+
+
+https://medium.freecodecamp.org/why-open-source-projects-sadly-favor-new-users-and-what-you-can-do-about-it-ba586038949e
