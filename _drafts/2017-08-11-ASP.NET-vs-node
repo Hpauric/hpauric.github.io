@@ -15,3 +15,5 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 
 https://medium.freecodecamp.org/why-open-source-projects-sadly-favor-new-users-and-what-you-can-do-about-it-ba586038949e
+
+What really matters is the ecosystem, not the language. Does anybody argue over whether English is better as a language than Finnish? A few people, but not many. What matters is, how useful is it to know this language?
