@@ -27,3 +27,8 @@ from markup to code
 > `@model IEnumerable<MvcMovie.Models.Movie>`
 
 > This @model directive allows you to access the list of movies that the controller passed to the view
+
+
+`Html.ActionLink`
+
+The `Html` object is a helper that's exposed using a property on the `System.Web.Mvc.WebViewPage base` class. The ActionLink method of the helper makes it easy to dynamically generate HTML hyperlinks that link to action methods on controllers. 
