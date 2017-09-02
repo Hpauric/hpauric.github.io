@@ -5,7 +5,7 @@ published: false
 
 ## c#
 
-Attributes are effectively metadata that describe the property, method or class that they precede.
+Attributes are effectively metadata that describe the property, method or class that they precede. They are encased in square brackets.
 
 ```csharp
 [Display(Name = "Release Date")] // attribute
@@ -42,7 +42,9 @@ from markup to code
 
 The `Html` object is a helper that's exposed using a property on the `System.Web.Mvc.WebViewPage base` class. The ActionLink method of the helper makes it easy to dynamically generate HTML hyperlinks that link to action methods on controllers. 
 
+```csharp
 @Html.ActionLink("Edit", "Edit", new { id=item.ID }) 
+```
 
 The second argument is the name of the action method to invoke (In this case, the Edit action)
 
@@ -55,27 +57,3 @@ So the generated route is:
 http://localhost:1234/Movies/Edit/4
 
 ### Edit View
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
