@@ -43,18 +43,20 @@ The default layout is defined in `_ViewStart.cshtml` file in `Views`.
 
 > This @model directive allows you to access the list of movies that the controller passed to the view
 
+### `ActionLink` Method
+
 
 `Html.ActionLink`
 
-The `Html` object is a helper that's exposed using a property on the `System.Web.Mvc.WebViewPage base` class. The ActionLink method of the helper makes it easy to dynamically generate HTML hyperlinks that link to action methods on controllers. 
+The `Html` object is a helper that's exposed using a property on the `System.Web.Mvc.WebViewPage base` class. The `ActionLink` method of the helper makes it easy to dynamically generate HTML hyperlinks that link to action methods on controllers. 
 
 ```csharp
 @Html.ActionLink("Edit", "Edit", new { id=item.ID }) 
 ```
-
-The second argument is the name of the action method to invoke (In this case, the Edit action)
-
-The final argument is an **anonymous object** that generates the route data (in this case, the ID of 4).
+arguments
+string linkText
+string actionName (this is the method name unless otherwise specified)
+string controllerName OR object routeValues
 
 The default route (established in App_Start\RouteConfig.cs) takes the URL pattern {controller}/{action}/{id}
 
