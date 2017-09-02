@@ -27,6 +27,12 @@ registration
 > The key transition character in Razor is the “at” sign (@). This single character is used to transition
 from markup to code
 
+###  Layout
+
+By convention, the default layout for an ASP.NET app is named `_Layout.cshtml`.
+
+The default layout is defined in `_ViewStart.cshtml` file in `Views`.
+
 ### Details View
 
 > By including a `@model` statement at the top of the view template file, you can specify the type of object that the view expects. 
