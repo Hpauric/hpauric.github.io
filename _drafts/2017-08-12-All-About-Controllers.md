@@ -17,11 +17,20 @@ Attributes are effectively metadata that describe the property, method or class 
 public DateTime ReleaseDate { get; set; }
 ```
 
-### G-eneric Collections
+### Generics
 
-`List<T>`	T stands for type. This is the new Array. It’s a typed list of items. By
-far, the most common collection class used. It’s the default.
-If you need a list of people, it’s a `List<Person>`
+Generics can be classes or structs. Type-parameters are names used in place of concrete types when defining a new generic. They can be associated with classes or methods by placing the type parameter in angle brackets `< >`
+```csharp
+public class List<T> /// T stands for type
+{
+	...
+}
+  
+List<int> list = new List<int>();
+List<char> list = new List<char>();
+List<Person> list = new List<Person>();
+```
+
 
 ## ASP.NET Classes Cheatsheet
 
