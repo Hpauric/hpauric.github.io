@@ -21,7 +21,7 @@ public DateTime ReleaseDate { get; set; }
 
 Generics can be classes or structs. Type-parameters are names used in place of concrete types when defining a new generic. They can be associated with classes or methods by placing the type parameter in angle brackets `< >`
 ```csharp
-public class List<T> /// T stands for type
+public class List<T> // T stands for type
 {
 	...
 }
