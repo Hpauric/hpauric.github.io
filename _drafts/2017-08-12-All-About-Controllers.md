@@ -3,6 +3,9 @@ published: false
 ---
 
 
+
+
+
 ## c#
 
 ### attributes
@@ -20,8 +23,15 @@ public DateTime ReleaseDate { get; set; }
 far, the most common collection class used. It’s the default.
 If you need a list of people, it’s a `List<Person>`
 
+## ASP.NET Classes Cheatsheet
 
+Classes
+- IEnumerable System.Collections.Generic
+- DbContext System.Data.Entity
+- Controller System.Web.Mvc
+- HTMLHelper  System.Web.Mvc
 
+Methods
 
 
 ```
@@ -73,10 +83,14 @@ arguments
 - string controllerName OR object routeValues
 
 
-The default route (established in App_Start\RouteConfig.cs) takes the URL pattern {controller}/{action}/{id}
+The default route (established in `App_Start\RouteConfig.cs)` takes the URL pattern `{controller}/{action}/{id}`
 
-So the generated route is:
+So for example,the generated route is:
 
 http://localhost:1234/Movies/Edit/4
+
+
+
+### Html.DisplayFor
 
 ### Edit View
