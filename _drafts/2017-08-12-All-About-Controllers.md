@@ -5,11 +5,25 @@ published: false
 
 ## c#
 
+### attributes
+
 Attributes are effectively metadata that describe the property, method or class that they precede. They are encased in square brackets.
 
 ```csharp
 [Display(Name = "Release Date")] // attribute
 public DateTime ReleaseDate { get; set; }
+```
+
+### G-eneric Collections
+
+`List<T>`	T stands for type. This is the new Array. It’s a typed list of items. By
+far, the most common collection class used. It’s the default.
+If you need a list of people, it’s a `List<Person>`
+
+
+
+
+
 ```
 ## Controllers
 
@@ -54,9 +68,10 @@ The `Html` object is a helper that's exposed using a property on the `System.Web
 @Html.ActionLink("Edit", "Edit", new { id=item.ID }) 
 ```
 arguments
-string linkText
-string actionName (this is the method name unless otherwise specified)
-string controllerName OR object routeValues
+- string linkText
+- string actionName (this is the method name unless otherwise specified)
+- string controllerName OR object routeValues
+
 
 The default route (established in App_Start\RouteConfig.cs) takes the URL pattern {controller}/{action}/{id}
 
