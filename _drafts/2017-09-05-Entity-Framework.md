@@ -5,6 +5,11 @@ Why do we need Entity Framework? Why do we need an ORM?
 
 You can use Entity Framework for code-first implementations. This allows you to define your models in code, and let Entity Framework generate the database for you.
 
+representing loosely-structured, heirarchical data. Relational databases can't do this very well. Many common types of data are intrinsically heirarchical and loosely structured, so storing them in an RDBMS can be difficult. Examples: books, articles, and most other written documentation. HTML. Search indexes. Filesystems. Game worlds. Classical music scores. It's just easier to model some things this way.
+https://sites.google.com/site/steveyegge2/ten-predictions
+
+
+
 It allows you to work at a higher level of abstraction.
 
 
