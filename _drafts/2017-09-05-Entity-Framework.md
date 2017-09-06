@@ -28,4 +28,9 @@ There is a lot of controversy around Object Relational Models
 > The charges against them can be summarized in that they are complex, and provide only a leaky abstraction over a relational data store. Their complexity implies a grueling learning curve and often systems using an ORM perform badly - often due to naive interactions with the underlying database.
 There is a lot of truth to these charges, but such charges miss a vital piece of context. The object/relational mapping problem is hard.
 
+> Many people treat the relational database "like a crazy aunt who's shut up in an attic and whom nobody wants to talk about"[3]. In this world-view they just want to deal with in-memory data-structures and let the ORM deal with the database. This way of thinking can work for small applications and loads, but it soon falls apart once the going gets tough. Essentially the ORM can handle about 80-90% of the mapping problems, but that last chunk always needs careful work by somebody who really understands how a relational database works.
+
+> Mapping to a relational database involves lots of repetitive, boiler-plate code. A framework that allows me to avoid 80% of that is worthwhile even if it is only 80%. The problem is in me for pretending it's 100% when it isn't.
+
+
 https://martinfowler.com/bliki/OrmHate.html
