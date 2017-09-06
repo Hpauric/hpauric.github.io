@@ -40,6 +40,23 @@ https://martinfowler.com/bliki/OrmHate.html
 
 > The main class that coordinates Entity Framework functionality for a given data model is the database context class. You create this class by deriving from the `System.Data.Entity.DbContext` class. In your code you specify which entities are included in the data model.
 
+### Connection String
+
+
+Enter this text in the `WebConfig.cs` file in your project.
+
+```html
+<connectionStrings>
+    <add name="[YOURMODELNAMEHERE]Context"    connectionString="Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\[YOURDATABASENAMEHERE].mdf;Integrated Security=True" providerName="System.Data.SqlClient"/>
+  </connectionStrings>
+```
+
+
+
+
+
+
+
 
 
 
