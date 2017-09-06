@@ -34,3 +34,16 @@ There is a lot of truth to these charges, but such charges miss a vital piece of
 
 
 https://martinfowler.com/bliki/OrmHate.html
+
+
+## Using Entity Framework
+
+> The main class that coordinates Entity Framework functionality for a given data model is the database context class. You create this class by deriving from the `System.Data.Entity.DbContext` class. In your code you specify which entities are included in the data model.
+
+
+
+
+
+
+
+
