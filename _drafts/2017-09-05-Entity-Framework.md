@@ -35,6 +35,10 @@ There is a lot of truth to these charges, but such charges miss a vital piece of
 
 https://martinfowler.com/bliki/OrmHate.html
 
+## The difference between entity framework and linq to sql
+
+https://stackoverflow.com/questions/3293995/what-is-the-difference-between-entity-framework-and-linq-to-sql-by-net-4-0
+
 
 ## Using Entity Framework
 
@@ -52,17 +56,3 @@ Enter this text in the `Web.config` file in your project.
 ```
 
 You don't actually have to have a connection string in the `Web.config` file. If you don't supply a connection string, Entity Framework will use a default one based on your context class. However in that case the data won't save to a database.
-
-
-
-
-
-
-
-
-
-
-
-
-
-
