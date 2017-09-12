@@ -53,6 +53,20 @@ Enter this text in the `Web.config` file in your project.
 
 You don't actually have to have a connection string in the `Web.config` file. If you don't supply a connection string, Entity Framework will use a default one based on your context class. However in that case the data won't save to a database.
 
+### Navigation Properties
+
+> Navigation properties provide a way to navigate an association between two entity types. Every object can have a navigation property for every relationship in which it participates. Navigation properties allow you to navigate and manage relationships in both directions, returning either a reference object (if the multiplicity is either one or zero-or-one) or a collection (if the multiplicity is many). You may also choose to have one-way navigation, in which case you define the navigation property on only one of the types that participates in the relationship and not on both.
+
+https://msdn.microsoft.com/en-us/library/jj713564(v=vs.113).aspx
+
+```csharp
+public virtual OfficeAssignment OfficeAssignment { get; set; }
+```
+
+If a navigation property can hold multiple entities, its type must implement the ICollection<T> Interface.
+
+
+
 
 
 
