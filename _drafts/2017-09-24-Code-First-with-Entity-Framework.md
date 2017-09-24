@@ -50,9 +50,9 @@ You need to issue three commands in the NuGet console in order to use migrations
 
 ## Migrations
 
-Migrations are code files. Every time you run Add-Migration a code file is generated/updated, usually in a folder called Migrations inside your project. The name of a migration file is composed with a timestamp of its generation concatenated with the name used when running Add-Migration. You can check the contents of those files and see the effects of running Add-Migration. You can also modify them once generated, and add your own code, though you should not need to do that by the moment.
+Migrations are code files. Every time you run Add-Migration a code file is generated/updated, usually in a folder called `Migrations` inside your project. The name of a migration file is composed with a timestamp of its generation concatenated with the name used when running `Add-Migration`. You can check the contents of those files and see the effects of running `Add-Migration`. You can also modify them once generated, and add your own code, though you should not need to do that by the moment.
 
-Migrations are intended to be incremental. You start with an Initial migration, and every time you change your model code you generate a new migration file. The database contains a table named `__MigrationsHistory` that keeps trace of which migrations have been run in your database.
+Migrations are intended to be incremental. You start with an `Initial` migration, and every time you change your model code you generate a new migration file. The database contains a table named `__MigrationsHistory` that keeps trace of which migrations have been run in your database.
 
 ### Up and Down Methods
 
