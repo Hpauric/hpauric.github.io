@@ -25,7 +25,7 @@ First of all, you need to add a connection string to your `Web.config` file. Ent
 ```
 You don't actually have to have a connection string in the Web.config file. If you don't supply a connection string, Entity Framework will use a default one based on your context class. However in that case the data won't save to a database.
 
-## Deploying to Azure
+### Deploying to Azure
 
 New connection strings are generated when you deploy to Azure.
 
