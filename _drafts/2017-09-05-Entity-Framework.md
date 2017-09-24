@@ -47,7 +47,11 @@ Enter this text in the `Web.config` file in your project.
 
 ```html
 <connectionStrings>
-    <add name="[YOURMODELNAMEHERE]Context"    connectionString="Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\[YOURDATABASENAMEHERE].mdf;Integrated Security=True" providerName="System.Data.SqlClient"/>
+    <add name="[YOURMODELNAMEHERE]Context"    
+         connectionString="Data Source=(LocalDB)\MSSQLLocalDB;
+  AttachDbFilename=|DataDirectory|\[YOURDATABASENAMEHERE].mdf;
+  Integrated Security=True" 
+         providerName="System.Data.SqlClient"/>
   </connectionStrings>
 ```
 
@@ -71,17 +75,3 @@ public virtual ICollection<Equipment> Equipment { get; set; }
 
 
 The `Equipment` property is a navigation property. Navigation properties hold other entities that are related to this entity. In this case, the `Equipment` property of a `Student` entity will hold all of the `Equipment` entities that are related to that Student entity. In other words, if a given `Student` row in the database has two related `Equipment` rows (rows that contain that student's primary key value in their StudentID foreign key column), that `Student` entity's `Equipment` navigation property will contain those two `Equipment` entities.
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
