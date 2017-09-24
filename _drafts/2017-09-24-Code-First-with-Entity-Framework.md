@@ -57,3 +57,16 @@ Migrations are intended to be incremental. You start with an `Initial` migration
 ### Up and Down Methods
 
 Every single migration has a method `Up` and a method `Down`. When you run `Update-Database` there are always two implicit parameters: `SourceMigration` and `TargetMigration`. EF incrementally applies the `Up` methods of all the migrations between `SourceMigration` and `TargetMigration` (or the `Down` methods if you are downgrading your database). The default scenario when you don't specify the `SourceMigration` and `TargetMigration` parameters is that `SourceMigration` is the last migration applied to the database and `TargetMigration` is the last of the pending ones. EF determines those parameters by querying the `__MigrationsHistory` table of the default database of your project, so if that database is not in a consistent state, your migrations can be generated incorrectly.
+
+## The Easiest Way to fix a problem
+
+There is already an object named 'ModelName' in the database.
+
+1. Delete the migrations folder.
+2. Delete the tables in the database
+3. Delete the `_MigrationHistory` table.
+4. Close the database connection
+5. In the NuGet console, run `Enable-Migrations`
+6. `Add-Migration Initial`
+7. `Update-Database`
+
