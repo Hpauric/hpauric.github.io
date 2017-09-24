@@ -9,6 +9,9 @@ This means that you can define your models and Entity Framework will create the 
 
 ## The Connection String
 
+A connection string provides the information that a provider needs to communicate with a particular database. The Connection String includes parameters such as the name of the driver, Server name and Database name , as well as security information such as user name and password.
+
+
 First of all, you need to add a connection string to your `Web.config` file. Enter this text in the Web.config file in your project.
 
 ```html
