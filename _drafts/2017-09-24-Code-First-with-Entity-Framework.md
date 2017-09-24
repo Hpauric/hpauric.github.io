@@ -62,11 +62,11 @@ Every single migration has a method `Up` and a method `Down`. When you run `Upda
 
 There is already an object named 'ModelName' in the database.
 
-1. Delete the migrations folder.
-2. Delete the tables in the database
+1. Delete the `Migrations` folder.
+2. Delete the tables in the database.
 3. Delete the `_MigrationHistory` table.
-4. Close the database connection
-5. In the NuGet console, run `Enable-Migrations`
-6. `Add-Migration Initial`
-7. `Update-Database`
+4. Close the database connection.
+5. In the NuGet console, run `Enable-Migrations`.
+6. `Add-Migration Initial`.
+7. `Update-Database`.
 
