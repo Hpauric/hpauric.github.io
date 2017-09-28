@@ -23,6 +23,10 @@ First of all, you need to add a connection string to your `Web.config` file. Ent
          providerName="System.Data.SqlClient"/>
   </connectionStrings>
 ```
+Note that In Visual Studio 2012 the data source is `(LocalDB)\v11.0`. For Visual Studio 2015 and Visual Studio 2017 it is `(LocalDB)\MSSQLLocalDB`.
+LocalDB is a lightweight version of the SQL Server Express Database Engine that is targeted for program development. LocalDB starts on demand and runs in user mode, so there is no complex configuration. 
+
+
 You don't actually have to have a connection string in the Web.config file. If you don't supply a connection string, Entity Framework will use a default one based on your context class. However in that case the data won't save to a database.
 
 ### Deploying to Azure
@@ -40,6 +44,14 @@ New connection strings are generated when you deploy to Azure.
 You can find them in `[ProjectName]\obj\Release\Package\PackageTmp\Web.config`.
 
 
+
+
+## Migrations
+
+First of all, you don't _have_ to use Migrations. However, if you don't, all database content will be lost when you update your models.
+
+[Great introduction to Code First Migrations](https://stackoverflow.com/questions/40606167/error-when-update-database-using-code-first-there-is-already-an-object-named)
+
 ## NuGet Commands
 
 You need to issue three commands in the NuGet console in order to use migrations.
@@ -47,10 +59,6 @@ You need to issue three commands in the NuGet console in order to use migrations
 `Enable-Migrations`
 `Add-Migration`
 `Update-Database`
-
-## Migrations
-
-[Great introduction to Code First Migrations](https://stackoverflow.com/questions/40606167/error-when-update-database-using-code-first-there-is-already-an-object-named)
 
 Migrations are code files. Every time you run `Add-Migration` a code file is generated/updated, usually in a folder called `Migrations` inside your project. The name of a migration file is composed with a timestamp of its generation concatenated with the name used when running `Add-Migration`. You can check the contents of those files and see the effects of running `Add-Migration`. You can also modify them once generated, and add your own code, though you should not need to do that by the moment.
 
@@ -71,4 +79,3 @@ There is already an object named 'ModelName' in the database.
 5. In the NuGet console, run `Enable-Migrations`.
 6. `Add-Migration Initial`.
 7. `Update-Database`.
-
