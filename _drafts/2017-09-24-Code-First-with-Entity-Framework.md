@@ -23,6 +23,10 @@ First of all, you need to add a connection string to your `Web.config` file. Ent
          providerName="System.Data.SqlClient"/>
   </connectionStrings>
 ```
+Note that In Visual Studio 2012 the data source is `(LocalDB)\v11.0`. For Visual Studio 2015 and Visual Studio 2017 it is `(LocalDB)\MSSQLLocalDB`.
+LocalDB is a lightweight version of the SQL Server Express Database Engine that is targeted for program development. LocalDB starts on demand and runs in user mode, so there is no complex configuration. 
+
+
 You don't actually have to have a connection string in the Web.config file. If you don't supply a connection string, Entity Framework will use a default one based on your context class. However in that case the data won't save to a database.
 
 ### Deploying to Azure
@@ -71,4 +75,3 @@ There is already an object named 'ModelName' in the database.
 5. In the NuGet console, run `Enable-Migrations`.
 6. `Add-Migration Initial`.
 7. `Update-Database`.
-
