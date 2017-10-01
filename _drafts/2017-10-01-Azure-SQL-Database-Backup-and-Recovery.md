@@ -28,7 +28,12 @@ A container can store an unlimited number of **Blobs**. There are two types of b
 **Azure SQL DB does not expose the log.**
 
  the transaction log file is differently handled in SQL Azure, and cannot be physically read by a tool.
- 
+
  The way to view the transaction logs in Azure is to enable Auditing.
  
 [Here's a list of SQL Server features and whether they are supported in Azure SQL Database.](https://docs.microsoft.com/en-us/azure/sql-database/sql-database-features)
+
+## Application Insights
+
+Failed Requests
+Dependency failed calls
