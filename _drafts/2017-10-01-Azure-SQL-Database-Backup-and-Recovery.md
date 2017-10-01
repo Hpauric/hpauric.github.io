@@ -14,9 +14,13 @@ Standard service tier is 35 days.
 
 You can set up SQL database backups for a period of up to 10 years. However at the time of this writing in Europe this is still just in preview mode.
 
-Azure Storage Concepts
-When using SQL Server Data Files in Windows Azure feature, you need to create a storage account and a container in Windows Azure. Then, you need to create a SQL Server credential, which includes information on the policy of the container as well as a shared access signature that is necessary to access the container.
-In Microsoft Azure, an Azure storage account represents the highest level of the namespace for accessing Blobs. A storage account can contain an unlimited number of containers, as long as their total size is under 500 TB. For the latest information on storage limits, see Azure Subscription and Service Limits, Quotas, and Constraints. A container provides a grouping of a set of Blobs. All Blobs must be in a container. An account can contain an unlimited number of containers. Similarly, a container can store an unlimited number of Blobs as well. There are two types of blobs that can be stored in Azure Storage: block and page blobs. This new feature uses Page blobs, which can be up to 1TB in size, and are more efficient when ranges of bytes in a file are modified frequently. You can access Blobs using the following URL format: http://storageaccount.blob.core.windows.net/<container>/<blob>.
+
+### Azure Storage Concepts
+
+When using SQL Server Data Files in Windows Azure feature, you need to create a **storage account** and a **container** in Windows Azure. 
+Then, you need to create a **SQL Server credential**, which includes information on the policy of the container as well as a shared access signature that is necessary to access the container.
+In Microsoft Azure, an Azure **storage account** represents the highest level of the namespace for accessing Blobs. A storage account can contain an unlimited number of **containers**. A **container** provides a grouping of a set of Blobs. All Blobs must be in a container. 
+A container can store an unlimited number of **Blobs**. There are two types of blobs that can be stored in Azure Storage: block and page blobs. You can access Blobs using the following URL format: http://storageaccount.blob.core.windows.net/<container>/<blob>.
 
 
 ## Viewing the Transaction Logs
