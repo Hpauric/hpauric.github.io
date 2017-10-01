@@ -14,6 +14,7 @@ Standard service tier is 35 days.
 
 You can set up SQL database backups for a period of up to 10 years. However at the time of this writing in Europe this is still just in preview mode.
 
+
 ### Azure Storage Concepts
 
 When using SQL Server Data Files in Windows Azure feature, you need to create a **storage account** and a **container** in Windows Azure. 
