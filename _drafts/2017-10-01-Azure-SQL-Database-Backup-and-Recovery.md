@@ -14,6 +14,7 @@ Standard service tier is 35 days.
 
 You can set up SQL database backups for a period of up to 10 years. However at the time of this writing in Europe this is still just in preview mode.
 
+
 ### Azure Storage Concepts
 
 When using SQL Server Data Files in Windows Azure feature, you need to create a **storage account** and a **container** in Windows Azure. 
@@ -27,14 +28,12 @@ A container can store an unlimited number of **Blobs**. There are two types of b
 **Azure SQL DB does not expose the log.**
 
  the transaction log file is differently handled in SQL Azure, and cannot be physically read by a tool.
- 
- The way to view the transaction logs in Azure is to **enable Auditing** [by following these instructions](https://docs.microsoft.com/en-us/azure/sql-database/sql-database-auditing#subheading-2).
+
+ The way to view the transaction logs in Azure is to enable Auditing.
  
 [Here's a list of SQL Server features and whether they are supported in Azure SQL Database.](https://docs.microsoft.com/en-us/azure/sql-database/sql-database-features)
-
 
 ## Application Insights
 
 Failed Requests
 Dependency failed calls
-
