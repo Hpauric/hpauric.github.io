@@ -79,3 +79,16 @@ There is already an object named 'ModelName' in the database.
 5. In the NuGet console, run `Enable-Migrations`.
 6. Run `Add-Migration Initial`.
 7. Run `Update-Database`.
+
+
+## Setting the Seed method to update from a csv file.
+
+Rather than painstakingly typing values into the Seed method, you can set it to import from a CSV file.
+[There are great instructions on how to do this here.](https://www.davepaquette.com/archive/2014/03/18/seeding-entity-framework-database-from-csv.aspx)
+One mistake I made was 
+
+
+
+
+
+
