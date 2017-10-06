@@ -85,12 +85,48 @@ There is already an object named 'ModelName' in the database.
 
 Rather than painstakingly typing values into the Seed method, you can set it to import from a CSV file.
 [There are great instructions on how to do this here.](https://www.davepaquette.com/archive/2014/03/18/seeding-entity-framework-database-from-csv.aspx)
-One mistake I made at first was that I referenced the wrong assembly
+One mistake I made at first was that I referenced the wrong assembly. Stack Overflow recommended "to make sure you're in the right assembly and with right name: dump and evaluate all the resources available in your target assembly." Which I did:
 
-To make sure you're in the right assembly and with right name: dump and evaluate all the resources available in your target assembly
-
+```csharp
 string[] names = assembly.GetManifestResourceNames();
+string fullString = "";
+names.ToList().ForEach(i => fullString += (i.ToString()) + '\n');
+```
+### Debugging the Update-Database command
+
+Running the Update-Database command meant that debugging statments like `Debug.WriteLine()` didn't work. Instead I threw an error:
+
+```csharp
+throw new Exception(fullString);
+```
+Then I could see I couldn't access the resource since:
+a) It was saved in the wrong namespace
+b) It's build action was set to `Resource` instead of `Embedded Resource`.
+
+
+
 (in my case, I misused a namespace from another assembly)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
