@@ -100,12 +100,9 @@ Running the Update-Database command meant that debugging statments like `Debug.W
 throw new Exception(fullString);
 ```
 Then I could see I couldn't access the resource since:
-a) It was saved in the wrong namespace
-b) It's build action was set to `Resource` instead of `Embedded Resource`.
+1. It was saved in the wrong namespace.
+2. It's build action was set to `Resource` instead of `Embedded Resource`.
 
-
-
-(in my case, I misused a namespace from another assembly)
 
 
 
