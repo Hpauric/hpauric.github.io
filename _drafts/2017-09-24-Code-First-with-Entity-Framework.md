@@ -103,6 +103,8 @@ Then I could see I couldn't access the resource since:
 1. It was saved in the wrong namespace.
 2. It's build action was set to `Resource` instead of `Embedded Resource`.
 
+After I fixed these mistakes I could easily Seed from a CSV.
+
 
 
 
