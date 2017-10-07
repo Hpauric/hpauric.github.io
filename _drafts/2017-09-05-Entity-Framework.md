@@ -38,7 +38,11 @@ If you look at the example application Microsoft use to demonstrate the features
 - Course
 - Enrollment
 
-If you were creating your first application you might think you would just need two entities: `Student` and `Course`. Why do we need Enrollment?
+If you were creating your first application you might think you would just need two entities: `Student` and `Course`. Why do we need Enrollment? Why can't our Students have the course they are enrolled in as properties, and our Course have Students as properties? What does the `Enrollment` entity bring to the table?
+
+> The many-to-many relationship involves defining a third table (called a junction or join table), whose primary key is composed of the foreign keys from both related tables. 
+
+Is this true for the Enrollment entity? No. It has it's own EnrollmentID key.
 
 
 
