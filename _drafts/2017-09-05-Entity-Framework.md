@@ -31,6 +31,16 @@ The `DbContext` class you create will usually be quite simple.
     }
 ```
 
+## Creating the Schema
+
+If you look at the example application Microsoft use to demonstrate the features, you'll see that in the first excercise they create three entities:
+- Student
+- Course
+- Enrollment
+
+If you were creating your first application you might think you would just need two entities: `Student` and `Course`. Why do we need Enrollment?
+
+
 
 
 ### Connection String
