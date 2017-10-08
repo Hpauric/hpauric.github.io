@@ -92,22 +92,17 @@ generates
 ```
 
 
-Migrations are code files. Every time you run `Add-Migration` a code file is generated/updated, usually in a folder called `Migrations` inside your project. The name of a migration file is composed with a timestamp of its generation concatenated with the name used when running `Add-Migration`. You can check the contents of those files and see the effects of running `Add-Migration`. You can also modify them once generated, and add your own code. From my experience it is often necessary to do this.
-
-Migrations are intended to be incremental. You start with an `Initial` migration, and every time you change your model code you generate a new migration file. The database contains a table named `__MigrationsHistory` that keeps trace of which migrations have been run in your database.
-
-### Up and Down Methods
-
 
 You can check the contents of those files and see the effects of running `Add-Migration`. You can also modify them once generated, and add your own code. From my experience it is often necessary to do this.
 
-Migrations are intended to be incremental. You start with an `Initial` migration, and every time you change your model code you generate a new migration file. The database contains a table named `__MigrationsHistory` that keeps trace of which migrations have been run in your database.
 
 ### Up and Down Methods
 
 Every single migration has a method `Up` and a method `Down`. 
 
 ### Migration History
+
+Migrations are intended to be incremental. You start with an `Initial` migration, and every time you change your model code you generate a new migration file. The database contains a table named `__MigrationsHistory` that keeps trace of which migrations have been run in your database.
 
 When you run `Update-Database` there are always two implicit parameters: `SourceMigration` and `TargetMigration`. EF incrementally applies the `Up` methods of all the migrations between `SourceMigration` and `TargetMigration` (or the `Down` methods if you are downgrading your database). 
 
@@ -138,7 +133,3 @@ Entity Framework is not perfect.
 > Mapping to a relational database involves lots of repetitive, boiler-plate code. A framework that allows me to avoid 80% of that is worthwhile even if it is only 80%. The problem is in me for pretending it's 100% when it isn't.
 
 You can't just run `Add-Migration MyNewMigration` and assume everything will work out fine. You need to check to make sure that the generated code works correctly.
-
-
-
-
