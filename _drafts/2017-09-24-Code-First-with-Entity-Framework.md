@@ -74,6 +74,7 @@ First of all, you don't _have_ to use Migrations. However, if you don't, all dat
 
 [Great introduction to Code First Migrations](https://stackoverflow.com/questions/40606167/error-when-update-database-using-code-first-there-is-already-an-object-named)
 
+
 ### NuGet Commands
 
 There are three main NuGet commands used in migrations.
@@ -90,6 +91,12 @@ generates
 201710021217244_Initial.cs
 ```
 
+
+Migrations are code files. Every time you run `Add-Migration` a code file is generated/updated, usually in a folder called `Migrations` inside your project. The name of a migration file is composed with a timestamp of its generation concatenated with the name used when running `Add-Migration`. You can check the contents of those files and see the effects of running `Add-Migration`. You can also modify them once generated, and add your own code. From my experience it is often necessary to do this.
+
+Migrations are intended to be incremental. You start with an `Initial` migration, and every time you change your model code you generate a new migration file. The database contains a table named `__MigrationsHistory` that keeps trace of which migrations have been run in your database.
+
+### Up and Down Methods
 
 
 You can check the contents of those files and see the effects of running `Add-Migration`. You can also modify them once generated, and add your own code. From my experience it is often necessary to do this.
@@ -109,6 +116,7 @@ The default scenario when you don't specify the `SourceMigration` and `TargetMig
 ## The Easiest Way to fix a problem
 
 There is already an object named 'ModelName' in the database.
+
 
 1. Delete the `Migrations` folder in your solution.
 2. Delete the tables in the database.
