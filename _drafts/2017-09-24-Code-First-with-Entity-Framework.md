@@ -43,7 +43,29 @@ New connection strings are generated when you deploy to Azure.
 
 You can find them in `[ProjectName]\obj\Release\Package\PackageTmp\Web.config`.
 
+## Setting the Seed method to update from a csv file.
 
+Rather than painstakingly typing values into the Seed method, you can set it to import from a CSV file.
+[There are great instructions on how to do this here.](https://www.davepaquette.com/archive/2014/03/18/seeding-entity-framework-database-from-csv.aspx)
+One mistake I made at first was that I referenced the wrong assembly. Stack Overflow recommended "to make sure you're in the right assembly and with right name: dump and evaluate all the resources available in your target assembly." Which I did:
+
+```csharp
+string[] names = assembly.GetManifestResourceNames();
+string fullString = "";
+names.ToList().ForEach(i => fullString += (i.ToString()) + '\n');
+```
+### Debugging the Update-Database command
+
+Running the Update-Database command meant that debugging statments like `Debug.WriteLine()` didn't work. Instead I threw an error:
+
+```csharp
+throw new Exception(fullString);
+```
+Then I could see I couldn't access the resource since:
+1. It was saved in the wrong namespace.
+2. It's build action was set to `Resource` instead of `Embedded Resource`.
+
+After I fixed these mistakes I could easily Seed from a CSV.
 
 
 ## Migrations
@@ -81,53 +103,17 @@ There is already an object named 'ModelName' in the database.
 7. Run `Update-Database`.
 
 
-## Setting the Seed method to update from a csv file.
-
-Rather than painstakingly typing values into the Seed method, you can set it to import from a CSV file.
-[There are great instructions on how to do this here.](https://www.davepaquette.com/archive/2014/03/18/seeding-entity-framework-database-from-csv.aspx)
-One mistake I made at first was that I referenced the wrong assembly. Stack Overflow recommended "to make sure you're in the right assembly and with right name: dump and evaluate all the resources available in your target assembly." Which I did:
-
-```csharp
-string[] names = assembly.GetManifestResourceNames();
-string fullString = "";
-names.ToList().ForEach(i => fullString += (i.ToString()) + '\n');
-```
-### Debugging the Update-Database command
-
-Running the Update-Database command meant that debugging statments like `Debug.WriteLine()` didn't work. Instead I threw an error:
-
-```csharp
-throw new Exception(fullString);
-```
-Then I could see I couldn't access the resource since:
-1. It was saved in the wrong namespace.
-2. It's build action was set to `Resource` instead of `Embedded Resource`.
-
-After I fixed these mistakes I could easily Seed from a CSV.
 
 
+### When Things Go Wrong
 
+Entity Framework is not perfect.
 
+> Essentially the ORM can handle about 80-90% of the mapping problems, but that last chunk always needs careful work by somebody who really understands how a relational database works.
 
+> Mapping to a relational database involves lots of repetitive, boiler-plate code. A framework that allows me to avoid 80% of that is worthwhile even if it is only 80%. The problem is in me for pretending it's 100% when it isn't.
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+You can't just run `Add-Migration MyNewMigration` and assume everything will work out fine. You need to check to make sure that the generated code works correctly.
 
 
 
