@@ -105,30 +105,12 @@ Then I could see I couldn't access the resource since:
 
 After I fixed these mistakes I could easily Seed from a CSV.
 
+### When Things Go Wrong
 
+Entity Framework is not perfect.
 
+> Essentially the ORM can handle about 80-90% of the mapping problems, but that last chunk always needs careful work by somebody who really understands how a relational database works.
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+> Mapping to a relational database involves lots of repetitive, boiler-plate code. A framework that allows me to avoid 80% of that is worthwhile even if it is only 80%. The problem is in me for pretending it's 100% when it isn't.
 
 
