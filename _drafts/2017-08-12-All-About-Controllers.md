@@ -79,7 +79,7 @@ The default layout is defined in `_ViewStart.cshtml` file in `Views`.
 
 `Html.ActionLink`
 
-The `Html` object is a helper that's exposed using a property on the `System.Web.Mvc.WebViewPage base` class. The `ActionLink` method of the helper makes it easy to dynamically generate HTML hyperlinks that link to action methods on controllers. 
+The `Html` object is a helper that's exposed using a property on the `System.Web.Mvc.WebViewPage` base class. The `ActionLink` method of the helper makes it easy to dynamically generate HTML hyperlinks that link to action methods on controllers. 
 
 ```csharp
 @Html.ActionLink("Edit", "Edit", new { id=item.ID }) 
