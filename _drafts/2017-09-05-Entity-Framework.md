@@ -11,6 +11,8 @@ You can use Entity Framework for code-first implementations. This allows you to 
 
 > The main class that coordinates Entity Framework functionality for a given data model is the database context class. You create this class by deriving from the `System.Data.Entity.DbContext` class. In your code you specify which entities are included in the data model.
 
+### `DbContext`
+
 The `DbContext` class you create will usually be quite simple.
 
 ```csharp
@@ -30,6 +32,10 @@ The `DbContext` class you create will usually be quite simple.
         }
     }
 ```
+### DbContext Methods
+
+
+
 
 ## Creating the Schema
 
