@@ -100,6 +100,19 @@ You can check the contents of those files and see the effects of running `Add-Mi
 
 Every single migration has a method `Up` and a method `Down`. 
 
+The `Up` method updates the database. The `Down` method reverts them.
+
+Methods:
+- `CreateTable`
+- `CreateIndex`
+- `AlterColumn`
+- `AddForeignKey`
+- `DropTable`
+- `DropIndex`
+- `DropForeignKey`
+
+
+
 ### Migration History
 
 Migrations are intended to be incremental. You start with an `Initial` migration, and every time you change your model code you generate a new migration file. The database contains a table named `__MigrationsHistory` that keeps trace of which migrations have been run in your database.
@@ -110,7 +123,7 @@ The default scenario when you don't specify the `SourceMigration` and `TargetMig
 
 ## The Easiest Way to fix a problem
 
-There is already an object named 'ModelName' in the database.
+Error: `There is already an object named 'ModelName' in the database.`
 
 
 1. Delete the `Migrations` folder in your solution.
@@ -121,7 +134,7 @@ There is already an object named 'ModelName' in the database.
 6. Run `Add-Migration Initial`.
 7. Run `Update-Database`.
 
-
+Error: `Sequence contains more than one element.`
 
 
 ### When Things Go Wrong
