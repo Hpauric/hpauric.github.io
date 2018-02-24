@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Configuring Entity Relationships with Entity Framework
-published: false
+published: true
 ---
 # Configuring Entity Relationships with Entity Framework
 
