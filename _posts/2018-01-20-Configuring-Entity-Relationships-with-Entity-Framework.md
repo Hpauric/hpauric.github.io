@@ -5,7 +5,7 @@ published: true
 ---
 
 > I used to laboriously define my relationships because I hadn’t fully understood the power of the *by convention* approach when it comes to relationships. 
-> -- Jon P Smith- Entity Framework Core in Action 7.4
+> -- Jon P Smith- Entity Framework Core in Action
 
 I've been reading Entity Framework Core in Action by Jon P Smith. It's a fantastic book that's taught me a lot. One thing I've learned is to let Entity Framework manage the entity relationships in my projects, configuring the relationships myself only as a last resort.
 
