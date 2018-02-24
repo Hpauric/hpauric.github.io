@@ -16,7 +16,7 @@ Before jumping into an example, let's quickly cover the three ways to configure 
 2. There are data annotations.
 3. Finally, there is configuring *by convention*.
 
-## The Fluent API
+### The Fluent API
 If I want a property in my entity to be required, I can configure it with the Fluent API in the `OnModelCreating` method, which is part of the `DbContext`:
 ```csharp
 protected override void OnModelCreating(DbModelBuilder modelBuilder){
@@ -25,7 +25,7 @@ protected override void OnModelCreating(DbModelBuilder modelBuilder){
   .IsRequired();
 }
 ```
-## Data Annotations
+### Data Annotations
 I can also set a property to be required with data annotations. Using the same example, I can set `EquipmentType` to be required by including an annotation when declaring it in the model class:
 ```csharp
 public class Equipment {
@@ -34,7 +34,7 @@ public class Equipment {
   // Other properties
 }
 ```
-## By Convention
+### By Convention
 So what is configuration by convention? 
 > When you follow some simple rules on property types and names, Entity Framework will auto-configure many of the software and database features.
 
@@ -44,7 +44,7 @@ If I include a property called `EquipmentID` in my `Equipment` class, Entity Fra
 
 Configuring scalar (non-relational) properties is quite straightforward, but when it comes to entity relationships, it can be more tricky to decide which approach is best for configuring them.
 
-## How to Cascade Set Null
+### How to Cascade Set Null
 
 In an application I am working on, I have a `Student` entity that has a ZeroOrOne-to-Many relationship with `Equipment` and `Transaction` entities.
 By default, when I delete a `Student`, I will get a referential integrity error:
@@ -72,6 +72,7 @@ If we look at [the documentation for Entity Framework 6](https://msdn.microsoft.
 
 > If a foreign key on the dependent entity **is nullable**, Code First does not set cascade delete on the relationship, and when the principal is deleted **the foreign key will be set to null**.
 
+### Configuring By Convention
 So if I set both the Equipment and Transaction `StudentID` foreign key set to nullable, by using nullable `int?` like so:
 ```csharp
 public class Equipment {
@@ -84,6 +85,8 @@ public class Transaction {
 }
 ```
 Entity Framework should now set the foreign keys to null for these entities when I delete a student. However as the code stands, I will still get the same referential integrity error.
+
+### Loading Entities
 So what's going on? The crucial detail here is that **the dependent entities must be loaded** before the principal entity is deleted. Here I explicitly load both the `Equipment` and `Transaction` entities before removing the `student` entity:
 
 ```javascript
@@ -96,7 +99,7 @@ db.SaveChanges();
 When the `Equipment` and `Transaction` entities are loaded into the working memory, EF knows to set the relevant dependent entities foreign keys to null.
 This is a good example of letting the conventions work for you!
 
-## Configuring Relationships with The Fluent API
+### Configuring Relationships with The Fluent API
 
 When I was working through this problem, I thought it was a configuration issue, and manually configured the relationships with the fluent API:
 
