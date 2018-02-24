@@ -3,7 +3,6 @@ layout: post
 title: Configuring Entity Relationships with Entity Framework
 published: true
 ---
-# Configuring Entity Relationships with Entity Framework
 
 > I used to laboriously define my relationships because I hadn’t fully understood the power of the *by convention* approach when it comes to relationships. 
 > -- Jon P Smith- Entity Framework Core in Action 7.4
