@@ -84,7 +84,7 @@ public class Transaction {
 Entity Framework should now set the foreign keys to null for these entities when I delete a student. However as the code stands, I will still get the same referential integrity error.
 So what's going on? The crucial detail here is that **the dependent entities must be loaded** before the principal entity is deleted. Here I explicitly load both the `Equipment` and `Transaction` entities before removing the `student` entity:
 
-```csharp
+```javascript
 // load student entity
 db.Entry(student).Collection(s => s.Equipment).Load();
 db.Entry(student).Collection(s => s.Transaction).Load();
@@ -98,7 +98,7 @@ This is a good example of letting the conventions work for you!
 
 When I was working through this problem, I thought it was a configuration issue, and manually configured the relationships with the fluent API:
 
-```csharp
+```javascript
 protected override void OnModelCreating(DbModelBuilder modelBuilder)
    modelBuilder.Entity<Equipment>()
                .HasOptional<Student>(e => e.Student)
