@@ -2,6 +2,7 @@
 layout: post
 title: Using Line Of Code Breakpoints with Google Dev Tools
 published: true
+image_url: /images/x-ray-specs.jpg
 ---
 
 Google Dev Tools are like x-ray specs for code. Nowhere is this more true than in the sources tab.
