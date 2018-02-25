@@ -272,21 +272,26 @@ nav {
 
 .custom-container {
 	position: relative;
+	display: flex;
+	justify-content: left;
+	@include mobile {
+		flex-direction: column;
 }
 
-.post-image{
-    position: absolute;
-    top: 0;
-    left: 0;
+//.post-image{
+//    position: absolute;
+//    top: 0;
+//    left: 0;
 	   
-  @include mobile {
-      position: relative;
-      top: 20px;
-    }
-}
+ // @include mobile {
+ //     position: relative;
+ //     top: 20px;
+ //   }
+//}
 
 .post-image img {
 	width:200px;
+	min-width:200px;
 		
   @include mobile {
       width: 100%;
@@ -294,7 +299,7 @@ nav {
 }
 	
 .excerpt {
-    margin-left: 240px;
+    margin-left: 20px;
 	@include mobile {
       margin-top: 20px;
       margin-left: 0;      
