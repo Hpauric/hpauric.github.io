@@ -274,6 +274,7 @@ nav {
 	position: relative;
 	display: flex;
 	justify-content: left;
+	margin-top: 20px;
 	@include mobile {
 		flex-direction: column;
         }
