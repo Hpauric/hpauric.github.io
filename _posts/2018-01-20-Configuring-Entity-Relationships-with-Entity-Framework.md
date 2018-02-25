@@ -2,7 +2,7 @@
 layout: post
 title: Configuring Entity Relationships with Entity Framework
 published: true
-image_url: {{site.baseurl}}/images/electricity-pylons.jpeg
+image_url: /images/electricity-pylons.jpeg
 ---
 
 > I used to laboriously define my relationships because I hadn’t fully understood the power of the *by convention* approach when it comes to relationships. 
