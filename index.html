@@ -17,12 +17,15 @@ layout: default
         <div class="post-image">
           <img src="{{ site.baseurl }}{{ post.image_url }}" alt="{{post.image_alt}}">
         </div>
-        <div class="excerpt">
-          {{ post.excerpt }}
+        <div class="text-container">
+          <div class="excerpt">
+            {{ post.excerpt }}
+          </div>
+        <a href="{{ site.baseurl }}{{ post.url }}" class="read-more">Read More</a>
         </div>
       </div>
 
-      <a href="{{ site.baseurl }}{{ post.url }}" class="read-more">Read More</a>
+      
     </article>
   {% endfor %}
 </div>
