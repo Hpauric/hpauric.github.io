@@ -15,7 +15,7 @@ layout: default
       
       <div class="custom-container">
         <div class="post-image">
-          <img src="{{post.image_url | absolute_url }}" alt="{{post.image_alt}}">
+          <img src="{{ site.baseurl }}{{ post.image_url }}" alt="{{post.image_alt}}">
         </div>
         <div class="excerpt">
           {{ post.excerpt }}
