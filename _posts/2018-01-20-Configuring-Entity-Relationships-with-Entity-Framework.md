@@ -9,7 +9,7 @@ published: true
 > I used to laboriously define my relationships because I hadn’t fully understood the power of the *by convention* approach when it comes to relationships. 
 > -- Jon P Smith, Entity Framework Core in Action
 
-I've been reading Entity Framework Core in Action by Jon P Smith. It's a fantastic book that's taught me a lot. One thing I've learned is to let Entity Framework manage the entity relationships in my projects, configuring the relationships myself only as a last resort.
+I've been reading [Entity Framework Core in Action](https://www.manning.com/books/entity-framework-core-in-action) by Jon P Smith. It's a fantastic book that's taught me a lot. One thing I've learned is to let Entity Framework manage the entity relationships in my projects, configuring the relationships myself only as a last resort.
 
 Before jumping into an example, let's quickly cover the three ways to configure relationships in Entity Framework:
  1. There is the fluent API.
