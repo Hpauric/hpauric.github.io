@@ -276,6 +276,7 @@ nav {
 	justify-content: left;
 	@include mobile {
 		flex-direction: column;
+        }
 }
 
 //.post-image{
