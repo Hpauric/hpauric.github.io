@@ -30,7 +30,9 @@ code {
 .highlight,
 pre.highlight {
     background: #282c34;
-    color: #abb2bf
+    color: #abb2bf;
+    display: inline-block;
+    min-width: 100%
 }
 
 .highlight pre {
