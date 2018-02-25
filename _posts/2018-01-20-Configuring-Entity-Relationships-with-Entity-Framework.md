@@ -2,14 +2,15 @@
 layout: post
 title: Configuring Entity Relationships with Entity Framework
 published: true
+image_url: {{site.baseurl}}/images/electricity-pylons.jpeg
 ---
-
-![pexels-photo-733740.jpeg]({{site.baseurl}}/images/electricity-pylons.jpeg)
 
 > I used to laboriously define my relationships because I hadn’t fully understood the power of the *by convention* approach when it comes to relationships. 
 > -- Jon P Smith, Entity Framework Core in Action
 
 I've been reading [Entity Framework Core in Action](https://www.manning.com/books/entity-framework-core-in-action) by Jon P Smith. It's a fantastic book that's taught me a lot. One thing I've learned is to let Entity Framework manage the entity relationships in my projects, configuring the relationships myself only as a last resort.
+
+![pexels-photo-733740.jpeg]({{site.baseurl}}/images/electricity-pylons.jpeg)
 
 Before jumping into an example, let's quickly cover the three ways to configure relationships in Entity Framework:
  1. There is the fluent API.
