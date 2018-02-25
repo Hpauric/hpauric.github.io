@@ -270,6 +270,24 @@ nav {
 // .main
 //
 
+.custom-container {
+	position: relative
+}
+
+.post-image{
+    position: absolute;
+    top: 0,
+    left: 0
+}
+
+.post-image img {
+	width:200px
+}
+	
+.excerpt {
+    margin-left: 240px;
+}
+
 .posts > .post {
   padding-bottom: 2em;
   border-bottom: 1px solid $lightGray;
