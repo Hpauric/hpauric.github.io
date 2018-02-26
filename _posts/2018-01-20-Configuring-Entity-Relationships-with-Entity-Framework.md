@@ -3,6 +3,7 @@ layout: post
 title: Configuring Entity Relationships with Entity Framework
 published: true
 image_url: /images/electricity-pylons.jpeg
+description: It's tempting to manually configure relationships in Entity Framework using the Fluent API. However, it's often more effective to configure by convention.
 ---
 
 I've been reading [Entity Framework Core in Action](https://www.manning.com/books/entity-framework-core-in-action) by Jon P Smith. It's a fantastic book that's taught me a lot. One thing I've learned is to let Entity Framework manage the entity relationships in my projects, configuring the relationships myself only as a last resort.
