@@ -3,6 +3,7 @@ layout: post
 published: true
 title: 'Graph Theory I&#58; Intro And Data Structure Examples'
 image_url: /images/400-300px/mario-map-400.png
+description: Before using graph theory, you need to learn about the data structures that are used.
 ---
 Why use Graph Theory?
 
