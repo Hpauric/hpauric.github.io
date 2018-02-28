@@ -10,7 +10,7 @@ Entity Framework is an Object Relational Mapper (ORM) that can abstract away dat
 You can then interact with Entity Framework instead of having to make raw SQL commands, like this:
 ```csharp
 context.Find(user)
-.Where(user.userID == searchID)
+.Where(user.userID == searchID);
 ```
 I've been reading [Entity Framework Core in Action](https://www.manning.com/books/entity-framework-core-in-action) by Jon P Smith. It's a fantastic book that's taught me a lot. One thing I've learned is to let Entity Framework manage the entity relationships in my projects, configuring the relationships myself only as a last resort.
 
