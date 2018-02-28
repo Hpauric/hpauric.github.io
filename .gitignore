@@ -8,3 +8,6 @@ Gemfile
 Gemfile.lock
 node_modules
 package.json
+/.vs/config/applicationhost.config
+/.vs/hpauric.github.io/v15/.suo
+/.vs/slnx.sqlite
