@@ -6,6 +6,12 @@ image_url: /images/electricity-pylons.jpeg
 description: It's tempting to manually configure relationships in Entity Framework using the Fluent API. However, it's often more effective to configure by convention.
 ---
 
+Entity Framework is an Object Relational Mapper (ORM) that can abstract away database management for you. It can use model classes that you've created as part of your Model View Controller (MVC) framework and create a SQL database for you (it also works with NoSQL Databases). It will also create relationships between the tables if you have the relationships configured.
+You can then interact with Entity Framework instead of having to make raw SQL commands, like this:
+```csharp
+context.Find(user)
+.Where(user.userID == searchID)
+```
 I've been reading [Entity Framework Core in Action](https://www.manning.com/books/entity-framework-core-in-action) by Jon P Smith. It's a fantastic book that's taught me a lot. One thing I've learned is to let Entity Framework manage the entity relationships in my projects, configuring the relationships myself only as a last resort.
 
 > I used to laboriously define my relationships because I hadn’t fully understood the power of the *by convention* approach when it comes to relationships. 
@@ -13,10 +19,10 @@ I've been reading [Entity Framework Core in Action](https://www.manning.com/book
 
 ![pexels-photo-733740.jpeg]({{site.baseurl}}/images/electricity-pylons.jpeg)
 
-Before jumping into an example, let's quickly cover the three ways to configure relationships in Entity Framework:
- 1. There is the fluent API.
-2. There are data annotations.
-3. Finally, there is configuring *by convention*.
+Before jumping into an example, let's quickly cover the three ways to configure relationships in Entity Framework. You can use:
+1. the Fluent API.
+2. data annotations.
+3. configuration *by convention*.
 
 ### The Fluent API
 If I want a property in my entity to be required, I can configure it with the Fluent API in the `OnModelCreating` method, which is part of the `DbContext`:
