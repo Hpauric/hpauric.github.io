@@ -2,11 +2,11 @@
 published: true
 layout: post
 title: React State Management with setState
-description: React's setState function is asynchronous.
+description: React's setState function is asynchronous. So don't expect for it to be invoked immediately!
 ---
 
 `setState()` is **asynchronous**.
-That means you have to be careful about updating it. If you are updating it in different places, and the variables are depdendant on one another, you're in for a bad time.
+That means you have to be careful about using it. If you are updating a component in different places, and the variables are depdendant on one another, you're in for a bad time.
 
 > Think of `setState()` as a request rather than an immediate command to update the component. For better perceived performance, React may delay it, and then update several components in a single pass. React does not guarantee that the state changes are applied immediately.
 
