@@ -2,6 +2,7 @@
 published: true
 title: What Exactly Is JSX?
 image_url: /images/400-300px/pj-sandwich.png
+description: It's the peanut-butter and jelly sandwich of the web development world. Javascript is the jelly, HTML is the peanut-butter, and it's all held together with some...
 ---
 
 It's the peanut-butter and jelly sandwich of the web development world. Javascript is the jelly, HTML is the peanut-butter, and it's all held together with some...
