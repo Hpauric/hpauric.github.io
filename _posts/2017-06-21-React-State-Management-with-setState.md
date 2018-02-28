@@ -2,6 +2,7 @@
 published: true
 layout: post
 title: React State Management with setState
+description: React's setState function is asynchronous.
 ---
 
 `setState()` is **asynchronous**.
