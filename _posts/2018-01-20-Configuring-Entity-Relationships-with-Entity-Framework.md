@@ -65,7 +65,6 @@ The DELETE statement conflicted with the REFERENCE constraint
 So how do I fix this? The [official Microsoft documentation](https://docs.microsoft.com/en-us/aspnet/mvc/overview/getting-started/getting-started-with-ef-using-mvc/updating-related-data-with-the-entity-framework-in-an-asp-net-mvc-application#update-the-deleteconfirmed-method) recommends manually deleting each foreign key for dependent entities:
 
 ```csharp
-
 // load student
 var equipment = db.Equipments
                     .Where(e => e.StudentID == student.StudentID)
@@ -112,7 +111,7 @@ This is a good example of letting the conventions work for you!
 
 When I was working through this problem, I thought it was a configuration issue, and manually configured the relationships with the fluent API:
 
-```javascript
+```csharp
 protected override void OnModelCreating(DbModelBuilder modelBuilder)
    modelBuilder.Entity<Equipment>()
                .HasOptional<Student>(e => e.Student)
