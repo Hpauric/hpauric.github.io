@@ -98,7 +98,7 @@ Entity Framework should now set the foreign keys to null for these entities when
 ### Loading Entities
 So what's going on? The crucial detail here is that **the dependent entities must be loaded** before the principal entity is deleted. Here I explicitly load both the `Equipment` and `Transaction` entities before removing the `student` entity:
 
-```javascript
+```csharp
 // load student entity
 db.Entry(student).Collection(s => s.Equipment).Load();
 db.Entry(student).Collection(s => s.Transaction).Load();
