@@ -7,8 +7,6 @@ excerpt: You can update your database with Code First Migrations.
 description: You can update your database with Code First Migrations.
 ---
 
-# Database Updates and Migrations with Entity Framework
-
 Entity Framework (EF) allows you to abstract away interactions with you database. But how do you update your database when your entities change? 
 EF has two ways you can manage changes to your schema:
 
@@ -31,7 +29,7 @@ To do this, you need to create an initializer class in the same folder as your `
     }
 ```
 To tell Entity Framework to use your initializer class, add an element to the `entityFramework` element in the application `Web.config` file (this should be in the root of your project folder):
-```html
+```xml
 <entityFramework>
   <contexts>
     <context type="Namespace.YourDbContext, ProjectName">
