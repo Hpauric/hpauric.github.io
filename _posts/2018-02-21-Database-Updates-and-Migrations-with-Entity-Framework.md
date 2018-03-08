@@ -1,4 +1,3 @@
-
 ---
 layout: post
 title: Database Updates and Migrations with Entity Framework
