@@ -44,22 +44,22 @@ To tell Entity Framework to use your initializer class, add an element to the `e
 You can use a Seed method to populate your database with mock data. For example:
 
 ```csharp
-namespace ContosoUniversity.DAL
+public class SchoolInitializer : System.Data.Entity
+.DropCreateDatabaseIfModelChanges<SchoolContext>
 {
-    public class SchoolInitializer : System.Data.Entity. DropCreateDatabaseIfModelChanges<SchoolContext>
+   protected override void Seed(SchoolContext context)
     {
-        protected override void Seed(SchoolContext context)
-        {
-            var students = new List<Student>
-            {
-            new Student{FirstMidName="Carson",EnrollmentDate=DateTime.Parse("2005-09-01")},
-            new Student{FirstMidName="Meredith",EnrollmentDate=DateTime.Parse("2002-09-01")},
-            new Student{FirstMidName="Arturo"EnrollmentDate=DateTime.Parse("2003-09-01")},
-            new Student{FirstMidName="Gytis",EnrollmentDate=DateTime.Parse("2002-09-01")},
-            new Student{FirstMidName="Yan", EnrollmentDate=DateTime.Parse("2002-09-01")}
-            };
-            students.ForEach(s => context.Students.Add(s));
-            context.SaveChanges();
+      var students = new List<Student>
+      {
+      new Student{FirstMidName="Carson",EnrollmentDate=DateTime.Parse("2005-09-01")},
+      new Student{FirstMidName="Meredith",EnrollmentDate=DateTime.Parse("2002-09-01")},
+      new Student{FirstMidName="Arturo"EnrollmentDate=DateTime.Parse("2003-09-01")},
+      new Student{FirstMidName="Gytis",EnrollmentDate=DateTime.Parse("2002-09-01")},
+      new Student{FirstMidName="Yan", EnrollmentDate=DateTime.Parse("2002-09-01")}
+      };
+      students.ForEach(s => context.Students.Add(s));
+      context.SaveChanges();
+      //...
 ```
 ## Using Migrations
 
