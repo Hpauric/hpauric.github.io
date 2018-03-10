@@ -160,16 +160,17 @@ Before using the Migrations Seed method, you'll need to disable the database ini
 Since we are no longer dropping and recreating the database, the Migrations `Seed` method must be able handle the data already contained in the database. There is an extension method, `AddOrUpdate`, that is specifically designed for this purpose.
 
 ```csharp
-internal sealed partial class Configuration : DbMigrationsConfiguration<ProjectName.DAL.DBContextName>
-    {
-        // Constructor
-        protected override void Seed(ProjectName.DAL.DBContextName context)
-        {
-        context.Students.AddOrUpdate(
-        s => s.LastName,
-        new Student { StudentID = 12345678,
-        FirstMidName="Carson", LastName="Arturo" }, );
-        }
+internal sealed partial class Configuration :
+DbMigrationsConfiguration<ProjectName.DAL.DBContextName>
+{
+  // Constructor
+  protected override void Seed(ProjectName.DAL.DBContextName context)
+  {
+    context.Students.AddOrUpdate(
+    s => s.LastName,
+    new Student { StudentID = 12345678,
+    FirstMidName="Carson", LastName="Arturo" }, );
+  }
 ```
 
 Instead of loading data into the database, `AddOrUpdate` will only add the entry if it doesn't currently exist in the database. If the entry doesn't match the new database schema, it will update accordingly.
