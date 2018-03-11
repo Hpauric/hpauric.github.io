@@ -153,28 +153,25 @@ However, you will probably never have to use this.
 
 ## The Configuration File
 
-There is a configuration class for EF Migrations called `DbMigrationsConfiguration` class. This class has its own `Seed` method that will run every time the `Update-Database` Powershell command is executed, even if there is no explicit pending migration. 
-
+There is a configuration class for EF Migrations called `DbMigrationsConfiguration` class. 
 ```csharp
- internal sealed partial class Configuration : DbMigrationsConfiguration<YourDbContext>
-    {
+internal sealed partial class Configuration :
+DbMigrationsConfiguration<ProjectName.DAL.DBContextName>
+{
 ```
+This class has its own `Seed` method that will run every time the `Update-Database` Powershell command is executed, even if there is no explicit pending migration. 
 Before using the Migrations Seed method, you'll need to disable the database initializer by commenting out or deleting the `<databaseInitializer>` element you added in the `Web.config` file.
 
 Since we are no longer dropping and recreating the database, the Migrations `Seed` method must be able handle the data already contained in the database. There is an extension method, `AddOrUpdate`, that is specifically designed for this purpose.
 
 ```csharp
-internal sealed partial class Configuration :
-DbMigrationsConfiguration<ProjectName.DAL.DBContextName>
+protected override void Seed(ProjectName.DAL.DBContextName context)
 {
-  // Constructor
-  protected override void Seed(ProjectName.DAL.DBContextName context)
-  {
-    context.Students.AddOrUpdate(
-    s => s.LastName,
-    new Student { StudentID = 12345678,
-    FirstMidName="Carson", LastName="Arturo" }, );
-  }
+  context.Students.AddOrUpdate(
+  s => s.LastName,
+  new Student { StudentID = 12345678,
+  FirstMidName="Carson", LastName="Arturo" }, );
+}
 ```
 
 Instead of loading data into the database, `AddOrUpdate` will only add the entry if it doesn't currently exist in the database. If the entry doesn't match the new database schema, it will update accordingly.
