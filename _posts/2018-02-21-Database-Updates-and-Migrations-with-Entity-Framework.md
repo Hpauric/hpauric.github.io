@@ -106,7 +106,7 @@ generates
 ```
 You can check the contents of those files and see the generated migration file. You can also modify them like any other code file.
 
-It's useful to think of migrations as git commits for your database. They document changes to your schema over time, and each migration builds on the last. Over time, your migrations folder will look something like this:
+It's useful to think of migrations as git commits for your database. They document changes to your schema over time, and each migration builds on the last. Like git commits, you should be able to revert to any specific migration if necessary. Over time, your migrations folder will look something like this:
 
 ```powershell
 Migrations
@@ -147,13 +147,13 @@ The `Down` method is invoked with:
 ```powershell
 Remove-Migration  [options]
 ```
-However, you will probably never have to use this.
+However, in reality you will probably never have to use this.
 > I have never needed the ‘undo’ a migration command, and a quick survey of EF users at a recent talk I gave came back with the answer that none of them had ever used the ‘undo’ migration commands either.
 > -- Jon P Smith, Entity Framework Core in Action
 
 ## The Configuration File
 
-There is a configuration class for EF Migrations called `DbMigrationsConfiguration` class. 
+There is a configuration class for EF Migrations called `DbMigrationsConfiguration` class. This configuration class is automatically generated with the `Enable-Migrations` command. You can find it in the Migrations folder:
 ```csharp
 internal sealed partial class Configuration :
 DbMigrationsConfiguration<ProjectName.DAL.DBContextName>
