@@ -148,6 +148,7 @@ Remove-Migration  [options]
 ```
 However, you will probably never have to use this.
 > I have never needed the ‘undo’ a migration command, and a quick survey of EF users at a recent talk I gave came back with the answer that none of them had ever used the ‘undo’ migration commands either.
+
 > -- Entity Framework Core in Action
 
 ## The Configuration File
