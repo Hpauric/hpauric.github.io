@@ -1,23 +1,26 @@
 ---
 layout: post
-title: Database Updates and Migrations with Entity Framework
+title: How to Update Your Database Structure in Entity Framework
 published: true
 image_url: /images/400-300px/Artur-Rydzewski-400-300.png
-excerpt: You can update your database with Code First Migrations.
-description: You can update your database with Code First Migrations.
+excerpt: >-
+  There is a range of database initializers you can use in different stages of
+  the development process. For a production database, Migrations allow you
+  change your database structure without loss of data.
+description: >-
+  There is a range of database initializers you can use in different stages of
+  the development process. For a production database, Migrations allow you
+  change your database structure without loss of data.
 ---
+**Note**: In this post I cover how to use database initializers with Entity Framework 6.x in a ASP.NET project. Entity Framework Core doesn't include database initializer classes.
 
-Entity Framework (EF) allows you to abstract away interactions with you database. But how do you update your database when your entities change? 
-EF has two ways you can manage changes to your schema:
+Using Code First with Entity Framework, EF will create a database for you based on your domain models. But how do you control when and how the database will be created, and how the structure is updated?
 
- 1. Drop and recreate your database 
- 2. Use migrations
+Entity Framework 6.x includes a range of database initializers that specify how and when EF should generate a new database. These database initializers are intended to be used in different stages of the development process. By default, Entity Framework will create a database **only if one does not already exist** using the `CreateDatabaseIfNotExists` class. However, during development Entity Framework can be configured to drop and recreate the database every time there's a schema change.
 
 ## Drop and Recreate Your Database
 
-You can configure Entity Framework to drop and recreate your database every time there is a change to your schema, or just literally every time your application runs. 
-
-You can also write your own `Seed` method that EF will automatically call after recreating the database to populate it with data. 
+During the development process, the domain models will be changing often. You can configure Entity Framework to delete (drop) and recreate your database every time there is a change to your schema.
 
 To do this, you need to create an initializer class in the same folder as your `DbContext` class.  The class needs to inherit from `DropCreateDatabaseIfModelChanges`.
 ```csharp
@@ -41,37 +44,45 @@ To tell Entity Framework to use your initializer class, add an element to the `e
 
 ## Creating a `Seed` method
 
-You can use a Seed method to populate your database with mock data. For example:
+The Database initializer classes include a `Seed` method that you can override. EF will automatically call this method after recreating the database to populate it with data. 
+For example:
 
 ```csharp
-public class SchoolInitializer : System.Data.Entity
-.DropCreateDatabaseIfModelChanges<SchoolContext>
+public class MyInitializer : System.Data.Entity
+.DropCreateDatabaseIfModelChanges<MyContext>
 {
-   protected override void Seed(SchoolContext context)
+   protected override void Seed(MyContext context)
     {
       var students = new List<Student>
       {
       new Student{FirstMidName="Carson",EnrollmentDate=DateTime.Parse("2005-09-01")},
       new Student{FirstMidName="Meredith",EnrollmentDate=DateTime.Parse("2002-09-01")},
-      new Student{FirstMidName="Arturo"EnrollmentDate=DateTime.Parse("2003-09-01")},
-      new Student{FirstMidName="Gytis",EnrollmentDate=DateTime.Parse("2002-09-01")},
       new Student{FirstMidName="Yan", EnrollmentDate=DateTime.Parse("2002-09-01")}
       };
       students.ForEach(s => context.Students.Add(s));
       context.SaveChanges();
       //...
 ```
+
+### Testing
+There is also a `DropCreateDatabaseAlways` initializer class you can use to drop and recreate your database literally every time your application runs. This is useful during the testing stage.
+
+
 ## Using Migrations
 
-Code First Migrations allow you to update your data model and update the database schema without having to drop and re-create the database.
 
-You don't _have_ to use Migrations. However, if you don't, all database content will be lost when you update your models. You probably don't want that to happen to your production database ;)
+Once your database is ready for construction, none of the above database initializers are going to be suitable for use. If you want to make changes to a database in production, you don't want to drop the entire database and lose all of the data. Code First Migrations allow you to update your database structure without having to drop and re-create the database.
 
 So you can't use the `DbContext` Initializer class. Luckily EF comes with a migrations package that allows you to make changes to a production database without nuking it.
 What kind of changes? Adding a new entity, adding new columns, changing a foreign key. There are a lot of options.
 
-To get started, install the migration modules at the powershell console:
+To install the Migration package, click: 
 
+ - `Tools` 
+ -  `Nuget Package Manager`  
+ - `Package Manager Console`
+
+and type:
 ```powershell
 Enable-Migrations
 ```
@@ -79,10 +90,10 @@ Enable-Migrations
 You just need three CLI commands to use Migrations in your .NET EF project.
 
 | Command                         | Description                                                  |
-| ------------------------------- | ------------------------------------------------------------ |
-| `Enable-Migrations`             | Install migration modules - this only needs to be run once initially |
+| ---------------- | ----------------------- |
+| `Enable-Migrations` | Install migration modules - this only needs to be run once initially |
 | `Add-Migration [MigrationName]` | Generate a new migration code file based on changes in your project models |
-| `Update-Database`               | Implement any outstanding migrations                         |
+| `Update-Database` | Implement any outstanding migrations                         |
 
 ### Migration Files
 
@@ -175,8 +186,13 @@ DbMigrationsConfiguration<ProjectName.DAL.DBContextName>
 
 Instead of loading data into the database, `AddOrUpdate` will only add the entry if it doesn't currently exist in the database. If the entry doesn't match the new database schema, it will update accordingly.
 
-The first parameter passed to the AddOrUpdate method specifies the property to use to check if a row already exists. For the test student data that you are providing, the LastName property can be used for this purpose since each last name in the list is unique:
+This is all from the Microsoft Documentation
+
+The first parameter passed to the `AddOrUpdate` method specifies the property to use to check if a row already exists. For the test student data that you are providing, the LastName property can be used for this purpose since each last name in the list is unique:
 ```csharp
 context.Students.AddOrUpdate(p => p.LastName, s)
 ```
 This code assumes that last names are unique. If you manually add a student with a duplicate last name, you'll get the following exception the next time you perform a migration.
+```shell
+Sequence contains more than one element
+```
