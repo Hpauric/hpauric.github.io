@@ -181,13 +181,9 @@ DbMigrationsConfiguration<ProjectName.DAL.DBContextName>
 
 Instead of loading data into the database, `AddOrUpdate` will only add the entry if it doesn't currently exist in the database. If the entry doesn't match the new database schema, it will update accordingly.
 
-This is all from the Microsoft Documentation
+It's important to note that you will need all of the fields for your record when you are using `AddOrUpdate`. For example, if the above record already exists in the database, but also included an `EmailAddress` field `carson.arturo@email.com`, this would be set to null in the update, since it wasn't provided to the `AddOrUpdate` method.
 
-The first parameter passed to the `AddOrUpdate` method specifies the property to use to check if a row already exists. For the test student data that you are providing, the LastName property can be used for this purpose since each last name in the list is unique:
-```csharp
-context.Students.AddOrUpdate(p => p.LastName, s)
-```
-This code assumes that last names are unique. If you manually add a student with a duplicate last name, you'll get the following exception the next time you perform a migration.
-```shell
-Sequence contains more than one element
-```
+[Julie Lerman (0ne of the creators of Entity Framework) writes more about `AddOrUpdate` more here.](http://thedatafarm.com/data-access/take-care-with-ef-4-3-addorupdate-method/)
+
+
+
