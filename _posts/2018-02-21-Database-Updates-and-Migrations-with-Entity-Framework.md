@@ -65,16 +65,13 @@ public class MyInitializer : System.Data.Entity
 ```
 
 ### Testing
-There is also a `DropCreateDatabaseAlways` initializer class you can use to drop and recreate your database literally every time your application runs. This is useful during the testing stage.
+There is also a `DropCreateDatabaseAlways` initializer class you can use to drop and recreate your database  **every time** your application runs. This is useful during the testing stage.
 
 
 ## Using Migrations
 
 
-Once your database is ready for construction, none of the above database initializers are going to be suitable for use. If you want to make changes to a database in production, you don't want to drop the entire database and lose all of the data. Code First Migrations allow you to update your database structure without having to drop and re-create the database.
-
-So you can't use the `DbContext` Initializer class. Luckily EF comes with a migrations package that allows you to make changes to a production database without nuking it.
-What kind of changes? Adding a new entity, adding new columns, changing a foreign key. There are a lot of options.
+Once your database is ready for production, none of the above database initializers are going to be suitable for use. If you want to make changes to a database in production, you don't want to drop the entire database and lose all of the data. Code First Migrations allow you to update your database structure without having to drop and re-create the database.
 
 To install the Migration package, click: 
 
@@ -87,7 +84,7 @@ and type:
 Enable-Migrations
 ```
 
-You just need three CLI commands to use Migrations in your .NET EF project.
+You will need only three CLI commands to use Migrations in your ASP.NET EF project.
 
 | Command                         | Description                                                  |
 | ---------------- | ----------------------- |
@@ -106,13 +103,9 @@ generates
 ```powershell
 201710021217244_Initial.cs
 ```
-You can check the contents of those files and see the generated migration file.  You can also modify them.
+You can check the contents of those files and see the generated migration file. You can also modify them like any other code file.
 
-It's useful to think of migrations as git commits for your database. Some people prefer big infrequent commits and some people like to do them small and regular. Over time, your project will probably amass a string of migrations, each building on the last.
-
->  Migrations are intended to be incremental. You start with an `Initial` migration, and every time you change your model code you generate a new migration file. For example, `201712121451507_type-correction-date-purchased.cs`. The database contains a table named `__MigrationsHistory` that keeps trace of which migrations have been run in your database.
-
-Over time, your migrations folder will look something like this:
+It's useful to think of migrations as git commits for your database. They document changes to your schema over time, and each migration builds on the last. Over time, your migrations folder will look something like this:
 
 ```powershell
 Migrations
@@ -124,6 +117,8 @@ Migrations
 │   201802111402054_purchased-added-to-transaction-type.cs
 └───SeedData
 ```
+
+In addition to the Migration code files, EF creates a table called `__MigrationsHistory` that contains information about all of the migrations that have been run in your database.
 
 ### Up and Down Methods
 
@@ -152,7 +147,7 @@ The `Down` method is invoked with:
 Remove-Migration  [options]
 ```
 However, you will probably never have to use this.
->I have never needed the ‘undo’ a migration command, and a quick survey of EF users at a recent talk I gave came back with the answer that none of them had ever used the ‘undo’ migration commands either.
+> I have never needed the ‘undo’ a migration command, and a quick survey of EF users at a recent talk I gave came back with the answer that none of them had ever used the ‘undo’ migration commands either.
 > -- Entity Framework Core in Action
 
 ## The Configuration File
