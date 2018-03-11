@@ -149,7 +149,7 @@ Remove-Migration  [options]
 However, you will probably never have to use this.
 > I have never needed the ‘undo’ a migration command, and a quick survey of EF users at a recent talk I gave came back with the answer that none of them had ever used the ‘undo’ migration commands either.
 
-> -- Entity Framework Core in Action
+> -- Jon P Smith, Entity Framework Core in Action
 
 ## The Configuration File
 
@@ -159,9 +159,6 @@ There is a configuration class for EF Migrations called `DbMigrationsConfigurati
  internal sealed partial class Configuration : DbMigrationsConfiguration<YourDbContext>
     {
 ```
-
-> Note: This is in contrast to the Database initializer `Seed` method, which will only run when the database is created. [Database initializer and Migrations Seed methods](https://blog.oneunicorn.com/2013/05/28/database-initializer-and-migrations-seed-methods) is a great blog post that covers this in more detail.
->
 Before using the Migrations Seed method, you'll need to disable the database initializer by commenting out or deleting the `<databaseInitializer>` element you added in the `Web.config` file.
 
 Since we are no longer dropping and recreating the database, the Migrations `Seed` method must be able handle the data already contained in the database. There is an extension method, `AddOrUpdate`, that is specifically designed for this purpose.
