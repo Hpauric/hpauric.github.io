@@ -182,8 +182,7 @@ DbMigrationsConfiguration<ProjectName.DAL.DBContextName>
 Instead of loading data into the database, `AddOrUpdate` will only add the entry if it doesn't currently exist in the database. If the entry doesn't match the new database schema, it will update accordingly.
 
 It's important to note that you will need all of the fields for your record when you are using `AddOrUpdate`. For example, if the above record already exists in the database, but also included an `EmailAddress` field `carson.arturo@email.com`, this would be set to null in the update, since it wasn't provided to the `AddOrUpdate` method.
-
-[Julie Lerman (0ne of the creators of Entity Framework) writes more about `AddOrUpdate` more here.](http://thedatafarm.com/data-access/take-care-with-ef-4-3-addorupdate-method/)
+Julie Lerman (One of the creators of Entity Framework) writes [more about `AddOrUpdate` more here.](http://thedatafarm.com/data-access/take-care-with-ef-4-3-addorupdate-method/)
 
 
 
