@@ -159,7 +159,7 @@ internal sealed partial class Configuration :
 DbMigrationsConfiguration<ProjectName.DAL.DBContextName>
 {
 ```
-This class has its own `Seed` method that will run every time the `Update-Database` Powershell command is executed, even if there is no explicit pending migration. 
+This class has its own `Seed` method that will run every time the `Update-Database` command is executed, even if there is no explicit pending migration. 
 Before using the Migrations Seed method, you'll need to disable the database initializer by commenting out or deleting the `<databaseInitializer>` element you added in the `Web.config` file.
 
 Since we are no longer dropping and recreating the database, the Migrations `Seed` method must be able handle the data already contained in the database. There is an extension method, `AddOrUpdate`, that is specifically designed for this purpose.
