@@ -86,14 +86,12 @@ sass:
     priority_name: "priority"
 
 # Use the following plug-ins
-gems:
-  - jekyll-sitemap # Create a sitemap using the official Jekyll sitemap gem
-  - jekyll-feed # Create an Atom feed using the official Jekyll feed gem
+# gems:
+  # - jekyll-sitemap # Create a sitemap using the official Jekyll sitemap gem
+  # - jekyll-feed # Create an Atom feed using the official Jekyll feed gem
   
   plugins:
   - jekyll-sitemap
-  
-  
   
 
 # Exclude these files from your production _site
