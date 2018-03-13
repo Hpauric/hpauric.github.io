@@ -25,9 +25,9 @@ footer-links:
   instagram:
   linkedin:
   pinterest:
-  rss: # just type anything here for a working RSS icon
+  rss: rss
   twitter: hpauric
-  stackoverflow: "users/6854105/pauric-holleran"
+  stackoverflow: # "users/6854105/pauric-holleran" commented out for now
   youtube: # channel/<your_long_string> or user/<user-name>
   googleplus: # anything in your profile username that comes after plus.google.com/
   codepen: pauric101
