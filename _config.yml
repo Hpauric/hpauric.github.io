@@ -73,18 +73,7 @@ kramdown:
 sass:
   style: :expanded # You might prefer to minify using :compressed
   
-  # Sitemap settings
-  sitemap:
-    filename: "/sitemap.xml"
-    exclude:
-        - "/atom.xml"
-        - "/feed.xml"
-        - "/feed/index.xml"
-    include_posts:
-        - "/index.html"
-    change_frequency_name: "change_frequency"
-    priority_name: "priority"
-
+  
 # Use the following plug-ins
 # gems:
   # - jekyll-sitemap # Create a sitemap using the official Jekyll sitemap gem
