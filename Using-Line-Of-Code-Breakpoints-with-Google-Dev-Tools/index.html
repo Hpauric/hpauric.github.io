@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="icon" type='image/x-icon' href="/favicon.ico">
+    <title>Using Line Of Code Breakpoints with Google Dev Tools – Pauric Holleran – Web Developer</title>
+
+        <meta charset="utf-8" />
+    <meta content='text/html; charset=utf-8' http-equiv='Content-Type'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1.0'>
+
+    
+    <meta name="description" content="Google Dev Tools are like x-ray specs for code. Nowhere is this more true than in the sources tab.
+
+" />
+    <meta property="og:description" content="Google Dev Tools are like x-ray specs for code. Nowhere is this more true than in the sources tab.
+
+" />
+    
+    <meta name="author" content="Pauric Holleran" />
+    <meta property="og:image" content="http://www.pauric.blog/images/x-ray-specs.jpg" />
+
+    
+    <meta property="og:title" content="Using Line Of Code Breakpoints with Google Dev Tools" />
+    <meta property="twitter:title" content="Using Line Of Code Breakpoints with Google Dev Tools" />
+    
+
+
+    <link rel="stylesheet" type="text/css" href="/style.css" />
+    <link rel="alternate" type="application/rss+xml" title="Pauric Holleran - Web Developer" href="/feed.xml" />
+    <!--
+    <link rel="stylesheet"
+      href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/agate.min.css">
+    -->
+  </head>
+
+  <body>
+    <div class="wrapper-masthead">
+      <div class="container">
+        <header class="masthead clearfix">
+          <a href="/" class="site-avatar"><img src="https://avatars2.githubusercontent.com/u/21220107?v=3&s=460" /></a>
+
+          <div class="site-info">
+            <h1 class="site-name"><a href="/">Pauric Holleran</a></h1>
+            <p class="site-description">Web Developer</p>
+          </div>
+
+          <nav>
+            <a href="/">Blog</a>
+            <a href="/about">About</a>
+          </nav>
+        </header>
+      </div>
+    </div>
+
+    <div id="main" role="main" class="container">
+      <article class="post">
+  <h1>Using Line Of Code Breakpoints with Google Dev Tools</h1>
+  
+  <ul>
+  
+</ul>
+
+  <div class="entry">
+    <p>Google Dev Tools are like x-ray specs for code. Nowhere is this more true than in the sources tab.</p>
+
+<p><img src="/images/x-ray-specs.jpg" alt="x-ray specs" /></p>
+
+<p>The Sources tab in Google Dev Tools is a great testing ground for new code. It allows you to step through code and monitor your variables and properties at each step of the execution. This is invaluable for debugging code.</p>
+
+<p>To test a new code snippet, navigate to the Source tab.</p>
+
+<p>Click on <code class="highlighter-rouge">+ New Snippet</code></p>
+
+<p>You can add whatever code you want. In this case I’m trying out a fibonacci implementation with dynamic programming. (This is taken from <a href="https://www.sitepoint.com/implementing-memoization-in-javascript/">a guide to implementing memoization in javascript</a>.)</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">var</span> <span class="nx">fibonacci</span> <span class="o">=</span> <span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+  <span class="kd">var</span> <span class="nx">memo</span> <span class="o">=</span> 
+  <span class="p">{};</span>
+
+  <span class="kd">function</span> <span class="nx">f</span><span class="p">(</span><span class="nx">n</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kd">var</span> <span class="nx">value</span><span class="p">;</span>
+
+    <span class="k">if</span> <span class="p">(</span><span class="nx">n</span> <span class="k">in</span> <span class="nx">memo</span><span class="p">)</span> <span class="p">{</span>
+      <span class="nx">value</span> <span class="o">=</span> <span class="nx">memo</span><span class="p">[</span><span class="nx">n</span><span class="p">];</span>
+    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+      <span class="k">if</span> <span class="p">(</span><span class="nx">n</span> <span class="o">===</span> <span class="mi">0</span> <span class="o">||</span> <span class="nx">n</span> <span class="o">===</span> <span class="mi">1</span><span class="p">)</span>
+        <span class="nx">value</span> <span class="o">=</span> <span class="nx">n</span><span class="p">;</span>
+      <span class="k">else</span>
+        <span class="nx">value</span> <span class="o">=</span> <span class="nx">f</span><span class="p">(</span><span class="nx">n</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span> <span class="o">+</span> <span class="nx">f</span><span class="p">(</span><span class="nx">n</span> <span class="o">-</span> <span class="mi">2</span><span class="p">);</span>
+
+      <span class="nx">memo</span><span class="p">[</span><span class="nx">n</span><span class="p">]</span> <span class="o">=</span> <span class="nx">value</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="k">return</span> <span class="nx">value</span><span class="p">;</span>
+  <span class="p">}</span>
+
+  <span class="k">return</span> <span class="nx">f</span><span class="p">;</span>
+<span class="p">})();</span>
+<span class="nx">fibonacci</span><span class="p">(</span><span class="mi">10</span><span class="p">);</span>
+</code></pre></div></div>
+<p>Let’s say I want to see how this code works. I can set the code to pause at certain points in the execution by using breakpoints. There are several different types of breakpoints that I can use. The one I’m looking at today is the most popular: line-of-code breakpoints. I can add breakpoints by clicking on the lines of code I want to monitor:</p>
+
+<p><img src="/images/adding-breakpoints.png" alt="adding breakpoints" /></p>
+
+<p>These are line-of-code breakpoints. Breakpoints can only be added on certain lines of code.</p>
+
+<p>Now I can run this code by clicking <code class="highlighter-rouge">Run snippet</code>.</p>
+
+<p>I have a few options at each point it stops:</p>
+
+<ol>
+  <li>Resume script execution</li>
+  <li>Step over next function call</li>
+  <li>Step into next function call</li>
+  <li>Step out of current function</li>
+</ol>
+
+<p>There’s a detailed breakdown of how these actions differ on the <a href="https://developers.google.com/web/tools/chrome-devtools/javascript/step-code#stepping_in_action">Google Dev Page</a>.</p>
+
+<p>The most important thing to know is:</p>
+
+<blockquote>
+  <p>Use <code class="highlighter-rouge">step into</code> as your typical “one line at a time” action, as it ensures that only one statement gets executed, no matter what functions you step in and out of.</p>
+</blockquote>
+
+<p><code class="highlighter-rouge">Step over</code> executes the next line and stops at the following line.</p>
+
+<p><code class="highlighter-rouge">Step out</code> completes the rest of the function and stops at the next statement.</p>
+
+<h2 id="view-and-edit-properties-and-variables">View and Edit Properties and Variables</h2>
+
+<p>The whole point of using breakpoints is that they allow you to check all of the currently-defined properties. You can even edit properties in the script on the fly.</p>
+
+<h3 id="scope">Scope</h3>
+
+<blockquote>
+  <p>The three most important aspects of debugging and real estate are the same: Location, Location, and Location.</p>
+</blockquote>
+
+<p>Scope matters! The scope pane allows you to see the all variables (and functions and objects) in the local, closure and global scope.</p>
+
+<p><img src="/images/scope-pane.png" alt="" /></p>
+
+<p>For example, I can examine my <code class="highlighter-rouge">memo</code> object and check it’s properties:</p>
+
+<p><img src="/images/memo-object.png" alt="memo-object.png" /></p>
+
+<p>It’s important to note that you can only see the scope (and the call stack) when the program is paused.</p>
+
+<h3 id="the-call-stack">The Call Stack</h3>
+
+<p>I can also see the call stack on the left pane. The call stack lists all of the functions that have been called, with the most recent at the top. It might not seem that useful in this case, because all of the functions recently called have been <code class="highlighter-rouge">f</code>! However, I can click on these previous-called functions to see the state of the variables and objects at that time.</p>
+
+<h2 id="conclusion">Conclusion</h2>
+
+<p>Using breakpoints, checking the scope pane and the call stack - these are all powerful tools for debugging programs. But they are also invaluable tools to understand code you didn’t write yourself!</p>
+
+  </div>
+
+  <div class="date">
+    Written on May 21, 2017
+  </div>
+
+  
+</article>
+
+    </div>
+
+    <div class="wrapper-footer">
+      <div class="container">
+        <footer class="footer">
+          
+
+
+
+<a href="https://github.com/Hpauric"><i class="svg-icon github"></i></a>
+
+
+
+<a href="/feed.xml"><i class="svg-icon rss"></i></a>
+<a href="https://www.twitter.com/hpauric"><i class="svg-icon twitter"></i></a>
+
+
+
+<a href="https://codepen.io/pauric101"><i class="svg-icon codepen"></i></a>
+
+        </footer>
+      </div>
+    </div>
+
+    
+	<!-- Google Analytics -->
+	<script>
+		(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+		(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+		m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+		})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+		ga('create', 'UA-104739398-1', 'auto');
+		ga('send', 'pageview', {
+		  'page': '/Using-Line-Of-Code-Breakpoints-with-Google-Dev-Tools/',
+		  'title': 'Using Line Of Code Breakpoints with Google Dev Tools'
+		});
+	</script>
+	<!-- End Google Analytics -->
+
+
+    <!--
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+  -->
+  </body>
+</html>

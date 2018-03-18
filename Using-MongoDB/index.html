@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="icon" type='image/x-icon' href="/favicon.ico">
+    <title>Using the MongoDB Shell – Pauric Holleran – Web Developer</title>
+
+        <meta charset="utf-8" />
+    <meta content='text/html; charset=utf-8' http-equiv='Content-Type'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1.0'>
+
+    
+    <meta name="description" content="It’s worth getting to know about the MongoDB mongo shell.
+
+" />
+    <meta property="og:description" content="It’s worth getting to know about the MongoDB mongo shell.
+
+" />
+    
+    <meta name="author" content="Pauric Holleran" />
+    <meta property="og:image" content="http://www.pauric.blog" />
+
+    
+    <meta property="og:title" content="Using the MongoDB Shell" />
+    <meta property="twitter:title" content="Using the MongoDB Shell" />
+    
+
+
+    <link rel="stylesheet" type="text/css" href="/style.css" />
+    <link rel="alternate" type="application/rss+xml" title="Pauric Holleran - Web Developer" href="/feed.xml" />
+    <!--
+    <link rel="stylesheet"
+      href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/agate.min.css">
+    -->
+  </head>
+
+  <body>
+    <div class="wrapper-masthead">
+      <div class="container">
+        <header class="masthead clearfix">
+          <a href="/" class="site-avatar"><img src="https://avatars2.githubusercontent.com/u/21220107?v=3&s=460" /></a>
+
+          <div class="site-info">
+            <h1 class="site-name"><a href="/">Pauric Holleran</a></h1>
+            <p class="site-description">Web Developer</p>
+          </div>
+
+          <nav>
+            <a href="/">Blog</a>
+            <a href="/about">About</a>
+          </nav>
+        </header>
+      </div>
+    </div>
+
+    <div id="main" role="main" class="container">
+      <article class="post">
+  <h1>Using the MongoDB Shell</h1>
+  
+  <ul>
+  
+</ul>
+
+  <div class="entry">
+    <p>It’s worth getting to know about <a href="https://docs.mongodb.com/manual/mongo/">the MongoDB <code class="highlighter-rouge">mongo</code> shell.</a></p>
+
+<p>Running shell commands with MongoDB is a really useful way to quickly check what’s in your database. You can review and update your database contents directly from the command line.</p>
+
+<h2 id="start-mongodb">Start MongoDB</h2>
+
+<p>Make sure the MongoDB database is running before attempting to start the <code class="highlighter-rouge">mongo</code> shell. To start up the database, run <code class="highlighter-rouge">./mongod</code>. You should see something like this:</p>
+
+<p><img src="/images/mongod-cli-screenshot.png" alt="mongod cli screenshot" /></p>
+
+<h2 id="shell-prompt">Shell Prompt</h2>
+
+<p>To start a shell prompt for the above MongoDB, <strong>open a new terminal</strong> and type the command <code class="highlighter-rouge">mongo</code> to initialize the shell.</p>
+
+<p>With the shell running, I can list the available databases with the command <code class="highlighter-rouge">show databases</code>. I can see listed the database I’ve been using: <code class="highlighter-rouge">url-shortener-microservice</code>.</p>
+
+<p><img src="/images/show-databases-screenshot.png" alt="" /></p>
+
+<p>I can switch to this database with the command: <code class="highlighter-rouge">use url-shortener-microservice</code>.</p>
+
+<h3 id="show-collections">Show Collections</h3>
+
+<p>Now I can have a look at the collections in the database with: <code class="highlighter-rouge">show collections</code>.</p>
+
+<p><img src="/images/show-collections-screenshot.png" alt="" /></p>
+
+<p>I haven’t been too busy - there are just two collections so far.
+I can see exactly what’s in the storedLinks collection by running a <code class="highlighter-rouge">find()</code> method on it without any arguments. This returns everything:
+<code class="highlighter-rouge">db.storedLinks.find()</code></p>
+
+<p><img src="/images/storedlinks-find-screenshot.png" alt="" /></p>
+
+<p>There’s a multitude of entries in the collection with the same URL that I entered while testing the interface. This is useful to know!</p>
+
+  </div>
+
+  <div class="date">
+    Written on January 10, 2017
+  </div>
+
+  
+</article>
+
+    </div>
+
+    <div class="wrapper-footer">
+      <div class="container">
+        <footer class="footer">
+          
+
+
+
+<a href="https://github.com/Hpauric"><i class="svg-icon github"></i></a>
+
+
+
+<a href="/feed.xml"><i class="svg-icon rss"></i></a>
+<a href="https://www.twitter.com/hpauric"><i class="svg-icon twitter"></i></a>
+
+
+
+<a href="https://codepen.io/pauric101"><i class="svg-icon codepen"></i></a>
+
+        </footer>
+      </div>
+    </div>
+
+    
+	<!-- Google Analytics -->
+	<script>
+		(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+		(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+		m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+		})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+		ga('create', 'UA-104739398-1', 'auto');
+		ga('send', 'pageview', {
+		  'page': '/Using-MongoDB/',
+		  'title': 'Using the MongoDB Shell'
+		});
+	</script>
+	<!-- End Google Analytics -->
+
+
+    <!--
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+  -->
+  </body>
+</html>

@@ -1,0 +1,33 @@
+<p>To a beginner, the advantages of React are not immediately obvious. Here are a few reasons to use React.</p>
+
+<ol>
+  <li>
+    <p>You can always tell how your component will look render by looking at one source file.</p>
+
+    <blockquote>
+      <p>If you know the state, you know the rendered output. You don’t have to trace program flow. When working on complex applications, especially in teams, this is critically important.</p>
+    </blockquote>
+  </li>
+  <li>
+    <p>Bundling the view and functionality together makes sense. It’s easier to articulate the functionality of a self-contained component, rather than switching between HTML and Javascript files.</p>
+
+    <blockquote>
+      <p>UI code is readable and maintainable.
+Componentized UI is the future of web development, and you need to start doing it now.</p>
+    </blockquote>
+  </li>
+</ol>
+
+<h2 id="sidenote---what-is-flux">Sidenote - What is Flux?</h2>
+
+<blockquote>
+  <p>The concept “Flux” is simply that</p>
+  <ol>
+    <li>your  view triggers an event (say, after user types a name in a text field)</li>
+    <li>that event updates a model</li>
+    <li>then the model triggers an event</li>
+    <li>the view responds to that model’s event by re-rendering with the latest data. 
+That’s it.
+This one way data flow / decoupled observer pattern is designed to guarantee that your source of truth always stays in your stores / models. It’s a Good Thing™.</li>
+  </ol>
+</blockquote>

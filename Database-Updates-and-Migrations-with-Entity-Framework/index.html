@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="icon" type='image/x-icon' href="/favicon.ico">
+    <title>How to Update Your Database Structure in Entity Framework – Pauric Holleran – Web Developer</title>
+
+        <meta charset="utf-8" />
+    <meta content='text/html; charset=utf-8' http-equiv='Content-Type'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1.0'>
+
+    
+    <meta name="description" content="There is a range of database initializers you can use in different stages of the development process. For a production database, Migrations allow you change your database structure without loss of data." />
+    <meta property="og:description" content="There is a range of database initializers you can use in different stages of the development process. For a production database, Migrations allow you change your database structure without loss of data." />
+    
+    <meta name="author" content="Pauric Holleran" />
+    <meta property="og:image" content="http://www.pauric.blog/images/400-300px/Artur-Rydzewski-400-300.png" />
+
+    
+    <meta property="og:title" content="How to Update Your Database Structure in Entity Framework" />
+    <meta property="twitter:title" content="How to Update Your Database Structure in Entity Framework" />
+    
+
+
+    <link rel="stylesheet" type="text/css" href="/style.css" />
+    <link rel="alternate" type="application/rss+xml" title="Pauric Holleran - Web Developer" href="/feed.xml" />
+    <!--
+    <link rel="stylesheet"
+      href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/agate.min.css">
+    -->
+  </head>
+
+  <body>
+    <div class="wrapper-masthead">
+      <div class="container">
+        <header class="masthead clearfix">
+          <a href="/" class="site-avatar"><img src="https://avatars2.githubusercontent.com/u/21220107?v=3&s=460" /></a>
+
+          <div class="site-info">
+            <h1 class="site-name"><a href="/">Pauric Holleran</a></h1>
+            <p class="site-description">Web Developer</p>
+          </div>
+
+          <nav>
+            <a href="/">Blog</a>
+            <a href="/about">About</a>
+          </nav>
+        </header>
+      </div>
+    </div>
+
+    <div id="main" role="main" class="container">
+      <article class="post">
+  <h1>How to Update Your Database Structure in Entity Framework</h1>
+  
+  <ul>
+  
+</ul>
+
+  <div class="entry">
+    <p>Using Code First with Entity Framework, EF will create a database for you based on your domain models. But how do you control when and how the database will be created, and how the structure is updated?</p>
+
+<p>Entity Framework 6.x includes a range of database initializers that specify how and when EF should generate a new database. These database initializers are intended to be used in different stages of the development process. By default, Entity Framework will create a database <strong>only if one does not already exist</strong> using the <code class="highlighter-rouge">CreateDatabaseIfNotExists</code> class. However, during development Entity Framework can be configured to drop and recreate the database every time there’s a schema change.</p>
+
+<p><strong>Note</strong>: In this post I cover how to use database initializers with Entity Framework 6.x in a ASP.NET project. Entity Framework Core doesn’t include database initializer classes.</p>
+
+<h2 id="drop-and-recreate-your-database">Drop and Recreate Your Database</h2>
+
+<p>During the development process, the domain models will be changing often. You can configure Entity Framework to delete (drop) and recreate your database every time there is a change to your schema.</p>
+
+<p>To do this, you need to create an initializer class in the same folder as your <code class="highlighter-rouge">DbContext</code> class.  The class needs to inherit from <code class="highlighter-rouge">DropCreateDatabaseIfModelChanges</code>.</p>
+<div class="language-csharp highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="k">public</span> <span class="k">class</span> <span class="nc">YourInitializer</span><span class="p">:</span> <span class="n">System</span><span class="p">.</span><span class="n">Data</span><span class="p">.</span><span class="n">Entity</span>
+ <span class="p">.</span><span class="n">DropCreateDatabaseIfModelChanges</span><span class="p">&lt;</span><span class="n">YourDbContext</span><span class="p">&gt;</span>
+    <span class="p">{</span>
+    <span class="n">Seed</span> <span class="n">Method</span>
+    <span class="p">....</span>
+    <span class="p">}</span>
+</code></pre></div></div>
+<p>To tell Entity Framework to use your initializer class, add an element to the <code class="highlighter-rouge">entityFramework</code> element in the application <code class="highlighter-rouge">Web.config</code> file (this should be in the root of your project folder):</p>
+<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;entityFramework&gt;</span>
+  <span class="nt">&lt;contexts&gt;</span>
+    <span class="nt">&lt;context</span> <span class="na">type=</span><span class="s">"Namespace.YourDbContext, ProjectName"</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;databaseInitializer</span> <span class="na">type=</span><span class="s">"Namespace.YourInitializer, ProjectName"</span> <span class="nt">/&gt;</span>
+    <span class="nt">&lt;/context&gt;</span>
+  <span class="nt">&lt;/contexts&gt;</span>
+  ...
+</code></pre></div></div>
+
+<h2 id="creating-a-seed-method">Creating a <code class="highlighter-rouge">Seed</code> method</h2>
+
+<p>The Database initializer classes include a <code class="highlighter-rouge">Seed</code> method that you can override. EF will automatically call this method after recreating the database to populate it with data. 
+For example:</p>
+
+<div class="language-csharp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">public</span> <span class="k">class</span> <span class="nc">MyInitializer</span> <span class="p">:</span> <span class="n">System</span><span class="p">.</span><span class="n">Data</span><span class="p">.</span><span class="n">Entity</span>
+<span class="p">.</span><span class="n">DropCreateDatabaseIfModelChanges</span><span class="p">&lt;</span><span class="n">MyContext</span><span class="p">&gt;</span>
+<span class="p">{</span>
+   <span class="k">protected</span> <span class="k">override</span> <span class="k">void</span> <span class="nf">Seed</span><span class="p">(</span><span class="n">MyContext</span> <span class="n">context</span><span class="p">)</span>
+    <span class="p">{</span>
+      <span class="kt">var</span> <span class="n">students</span> <span class="p">=</span> <span class="k">new</span> <span class="n">List</span><span class="p">&lt;</span><span class="n">Student</span><span class="p">&gt;</span>
+      <span class="p">{</span>
+      <span class="k">new</span> <span class="n">Student</span><span class="p">{</span><span class="n">FirstMidName</span><span class="p">=</span><span class="s">"Carson"</span><span class="p">,</span><span class="n">EnrollmentDate</span><span class="p">=</span><span class="n">DateTime</span><span class="p">.</span><span class="nf">Parse</span><span class="p">(</span><span class="s">"2005-09-01"</span><span class="p">)},</span>
+      <span class="k">new</span> <span class="n">Student</span><span class="p">{</span><span class="n">FirstMidName</span><span class="p">=</span><span class="s">"Meredith"</span><span class="p">,</span><span class="n">EnrollmentDate</span><span class="p">=</span><span class="n">DateTime</span><span class="p">.</span><span class="nf">Parse</span><span class="p">(</span><span class="s">"2002-09-01"</span><span class="p">)},</span>
+      <span class="k">new</span> <span class="n">Student</span><span class="p">{</span><span class="n">FirstMidName</span><span class="p">=</span><span class="s">"Yan"</span><span class="p">,</span> <span class="n">EnrollmentDate</span><span class="p">=</span><span class="n">DateTime</span><span class="p">.</span><span class="nf">Parse</span><span class="p">(</span><span class="s">"2002-09-01"</span><span class="p">)}</span>
+      <span class="p">};</span>
+      <span class="n">students</span><span class="p">.</span><span class="nf">ForEach</span><span class="p">(</span><span class="n">s</span> <span class="p">=&gt;</span> <span class="n">context</span><span class="p">.</span><span class="n">Students</span><span class="p">.</span><span class="nf">Add</span><span class="p">(</span><span class="n">s</span><span class="p">));</span>
+      <span class="n">context</span><span class="p">.</span><span class="nf">SaveChanges</span><span class="p">();</span>
+      <span class="c1">//...</span>
+</code></pre></div></div>
+
+<h3 id="testing">Testing</h3>
+<p>There is also a <code class="highlighter-rouge">DropCreateDatabaseAlways</code> initializer class you can use to drop and recreate your database  <strong>every time</strong> your application runs. This is useful during the testing stage.</p>
+
+<h2 id="using-migrations">Using Migrations</h2>
+
+<p>Once your database is ready for production, none of the above database initializers are going to be suitable for use. If you want to make changes to a database in production, you don’t want to drop the entire database and lose all of the data. Code First Migrations allow you to update your database structure without having to drop and re-create the database.</p>
+
+<p>To install the Migration package, click:</p>
+
+<ul>
+  <li><code class="highlighter-rouge">Tools</code></li>
+  <li><code class="highlighter-rouge">Nuget Package Manager</code></li>
+  <li><code class="highlighter-rouge">Package Manager Console</code></li>
+</ul>
+
+<p>and type:</p>
+<div class="language-powershell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Enable-Migrations
+</code></pre></div></div>
+
+<p>You will need only three CLI commands to use Migrations in your ASP.NET EF project.</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Command</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code class="highlighter-rouge">Enable-Migrations</code></td>
+      <td>Install migration modules - this only needs to be run once initially</td>
+    </tr>
+    <tr>
+      <td><code class="highlighter-rouge">Add-Migration [MigrationName]</code></td>
+      <td>Generate a new migration code file based on changes in your project models</td>
+    </tr>
+    <tr>
+      <td><code class="highlighter-rouge">Update-Database</code></td>
+      <td>Implement any outstanding migrations</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3 id="migration-files">Migration Files</h3>
+
+<p>Migrations are code files. Every time you run <code class="highlighter-rouge">Add-Migration</code> a code file is generated, usually in a folder called <code class="highlighter-rouge">Migrations</code> inside your project. The name of a migration file is composed with a timestamp of its generation concatenated with the name used when running <code class="highlighter-rouge">Add-Migration</code>. For example:</p>
+
+<div class="language-powershell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Add-Migration Initial
+</code></pre></div></div>
+<p>generates</p>
+<div class="language-powershell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>201710021217244_Initial.cs
+</code></pre></div></div>
+<p>You can check the contents of those files and see the generated migration file. You can also modify them like any other code file.</p>
+
+<p>It’s useful to think of migrations as git commits for your database. They document changes to your schema over time, and each migration builds on the last. Like git commits, you should be able to revert to any specific migration if necessary. Over time, your migrations folder will look something like this:</p>
+
+<div class="language-powershell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Migrations
+│   Configuration.cs
+│   201801170953558_initial.cs
+│   201802041312365_transactions-added.cs
+│   201802041329270_transaction-additional-fields.cs
+│   201802042308138_transaction-added-as-navigation-property.cs
+│   201802111402054_purchased-added-to-transaction-type.cs
+└───SeedData
+</code></pre></div></div>
+
+<p>In addition to the Migration code files, EF creates a table called <code class="highlighter-rouge">__MigrationsHistory</code> that contains information about all of the migrations that have been run in your database.</p>
+
+<h3 id="up-and-down-methods">Up and Down Methods</h3>
+
+<p>Every migration file has an <code class="highlighter-rouge">Up</code> method and a <code class="highlighter-rouge">Down</code> method. The <code class="highlighter-rouge">Up</code> method updates the database. The <code class="highlighter-rouge">Down</code> method reverts them. Here’s a simple change as an example:</p>
+
+<div class="language-csharp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">namespace</span> <span class="nn">Project.Migrations</span>
+<span class="p">{</span>
+    <span class="k">public</span> <span class="k">partial</span> <span class="k">class</span> <span class="nc">TransactionModelUpdated</span> <span class="p">:</span> <span class="n">DbMigration</span>
+    <span class="p">{</span>
+        <span class="k">public</span> <span class="k">override</span> <span class="k">void</span> <span class="nf">Up</span><span class="p">()</span> <span class="c1">// Contains the code to implement the changes</span>
+        <span class="p">{</span>
+            <span class="nf">AddColumn</span><span class="p">(</span><span class="s">"dbo.Transaction"</span><span class="p">,</span> <span class="s">"Note"</span><span class="p">,</span> <span class="n">c</span> <span class="p">=&gt;</span> <span class="n">c</span><span class="p">.</span><span class="nf">String</span><span class="p">());</span>
+        <span class="p">}</span>   
+        <span class="k">public</span> <span class="k">override</span> <span class="k">void</span> <span class="nf">Down</span><span class="p">()</span>
+        <span class="p">{</span>
+            <span class="nf">DropColumn</span><span class="p">(</span><span class="s">"dbo.Transaction"</span><span class="p">,</span> <span class="s">"Note"</span><span class="p">);</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>The <code class="highlighter-rouge">Down</code> method is invoked with:</p>
+<div class="language-powershell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Remove-Migration  <span class="o">[</span>options]
+</code></pre></div></div>
+<p>However, in reality you will probably never have to use this.</p>
+<blockquote>
+  <p>I have never needed the ‘undo’ a migration command, and a quick survey of EF users at a recent talk I gave came back with the answer that none of them had ever used the ‘undo’ migration commands either.
+– Jon P Smith, Entity Framework Core in Action</p>
+</blockquote>
+
+<h2 id="the-configuration-file">The Configuration File</h2>
+
+<p>There is a configuration class for EF Migrations called <code class="highlighter-rouge">DbMigrationsConfiguration</code> class. This configuration class is automatically generated with the <code class="highlighter-rouge">Enable-Migrations</code> command. You can find it in the Migrations folder:</p>
+<div class="language-csharp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">internal</span> <span class="k">sealed</span> <span class="k">partial</span> <span class="k">class</span> <span class="nc">Configuration</span> <span class="p">:</span>
+<span class="n">DbMigrationsConfiguration</span><span class="p">&lt;</span><span class="n">ProjectName</span><span class="p">.</span><span class="n">DAL</span><span class="p">.</span><span class="n">DBContextName</span><span class="p">&gt;</span>
+<span class="p">{</span>
+</code></pre></div></div>
+<p>This class has its own <code class="highlighter-rouge">Seed</code> method that will run every time the <code class="highlighter-rouge">Update-Database</code> command is executed, even if there is no explicit pending migration. 
+Before using the Migrations Seed method, you’ll need to disable the database initializer by commenting out or deleting the <code class="highlighter-rouge">&lt;databaseInitializer&gt;</code> element you added in the <code class="highlighter-rouge">Web.config</code> file.</p>
+
+<p>Since we are no longer dropping and recreating the database, the Migrations <code class="highlighter-rouge">Seed</code> method must be able handle the data already contained in the database. There is an extension method, <code class="highlighter-rouge">AddOrUpdate</code>, that is specifically designed for this purpose.</p>
+
+<div class="language-csharp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">protected</span> <span class="k">override</span> <span class="k">void</span> <span class="nf">Seed</span><span class="p">(</span><span class="n">ProjectName</span><span class="p">.</span><span class="n">DAL</span><span class="p">.</span><span class="n">DBContextName</span> <span class="n">context</span><span class="p">)</span>
+<span class="p">{</span>
+  <span class="n">context</span><span class="p">.</span><span class="n">Students</span><span class="p">.</span><span class="nf">AddOrUpdate</span><span class="p">(</span>
+  <span class="n">s</span> <span class="p">=&gt;</span> <span class="n">s</span><span class="p">.</span><span class="n">LastName</span><span class="p">,</span>
+  <span class="k">new</span> <span class="n">Student</span> <span class="p">{</span> <span class="n">StudentID</span> <span class="p">=</span> <span class="m">12345678</span><span class="p">,</span>
+  <span class="n">FirstMidName</span><span class="p">=</span><span class="s">"Carson"</span><span class="p">,</span> <span class="n">LastName</span><span class="p">=</span><span class="s">"Arturo"</span> <span class="p">},</span> <span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>Instead of loading data into the database, <code class="highlighter-rouge">AddOrUpdate</code> will only add the entry if it doesn’t currently exist in the database. If the entry doesn’t match the new database schema, it will update accordingly.</p>
+
+<p>It’s important to note that you will need all of the fields for your record when you are using <code class="highlighter-rouge">AddOrUpdate</code>. For example, if the above record already exists in the database, but also included an <code class="highlighter-rouge">EmailAddress</code> field <code class="highlighter-rouge">carson.arturo@email.com</code>, this would be set to null in the update, since it wasn’t provided to the <code class="highlighter-rouge">AddOrUpdate</code> method.
+Julie Lerman (One of the creators of Entity Framework) writes <a href="http://thedatafarm.com/data-access/take-care-with-ef-4-3-addorupdate-method/">more about <code class="highlighter-rouge">AddOrUpdate</code> more here.</a></p>
+
+
+  </div>
+
+  <div class="date">
+    Written on February 21, 2018
+  </div>
+
+  
+</article>
+
+    </div>
+
+    <div class="wrapper-footer">
+      <div class="container">
+        <footer class="footer">
+          
+
+
+
+<a href="https://github.com/Hpauric"><i class="svg-icon github"></i></a>
+
+
+
+<a href="/feed.xml"><i class="svg-icon rss"></i></a>
+<a href="https://www.twitter.com/hpauric"><i class="svg-icon twitter"></i></a>
+
+
+
+<a href="https://codepen.io/pauric101"><i class="svg-icon codepen"></i></a>
+
+        </footer>
+      </div>
+    </div>
+
+    
+	<!-- Google Analytics -->
+	<script>
+		(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+		(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+		m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+		})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+		ga('create', 'UA-104739398-1', 'auto');
+		ga('send', 'pageview', {
+		  'page': '/Database-Updates-and-Migrations-with-Entity-Framework/',
+		  'title': 'How to Update Your Database Structure in Entity Framework'
+		});
+	</script>
+	<!-- End Google Analytics -->
+
+
+    <!--
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+  -->
+  </body>
+</html>

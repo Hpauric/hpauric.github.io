@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="icon" type='image/x-icon' href="/favicon.ico">
+    <title>Configuring Entity Relationships with Entity Framework – Pauric Holleran – Web Developer</title>
+
+        <meta charset="utf-8" />
+    <meta content='text/html; charset=utf-8' http-equiv='Content-Type'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1.0'>
+
+    
+    <meta name="description" content="It's tempting to manually configure relationships in Entity Framework using the Fluent API. However, it's often more effective to configure by convention." />
+    <meta property="og:description" content="It's tempting to manually configure relationships in Entity Framework using the Fluent API. However, it's often more effective to configure by convention." />
+    
+    <meta name="author" content="Pauric Holleran" />
+    <meta property="og:image" content="http://www.pauric.blog/images/400-300px/electricity-pylons-400-300.png" />
+
+    
+    <meta property="og:title" content="Configuring Entity Relationships with Entity Framework" />
+    <meta property="twitter:title" content="Configuring Entity Relationships with Entity Framework" />
+    
+
+
+    <link rel="stylesheet" type="text/css" href="/style.css" />
+    <link rel="alternate" type="application/rss+xml" title="Pauric Holleran - Web Developer" href="/feed.xml" />
+    <!--
+    <link rel="stylesheet"
+      href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/agate.min.css">
+    -->
+  </head>
+
+  <body>
+    <div class="wrapper-masthead">
+      <div class="container">
+        <header class="masthead clearfix">
+          <a href="/" class="site-avatar"><img src="https://avatars2.githubusercontent.com/u/21220107?v=3&s=460" /></a>
+
+          <div class="site-info">
+            <h1 class="site-name"><a href="/">Pauric Holleran</a></h1>
+            <p class="site-description">Web Developer</p>
+          </div>
+
+          <nav>
+            <a href="/">Blog</a>
+            <a href="/about">About</a>
+          </nav>
+        </header>
+      </div>
+    </div>
+
+    <div id="main" role="main" class="container">
+      <article class="post">
+  <h1>Configuring Entity Relationships with Entity Framework</h1>
+  
+  <ul>
+  
+</ul>
+
+  <div class="entry">
+    <p>Entity Framework is an Object Relational Mapper (ORM) that can abstract away database management for you. It can use model classes that you’ve created as part of your Model View Controller (MVC) framework and create a SQL database for you (it also works with NoSQL Databases). It will also create relationships between the tables if you have the relationships configured.
+You can then interact with Entity Framework instead of having to make raw SQL commands, like this:</p>
+<div class="language-csharp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">context</span><span class="p">.</span><span class="nf">Find</span><span class="p">(</span><span class="n">user</span><span class="p">)</span>
+<span class="p">.</span><span class="nf">Where</span><span class="p">(</span><span class="n">user</span><span class="p">.</span><span class="n">userID</span> <span class="p">==</span> <span class="n">searchID</span><span class="p">);</span>
+</code></pre></div></div>
+<p>I’ve been reading <a href="https://www.manning.com/books/entity-framework-core-in-action">Entity Framework Core in Action</a> by Jon P Smith. It’s a fantastic book that’s taught me a lot. One thing I’ve learned is to let Entity Framework manage the entity relationships in my projects, configuring the relationships myself only as a last resort.</p>
+
+<blockquote>
+  <p>I used to laboriously define my relationships because I hadn’t fully understood the power of the <em>by convention</em> approach when it comes to relationships. 
+– Jon P Smith, Entity Framework Core in Action</p>
+</blockquote>
+
+<p><img src="/images/electricity-pylons.jpeg" alt="pexels-photo-733740.jpeg" /></p>
+
+<p>Before jumping into an example, let’s quickly cover the three ways to configure relationships in Entity Framework. You can use:</p>
+<ol>
+  <li>the Fluent API.</li>
+  <li>data annotations.</li>
+  <li>configuration <em>by convention</em>.</li>
+</ol>
+
+<h3 id="the-fluent-api">The Fluent API</h3>
+<p>If I want a property in my entity to be required, I can configure it with the Fluent API in the <code class="highlighter-rouge">OnModelCreating</code> method, which is part of the <code class="highlighter-rouge">DbContext</code>:</p>
+<div class="language-csharp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">protected</span> <span class="k">override</span> <span class="k">void</span> <span class="nf">OnModelCreating</span><span class="p">(</span><span class="n">DbModelBuilder</span> <span class="n">modelBuilder</span><span class="p">){</span>
+  <span class="n">modelBuilder</span><span class="p">.</span><span class="n">Entity</span><span class="p">&lt;</span><span class="n">Equipment</span><span class="p">&gt;()</span>
+  <span class="p">.</span><span class="nf">Property</span><span class="p">(</span><span class="n">e</span> <span class="p">=&gt;</span> <span class="n">e</span><span class="p">.</span><span class="n">EquipmentType</span><span class="p">)</span>
+  <span class="p">.</span><span class="nf">IsRequired</span><span class="p">();</span>
+<span class="p">}</span>
+</code></pre></div></div>
+<h3 id="data-annotations">Data Annotations</h3>
+<p>I can also set a property to be required with data annotations. Using the same example, I can set <code class="highlighter-rouge">EquipmentType</code> to be required by including an annotation when declaring it in the model class:</p>
+<div class="language-csharp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">public</span> <span class="k">class</span> <span class="nc">Equipment</span> <span class="p">{</span>
+  <span class="p">[</span><span class="n">Required</span><span class="p">]</span>
+  <span class="k">public</span> <span class="kt">string</span> <span class="n">EquipmentType</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+  <span class="c1">// Other properties</span>
+<span class="p">}</span>
+</code></pre></div></div>
+<h3 id="by-convention">By Convention</h3>
+<p>So what is configuration by convention?</p>
+<blockquote>
+  <p>When you follow some simple rules on property types and names, Entity Framework will auto-configure many of the software and database features.</p>
+</blockquote>
+
+<p>If I include a property called <code class="highlighter-rouge">EquipmentID</code> in my <code class="highlighter-rouge">Equipment</code> class, Entity Framework will configure that property to be the <code class="highlighter-rouge">Equipment</code> entity’s <em>primary key</em>. This is because one of Entity Framework’s default behaviours is to look for propertys ending in ‘ID’ and assign <em>keys</em> (<em>primary</em> or <em>foreign</em>) if they match class names in the <em>Model</em> folder.</p>
+
+<h2 id="configuring-relationships-in-entity-framework">Configuring Relationships in Entity Framework</h2>
+
+<p>Configuring scalar (non-relational) properties is quite straightforward, but when it comes to entity relationships, it can be more tricky to decide which approach is best for configuring them.</p>
+
+<h3 id="how-to-cascade-set-null">How to Cascade Set Null</h3>
+
+<p>In an application I am working on, I have a <code class="highlighter-rouge">Student</code> entity that has a ZeroOrOne-to-Many relationship with <code class="highlighter-rouge">Equipment</code> and <code class="highlighter-rouge">Transaction</code> entities.
+By default, when I delete a <code class="highlighter-rouge">Student</code>, I will get a referential integrity error:</p>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>System.Data.SqlClient.SqlException: 
+The DELETE statement conflicted with the REFERENCE constraint 
+<span class="s2">"FK_dbo.Transaction_dbo.Student_StudentID"</span>
+</code></pre></div></div>
+<p>So how do I fix this? The <a href="https://docs.microsoft.com/en-us/aspnet/mvc/overview/getting-started/getting-started-with-ef-using-mvc/updating-related-data-with-the-entity-framework-in-an-asp-net-mvc-application#update-the-deleteconfirmed-method">official Microsoft documentation</a> recommends manually deleting each foreign key for dependent entities:</p>
+
+<div class="language-csharp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// load student</span>
+<span class="kt">var</span> <span class="n">equipment</span> <span class="p">=</span> <span class="n">db</span><span class="p">.</span><span class="n">Equipments</span>
+                    <span class="p">.</span><span class="nf">Where</span><span class="p">(</span><span class="n">e</span> <span class="p">=&gt;</span> <span class="n">e</span><span class="p">.</span><span class="n">StudentID</span> <span class="p">==</span> <span class="n">student</span><span class="p">.</span><span class="n">StudentID</span><span class="p">)</span>
+                    <span class="p">.</span><span class="nf">SingleOrDefault</span><span class="p">();</span>
+                <span class="k">if</span> <span class="p">(</span><span class="n">equipment</span> <span class="p">!=</span> <span class="k">null</span><span class="p">)</span>
+                <span class="p">{</span>
+                    <span class="n">equipment</span><span class="p">.</span><span class="n">StudentID</span> <span class="p">=</span> <span class="k">null</span><span class="p">;</span>
+                    <span class="n">db</span><span class="p">.</span><span class="nf">SaveChanges</span><span class="p">();</span>
+                <span class="p">}</span>
+</code></pre></div></div>
+<p>However, that’s a lot of lines of code to do something that should be possible to configure as a default! It’s especially a lot of code if you have multiple dependent entities, as I do in this case (<code class="highlighter-rouge">Equipment</code> and <code class="highlighter-rouge">Transaction</code>).
+If we look at <a href="https://msdn.microsoft.com/en-us/library/jj591620%28v=vs.113%29.aspx?f=255&amp;MSPPError=-2147217396#Enabling%20Cascade%20Delete">the documentation for Entity Framework 6</a> it says that:</p>
+
+<blockquote>
+  <p>If a foreign key on the dependent entity <strong>is nullable</strong>, Code First does not set cascade delete on the relationship, and when the principal is deleted <strong>the foreign key will be set to null</strong>.</p>
+</blockquote>
+
+<h3 id="configuring-by-convention">Configuring By Convention</h3>
+<p>So if I set both the Equipment and Transaction <code class="highlighter-rouge">StudentID</code> foreign key set to nullable, by using nullable <code class="highlighter-rouge">int?</code> like so:</p>
+<div class="language-csharp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">public</span> <span class="k">class</span> <span class="nc">Equipment</span> <span class="p">{</span>
+  <span class="k">public</span> <span class="kt">int</span><span class="p">?</span> <span class="n">StudentID</span><span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span> 
+  <span class="c1">// Other properties</span>
+<span class="p">}</span>
+<span class="k">public</span> <span class="k">class</span> <span class="nc">Transaction</span> <span class="p">{</span>
+  <span class="k">public</span> <span class="kt">int</span><span class="p">?</span> <span class="n">StudentID</span><span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span> 
+  <span class="c1">// Other properties</span>
+<span class="p">}</span>
+</code></pre></div></div>
+<p>Entity Framework should now set the foreign keys to null for these entities when I delete a student. However as the code stands, I will still get the same referential integrity error.</p>
+
+<h3 id="loading-entities">Loading Entities</h3>
+<p>So what’s going on? The crucial detail here is that <strong>the dependent entities must be loaded</strong> before the principal entity is deleted. Here I explicitly load both the <code class="highlighter-rouge">Equipment</code> and <code class="highlighter-rouge">Transaction</code> entities before removing the <code class="highlighter-rouge">student</code> entity:</p>
+
+<div class="language-csharp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// load student entity</span>
+<span class="n">db</span><span class="p">.</span><span class="nf">Entry</span><span class="p">(</span><span class="n">student</span><span class="p">).</span><span class="nf">Collection</span><span class="p">(</span><span class="n">s</span> <span class="p">=&gt;</span> <span class="n">s</span><span class="p">.</span><span class="n">Equipment</span><span class="p">).</span><span class="nf">Load</span><span class="p">();</span>
+<span class="n">db</span><span class="p">.</span><span class="nf">Entry</span><span class="p">(</span><span class="n">student</span><span class="p">).</span><span class="nf">Collection</span><span class="p">(</span><span class="n">s</span> <span class="p">=&gt;</span> <span class="n">s</span><span class="p">.</span><span class="n">Transaction</span><span class="p">).</span><span class="nf">Load</span><span class="p">();</span>
+<span class="n">db</span><span class="p">.</span><span class="n">Students</span><span class="p">.</span><span class="nf">Remove</span><span class="p">(</span><span class="n">student</span><span class="p">);</span>
+<span class="n">db</span><span class="p">.</span><span class="nf">SaveChanges</span><span class="p">();</span>
+</code></pre></div></div>
+<p>When the <code class="highlighter-rouge">Equipment</code> and <code class="highlighter-rouge">Transaction</code> entities are loaded into the working memory, EF knows to set the relevant dependent entities foreign keys to null.
+This is a good example of letting the conventions work for you!</p>
+
+<h3 id="configuring-relationships-with-the-fluent-api">Configuring Relationships with The Fluent API</h3>
+
+<p>When I was working through this problem, I thought it was a configuration issue, and manually configured the relationships with the fluent API:</p>
+
+<div class="language-csharp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">protected</span> <span class="k">override</span> <span class="k">void</span> <span class="nf">OnModelCreating</span><span class="p">(</span><span class="n">DbModelBuilder</span> <span class="n">modelBuilder</span><span class="p">)</span>
+   <span class="n">modelBuilder</span><span class="p">.</span><span class="n">Entity</span><span class="p">&lt;</span><span class="n">Equipment</span><span class="p">&gt;()</span>
+               <span class="p">.</span><span class="n">HasOptional</span><span class="p">&lt;</span><span class="n">Student</span><span class="p">&gt;(</span><span class="n">e</span> <span class="p">=&gt;</span> <span class="n">e</span><span class="p">.</span><span class="n">Student</span><span class="p">)</span>
+               <span class="p">.</span><span class="nf">WithMany</span><span class="p">(</span><span class="n">s</span> <span class="p">=&gt;</span> <span class="n">s</span><span class="p">.</span><span class="n">Equipment</span><span class="p">)</span>
+               <span class="p">.</span><span class="nf">HasForeignKey</span><span class="p">(</span><span class="n">e</span> <span class="p">=&gt;</span> <span class="n">e</span><span class="p">.</span><span class="n">StudentID</span><span class="p">)</span>
+               <span class="p">.</span><span class="nf">WillCascadeOnDelete</span><span class="p">(</span><span class="k">false</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div></div>
+<p>However I actually didn’t need to set the Fluent API at all!  The default Entity Framework is to set null the foreign key on a dependent entity when the principal entity is deleted.</p>
+
+<p>So when would I need to use the Fluent API? If I wanted to  <strong>override</strong> the default delete behavior setting, for example to set the dependent entities to cascade on delete, then the Fluent API would be the place to configure that.
+In EF Core in Action, Smith outlines some other examples of when you might need to use the Fluent API:</p>
+<ul>
+  <li>When you want to create a one-to-one relationship without navigational links going both ways.</li>
+  <li>When you have two navigational properties going to the same class.</li>
+  <li>If you want to define a specific database constraint.</li>
+</ul>
+
+  </div>
+
+  <div class="date">
+    Written on January 20, 2018
+  </div>
+
+  
+</article>
+
+    </div>
+
+    <div class="wrapper-footer">
+      <div class="container">
+        <footer class="footer">
+          
+
+
+
+<a href="https://github.com/Hpauric"><i class="svg-icon github"></i></a>
+
+
+
+<a href="/feed.xml"><i class="svg-icon rss"></i></a>
+<a href="https://www.twitter.com/hpauric"><i class="svg-icon twitter"></i></a>
+
+
+
+<a href="https://codepen.io/pauric101"><i class="svg-icon codepen"></i></a>
+
+        </footer>
+      </div>
+    </div>
+
+    
+	<!-- Google Analytics -->
+	<script>
+		(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+		(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+		m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+		})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+		ga('create', 'UA-104739398-1', 'auto');
+		ga('send', 'pageview', {
+		  'page': '/Configuring-Entity-Relationships-with-Entity-Framework/',
+		  'title': 'Configuring Entity Relationships with Entity Framework'
+		});
+	</script>
+	<!-- End Google Analytics -->
+
+
+    <!--
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+  -->
+  </body>
+</html>

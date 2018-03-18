@@ -1,0 +1,45 @@
+<p>It’s the peanut-butter and jelly sandwich of the web development world. Javascript is the jelly, HTML is the peanut-butter, and it’s all held together with some…</p>
+
+<h2 id="curly-brackets">Curly Brackets</h2>
+
+<p>In javascript, curly brackets normally represent a function or an encapsulated piece of code that needs to be executed as one. (They can also be used to create an object literals.)
+React uses curly brackets extensively in the same manner, but in a markup context.</p>
+
+<h3 id="commenting">Commenting</h3>
+
+<blockquote>
+  <p>You can use regular <code class="highlighter-rouge">/* Block Comments */</code>, but they need to be wrapped in curly braces:</p>
+</blockquote>
+
+<blockquote>
+  <p><code class="highlighter-rouge">{/* A JSX comment */}</code></p>
+</blockquote>
+
+<h3 id="functions-and-expressions">Functions and Expressions</h3>
+
+<p>You can place a function inside curly brackets with React. You can actually embed <strong>any JavaScript expression</strong> in JSX by wrapping it in curly braces.</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="p">{</span>
+    <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">9</span><span class="p">].</span><span class="nx">map</span><span class="p">((</span><span class="nx">val</span><span class="p">,</span> <span class="nx">i</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="o">&lt;</span><span class="nx">Keypad</span> 
+                <span class="nx">clickHandle</span><span class="o">=</span><span class="p">{</span><span class="k">this</span><span class="p">.</span><span class="nx">keypadClick</span><span class="p">.</span><span class="nx">bind</span><span class="p">(</span><span class="k">this</span><span class="p">)}</span>
+                <span class="nx">buttonText</span><span class="o">=</span><span class="p">{</span><span class="nx">val</span><span class="p">}</span> <span class="sr">/</span><span class="err">&gt;
+</span>     <span class="p">})</span>
+ <span class="p">}</span>
+</code></pre></div></div>
+
+<h2 id="so-is-it-official-javascript">So Is It Official Javascript?</h2>
+
+<p>Since Babel transpiles JSX to standard Javascript, you can be forgiven for thinking that some day JSX will be a fully-accredited Javascript member.</p>
+
+<p>Sadly, JSX  will never be part of the official Javascript canon. <a href="https://facebook.github.io/jsx/">Quote the website</a>:</p>
+
+<blockquote>
+  <p><strong>It’s NOT a proposal to incorporate JSX into the ECMAScript spec itself</strong>. It’s intended to be used by various preprocessors (transpilers) to transform these tokens into standard ECMAScript.</p>
+</blockquote>
+
+<blockquote>
+  <p>Why not Template Literals? 
+ECMAScript 6th Edition (ECMA-262) introduces template literals which are intended to be used for embedding DSL in ECMAScript. Why not just use that instead of inventing a syntax that’s not part of ECMAScript?
+Template literals work well for long embedded DSLs. <strong>Unfortunately the syntax noise is substantial</strong> when you exit in and out of embedded arbitrary ECMAScript expressions with identifiers in scope.</p>
+</blockquote>
