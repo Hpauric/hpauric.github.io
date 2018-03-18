@@ -119,7 +119,7 @@ Migrations
 └───SeedData
 ```
 
-In addition to the Migration code files, EF creates a table called `__MigrationsHistory` that contains information about all of the migrations that have been run in your database.
+In addition to the Migration code files, EF creates a table in your database called `__MigrationsHistory` that contains information about all of the migrations that have been run in your database.
 
 ### Up and Down Methods
 
