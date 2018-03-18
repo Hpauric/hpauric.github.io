@@ -131,11 +131,13 @@ namespace Project.Migrations
 {
     public partial class TransactionModelUpdated : DbMigration
     {
-        public override void Up() // Contains the code to implement the changes
+        public override void Up() 
+        // Contains the code to implement the changes
         {
             AddColumn("dbo.Transaction", "Note", c => c.String());
         }   
         public override void Down()
+        // Contains the code to undo the changes
         {
             DropColumn("dbo.Transaction", "Note");
         }
