@@ -17,7 +17,7 @@ Using Code First with Entity Framework, EF will create a database for you based 
 
 Entity Framework 6.x includes a range of database initializers that specify how and when EF should generate a new database. These database initializers are intended to be used in different stages of the development process. By default, Entity Framework will create a database **only if one does not already exist** using the `CreateDatabaseIfNotExists` class. However, during development Entity Framework can be configured to drop and recreate the database every time there's a schema change.
 
-**Note**: In this post I cover how to use database initializers with Entity Framework 6.x in a ASP.NET project. Entity Framework Core doesn't include database initializer classes.
+**Note**: In this post I cover how to use database initializers with Entity Framework 6.x in an ASP.NET project. Entity Framework Core doesn't include database initializer classes.
 
 ## Drop and Recreate Your Database
 
@@ -28,8 +28,8 @@ To do this, you need to create an initializer class in the same folder as your `
  public class YourInitializer: System.Data.Entity
  .DropCreateDatabaseIfModelChanges<YourDbContext>
     {
-    Seed Method
-    ....
+    // Seed Method
+    // ...
     }
 ```
 To tell Entity Framework to use your initializer class, add an element to the `entityFramework` element in the application `Web.config` file (this should be in the root of your project folder):
