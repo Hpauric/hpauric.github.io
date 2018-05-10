@@ -71,7 +71,7 @@ p {
 a {
   color: darken($blue, 10%);
   text-decoration: none;
-  border-bottom: 3px solid $blue;
+  border-bottom: 3px solid darken($blue, 10%);
   padding-bottom: 2px;	
 	cursor: pointer;
   &:hover, &:active {
@@ -181,6 +181,23 @@ img {
 
 .wrapper-masthead {
   margin-bottom: 50px;
+  
+  h1 {
+    font-size: 30px;
+    a {
+    color: inherit;
+    }
+  }
+
+  a {
+  text-decoration: none;
+  padding-bottom: 2px;	
+	cursor: pointer;
+  &:hover, &:active {
+    border-bottom: 3px solid $darkerGray;
+    color: $darkerGray;  
+    }
+  }
 }
 
 .masthead {
@@ -230,7 +247,7 @@ img {
 }
 
 .site-description {
-  margin: -5px 0 0 0;
+  margin: 0;
   color: $gray;
   font-size: 16px;
 
@@ -266,9 +283,40 @@ nav {
   }
 }
 
-//
-// .main
-//
+#main {
+
+  h1, h2, h3, h4, h5, h6 {
+  font-family: $helveticaNeue;
+  color: $darkerGray;
+  font-weight: bold;
+
+  line-height: 1.7;
+  margin: 1em 0 15px;
+  padding: 0;
+  
+  a {
+    color: inherit;
+    border-bottom: inherit;
+    }
+  
+
+  @include mobile {
+    line-height: 1.4;
+    }
+  }
+
+  a {
+  color: darken($blue, 10%);
+  text-decoration: none;
+  border-bottom: 3px solid darken($blue, 10%);
+  padding-bottom: 2px;	
+	cursor: pointer;
+  &:hover, &:active {
+    border-bottom: 3px solid $darkerGray;
+    color: $darkerGray;  
+    }
+  }
+}
 
 .custom-container {
 	position: relative;
@@ -365,3 +413,9 @@ footer {
 // ... Otherwise it really bloats up the top of the CSS file and makes it difficult to find the start
 @import "highlights";
 @import "svg-icons";
+
+
+
+
+
+

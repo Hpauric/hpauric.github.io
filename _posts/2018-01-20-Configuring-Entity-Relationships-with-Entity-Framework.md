@@ -4,7 +4,6 @@ title: Configuring Entity Relationships with Entity Framework
 published: true
 image_url: /images/400-300px/electricity-pylons-400-300.png
 excerpt: It's tempting to manually configure relationships in Entity Framework using the Fluent API. However, it's often more effective to configure by convention.
-description: It's tempting to manually configure relationships in Entity Framework using the Fluent API. However, it's often more effective to configure by convention.
 ---
 
 Entity Framework is an Object Relational Mapper (ORM) that can abstract away database management for you. It can use model classes that you've created as part of your Model View Controller (MVC) framework and create a SQL database for you (it also works with NoSQL Databases). It will also create relationships between the tables if you have the relationships configured.

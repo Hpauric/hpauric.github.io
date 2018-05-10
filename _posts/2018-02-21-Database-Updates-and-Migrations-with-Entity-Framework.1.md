@@ -7,10 +7,6 @@ excerpt: >-
   There is a range of database initializers you can use in different stages of
   the development process. For a production database, Migrations allow you
   change your database structure without loss of data.
-description: >-
-  There is a range of database initializers you can use in different stages of
-  the development process. For a production database, Migrations allow you
-  change your database structure without loss of data.
 ---
 
 Using Code First with Entity Framework, EF will create a database for you based on your domain models. But how do you control when and how the database will be created, and how the structure is updated?

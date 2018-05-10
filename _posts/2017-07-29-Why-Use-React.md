@@ -2,7 +2,7 @@
 published: true
 title: Why Use React?
 image_url: images/400-300px/fry-400-300.png
-description: To a beginner, the advantages of React are not immediately obvious. Here are a few reasons to use React.
+excerpt: To a beginner, the advantages of React are not immediately obvious. Here are a few reasons to use React.
 ---
 To a beginner, the advantages of React are not immediately obvious. Here are a few reasons to use React.
 
