@@ -1,4 +1,3 @@
-
 ---
 layout: post
 title: How to Hack Ethereum Contracts the Easy Way
