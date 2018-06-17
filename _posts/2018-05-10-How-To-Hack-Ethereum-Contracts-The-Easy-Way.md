@@ -7,7 +7,7 @@ excerpt: >-
   I walk through the first level of Ethernaut, a game where you have to hack smart contracts to survive :unlock: :muscle:
 ---
 
-So you want to be an Ethereum developer? Ethernaut is your ticket to venturing further into the ether. The game helps you learn about smart contract security by teaching you how to hack smart contracts :computer::wrench::smirk::bulb::money_with_wings:
+Ethernaut is a game that allows you learn about smart contract security by teaching you how to hack smart contracts :computer::wrench::smirk::bulb::money_with_wings:
 
 I love Ethernaut. I love that it has a Rick and Morty Difficulty meter:
 
@@ -22,15 +22,16 @@ I love the psychedelic console message styling.
 ⛏️ Mined transaction ⛏ 
 </span>
 
-And I love that the name was inspired from a weird comic from the 50s about an alien invasion with killer snow.
+And I love that the name was inspired from [a weird comic from the 50s](https://en.wikipedia.org/wiki/The_Eternaut) about an alien invasion with killer snow.
 
 ![Eternaut Comic](/images/2018-04-28-How-To-Hack-Ethereum-Contracts-The-Easy-Way/ethernaut.jpg)
 
 ## Level 0 - Hello Ethernaut
 
 I'm going to assume that you've got some basic coding skills and knowledge of Solidity (the language used to code in Ethereum).  [Crypto Zombies](https://cryptozombies.io/) is a great introduction if you are completely new to smart contracts. 
-Alright then! [**Hello Ethernaut**](https://ethernaut.zeppelin.solutions/level/0xdf51a9e8ce57e7787e4a27dd19880fd7106b9a5c) is a practice run to get acquainted with the game interface. You'll need to set up a [MetaMask](https://metamask.io) account, if you don't have one already. Choose the **Ropsten Test Network** and [get some test ether from this faucet](https://faucet.metamask.io/).
-I'll let you follow the instructions in the level closely. There isn't much to add for this level.
+
+Alright then, let's get started! [**Hello Ethernaut**](https://ethernaut.zeppelin.solutions/level/0xdf51a9e8ce57e7787e4a27dd19880fd7106b9a5c) is a practice run to get acquainted with the game interface. You'll need to set up a [MetaMask](https://metamask.io) account, if you don't have one already. Choose the **Ropsten Test Network** and [get some test ether from this faucet](https://faucet.metamask.io/).
+Follow [the level instructions](https://ethernaut.zeppelin.solutions/level/0xdf51a9e8ce57e7787e4a27dd19880fd7106b9a5c) closely and you should be fine. It's fairly straightforward.
 
 Each level has it's own contract. You can interact with contracts by calling their methods:
 ```javascript
@@ -45,17 +46,17 @@ And we can use that to authenticate:
 ```javascript
 await contract.authenticate("ethernaut0")
 ```
-Here's a screen shot:
+Here's a screen shot of what you should see:
 
 ![First level complete](/images/2018-04-28-How-To-Hack-Ethereum-Contracts-The-Easy-Way/first-level-complete-slim.png)
 
 ## Level 1 - Fallback
 
 Once you're familiar with the mechanics of the game, it's time to jump into the first level proper: **Fallback**. This a great opportunity to brush up on some concepts like:
-- contract ownership
-- the contract ABI
-- working with numbers in Solidity/Web3
-- the fallback method
+- [contract ownership](#the-contract-owner)
+- [the contract ABI](#the-abi)
+- [working with numbers in Solidity/Web3](#Side-Note-Numbers-in-Web3)
+- [the fallback method](#the-fallback-method)
 
 I'm going to go through this level's contract with a fine tooth comb. If you just want to know how to complete the level, you can skip to [the solution here.](#the-solution) But if you really want to grok Solidity, you need to get your coding hands dirty.
 
@@ -73,7 +74,7 @@ Pro tip: `instance` is equivalent to `contract.address`.
 ```javascript
 await getBalance(player)
 ```
-## The contract owner
+## The Contract Owner
 
 To beat this level we need to claim ownership of the contract, so we need to know what that means!
 
@@ -152,7 +153,7 @@ The columns detail the various interface properties.Let's go through them one by
 
 Ok, onto the methods!
 
-## The methods
+## The Methods
 
 ### `contributions(address)`
 
@@ -317,7 +318,7 @@ There's a couple of variables here we haven't seen before:
 
 The function transfers the entire balance at the contract's address to that of it's owner. We can't use this at the moment, since we aren't the owner, so let's move on!
 
-### The fallback method
+### The Fallback Method
 
 Finally we get to the fallback method! This is what the Fallback level is all about, after all.
 
@@ -362,8 +363,4 @@ Now we are the owner of the contract. We can check to make sure with:
 ```javascript
 await contract.withdraw()
 ```
-
 ![Level Completed](/images/2018-04-28-How-To-Hack-Ethereum-Contracts-The-Easy-Way/level-completed-message.png)
-
-
-
