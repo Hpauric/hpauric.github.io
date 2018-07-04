@@ -5,7 +5,7 @@ published: true
 comments: true
 image_url: /images/400-300px/charles-dickens-desk-400-300.png
 excerpt: >-
-  I walk through the first level of Ethernaut, a game where you have to hack smart contracts to survive :unlock: :muscle:
+  I walk through the first level of Ethernaut, a game where you have to hack smart contracts to survive &#128275; &#128170;
 ---
 
 Ethernaut is a game that allows you learn about smart contract security by teaching you how to hack smart contracts :computer::wrench::smirk::bulb::money_with_wings:
