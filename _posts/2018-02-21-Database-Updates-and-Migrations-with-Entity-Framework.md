@@ -3,6 +3,7 @@ layout: post
 title: How to Update Your Database Structure in Entity Framework
 published: true
 image_url: /images/400-300px/Artur-Rydzewski-400-300.png
+tags: [Entity Framework, ASP.NET, C#] 
 excerpt: >-
   There is a range of database initializers you can use in different stages of
   the development process. For a production database, Migrations allow you

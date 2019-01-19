@@ -76,6 +76,9 @@ plugins:
   - jekyll-feed
   - jemoji
   
+tag_page_layout: tag_page
+tag_page_dir: tag
+  
 
 # Exclude these files from your production _site
 exclude:

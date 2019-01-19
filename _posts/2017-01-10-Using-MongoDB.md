@@ -2,6 +2,7 @@
 layout: post
 title: Using the MongoDB Shell
 published: true
+tags: MongoDB, shell, Databases
 ---
 
 It’s worth getting to know about [the MongoDB `mongo` shell.](https://docs.mongodb.com/manual/mongo/)

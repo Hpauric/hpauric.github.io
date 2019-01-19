@@ -78,6 +78,7 @@ a {
     border-bottom: 3px solid $darkerGray;
     color: $darkerGray;  
   }
+  
 }
 
 nav a {
@@ -138,6 +139,12 @@ strong, b {
 img {
   max-width: 100%;
 }
+
+.width-not-set {
+  width: unset !important;
+}
+
+
 
 // Fixes images in popup boxes from Google Translate
 .gmnoprint img {
@@ -298,7 +305,6 @@ nav {
     color: inherit;
     border-bottom: inherit;
     }
-  
 
   @include mobile {
     line-height: 1.4;
@@ -311,6 +317,10 @@ nav {
   border-bottom: 3px solid darken($blue, 10%);
   padding-bottom: 2px;	
 	cursor: pointer;
+	&.footnote {
+    padding-bottom: 0;
+    border-bottom-width: 2px;
+    }
   &:hover, &:active {
     border-bottom: 3px solid $darkerGray;
     color: $darkerGray;  
@@ -397,6 +407,7 @@ nav {
   }
 }
 
+
 .wrapper-footer {
   margin-top: 50px;
   border-top: 1px solid #ddd;
@@ -408,6 +419,8 @@ footer {
   padding: 20px 0;
   text-align: center;
 }
+
+
 
 // Settled on moving the import of syntax highlighting to the bottom of the CSS
 // ... Otherwise it really bloats up the top of the CSS file and makes it difficult to find the start

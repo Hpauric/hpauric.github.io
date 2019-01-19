@@ -2,6 +2,7 @@
 layout: post
 title: How to Hack Ethereum Contracts the Easy Way
 published: true
+tags: Solidity Ethereum
 image_url: /images/400-300px/charles-dickens-desk-400-300.png
 excerpt: >-
   I walk through the first level of Ethernaut, a game where you have to hack smart contracts to survive :unlock: :muscle:

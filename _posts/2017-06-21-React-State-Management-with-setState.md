@@ -3,6 +3,7 @@ published: true
 layout: post
 title: React State Management with setState
 image_url: /images/400-300px/react-set-state-400-300.png
+tags: React
 excerpt: React's setState function is asynchronous. So don't expect for it to be invoked immediately!
 ---
 

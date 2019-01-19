@@ -305,3 +305,15 @@ pre.highlight {
 .highlight .language-json .kc {
     color: #56b6c2
 }
+
+/* For code examples inside tables, no margin*/
+
+table.table td pre.highlight {
+    margin: 0 !important;
+    background-color: #212529 !important;
+    
+    code {
+        background-color: #212529 !important;
+        
+    }
+}
