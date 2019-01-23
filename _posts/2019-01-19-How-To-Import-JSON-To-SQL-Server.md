@@ -2,7 +2,7 @@
 layout: post
 title: How to Import JSON to SQL Server
 published: true
-image_url: /images/400-300px/import-400-300.png
+image_url: /images/400-300px/assembly-line-400-300.png
 excerpt: >-
  Using OPENROWSET and OPENJSON makes it easy for you to import JSON data into your database.
 ---
