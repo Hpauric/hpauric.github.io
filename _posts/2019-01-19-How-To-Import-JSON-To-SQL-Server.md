@@ -7,7 +7,7 @@ excerpt: >-
  Using OPENROWSET and OPENJSON makes it easy for you to import JSON data into your database.
 ---
 
-The JSON format is great for sharing data because it's portable, parseable and simple. But what do you do when you need to manipulate or analyse the data, or you just want to keep it around? Data worth keeping belongs in a database.
+The JSON format is great for sharing data because it's portable, parseable and simple. But what do you do when you need to do some serious manipulation or analysis of the data? Or you just want to keep it around? Data worth keeping belongs in a database.
 
 Luckily, SQL Server has some functions that make it easy for you to import JSON data into your database.
 
@@ -32,7 +32,7 @@ FROM OPENROWSET
 (BULK 'C:\file-location\my-data.json', SINGLE_CLOB) 
 AS j
 ```
-You need to pass in a second argument to tell `OPENROWSET` what kind of data type to import. Since this is a text string, use `SINGLE_CLOB`. [^fn1]
+You need to pass in a second argument to tell `OPENROWSET` what kind of data type to import. Since this is a text string, use `SINGLE_CLOB`.[^fn1]
 
 `OPENROWSET` will then read the file as `VARCHAR(MAX)`. This is the same data type as the `@JSON` variable we declared.
 
@@ -47,7 +47,8 @@ If (ISJSON(@JSON)=1)
 SELECT @JSON AS 'JSON Text'
 ```
 
-In this example, the JSON is:
+In this example, the JSON is from an API call for a set of land parcels from a virtual reality platform[^fn2] (to make things interesting &#x1f995;):
+
 
 ```javascript
 {
@@ -196,7 +197,7 @@ Because `parcels` is an array, `OPENJSON` will convert all of the array elements
 
 Now we have a rowset with JSON text for each row that we want to import. How do we generate columns and populate them with the `{key:pair}` data?
 
-`OPENJSON` can be used in conjunction with the `WITH` clause to format the output.[^fn2] Using the `WITH` clause allows you to specify the the data types and (if you want) the columns names of the resulting rowset. 
+`OPENJSON` can be used in conjunction with the `WITH` clause to format the output.[^fn3] Using the `WITH` clause allows you to specify the the data types and (if you want) the columns names of the resulting rowset. 
 
 The `WITH` clause must follow the `OPENJSON` selection. It is passed a set of column names with the path specified:
 
@@ -256,24 +257,19 @@ FROM OPENROWSET
 (BULK 'C:\file-location\my-data.json', SINGLE_CLOB) 
 AS j
 
-SELECT id, x, y, auction_price, district_id, [owner], [data], 
-auction_owner, tags, last_transferred_at, estate_id, update_operator, publication 
+SELECT id, x, y, auction_price, district_id, [owner], [data]
 INTO MyTableName
-      FROM OPENJSON (@JSON, '$.data.assets.parcels')
-	  WITH (id VARCHAR(7),
-		x INT,
-		y INT,
-		auction_price INT,
-		district_id VARCHAR(50),
-		[owner] VARCHAR(50),
-		[data] NVARCHAR(MAX) AS JSON,
-		auction_owner VARCHAR(50),
-		tags NVARCHAR(MAX) AS JSON,
-		last_transferred_at BIGINT,
-		estate_id VARCHAR(50),
-		update_operator VARCHAR(MAX),
-		publication NVARCHAR(MAX) AS JSON)  
+  FROM OPENJSON (@JSON, '$.data.assets.parcels')
+  WITH (id VARCHAR(7),
+    x INT,
+    y INT,
+    auction_price INT,
+    district_id VARCHAR(50),
+    [owner] VARCHAR(50), -- Encase SQL keywords in square brackets
+    [data] NVARCHAR(MAX) AS JSON)  -- Specify the JSON format when necessary
 ```
+As noted above in the `[data]` comment, if the property contains an inner JSON object or array, you must append the `AS JSON` option so that it will be imported in JSON format.
+
 
 ## Footnotes
 
@@ -282,7 +278,9 @@ INTO MyTableName
 	- `SINGLE_NCLOB`, which reads a file as `nvarchar(max)`
 depending on your requirements.
 
-[^fn2]: Not to be confused with the [Common Table Expression `WITH` clause](https://docs.microsoft.com/en-us/sql/t-sql/queries/with-common-table-expression-transact-sql?view=sql-server-2017#syntax)
+[^fn2]: Aka [Decentraland](https://docs.decentraland.org/decentraland/introduction/), an exciting virtual reality platform powered by the Ethereum blockchain. 
+
+[^fn3]: Not to be confused with the [Common Table Expression `WITH` clause](https://docs.microsoft.com/en-us/sql/t-sql/queries/with-common-table-expression-transact-sql?view=sql-server-2017#syntax)
 
 
 
