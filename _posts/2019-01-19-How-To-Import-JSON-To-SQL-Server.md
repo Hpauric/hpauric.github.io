@@ -1,3 +1,5 @@
+
+
 ---
 layout: post
 title: How to Import JSON to SQL Server
@@ -270,13 +272,11 @@ INTO MyTableName
 ```
 As noted above in the `[data]` comment, if the property contains an inner JSON object or array, you must append the `AS JSON` option so that it will be imported in JSON format.
 
-
 ## Footnotes
 
-[^fn1]: CLOB stands for character large object. You can also use:
+[^fn1]: **CLOB** stands for **C**haracter **L**arge **OB**ject. Depending on your requirements, you can also use:
 	- `SINGLE_BLOB`, which reads a file as `varbinary(max)`
 	- `SINGLE_NCLOB`, which reads a file as `nvarchar(max)`
-depending on your requirements.
 
 [^fn2]: Aka [Decentraland](https://docs.decentraland.org/decentraland/introduction/), an exciting virtual reality platform powered by the Ethereum blockchain. 
 
