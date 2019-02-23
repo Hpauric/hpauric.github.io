@@ -1,5 +1,3 @@
-
-
 ---
 layout: post
 title: How to Import JSON to SQL Server
