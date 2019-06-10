@@ -43,27 +43,27 @@ pre.highlight {
 {
 	-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
 	border-radius: 10px;
-	background-color: $light-cream;
+	background-color: #282c34;
 }
 
 .highlight::-webkit-scrollbar
 {
 	width: 8px;
 	height: 8px;
-	background-color: $steel-blue;
+	background-color: #5c6370;
 }
 
 .highlight::-webkit-scrollbar-thumb
 {
 	border-radius: 10px;
 	-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.3);
-	background-color: white;
+	background-color: #abb2bf;
 }
 
 div.content > pre.javascript::-webkit-scrollbar
 {
 	height: 8px;
-	background-color: $dark-gray;
+	background-color: #5c6370;
 }
 
 div.content > pre.javascript::-webkit-scrollbar-thumb
