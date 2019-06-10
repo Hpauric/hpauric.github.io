@@ -3,6 +3,8 @@ layout: post
 title: Configuring Entity Relationships with Entity Framework
 published: true
 image_url: /images/400-300px/electricity-pylons-400-300.png
+related: [
+    "How to Update Your Database Structure in Entity Framework"]
 tags: [Entity Framework]
 excerpt: It's tempting to manually configure relationships in Entity Framework using the Fluent API. However, it's often more effective to configure by convention.
 ---
