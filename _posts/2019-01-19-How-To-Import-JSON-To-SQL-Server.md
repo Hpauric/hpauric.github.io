@@ -1,179 +1,284 @@
 ---
 layout: post
-title: How to Query and Monitor Ethereum Contract Events with Web3
+title: How to Import JSON to SQL Server
 published: true
-image-attributions: Photo by Giallo from Pexels
-image_url: /images/400-300px/time-400-300.png
+image_url: /images/400-300px/assembly-line-400-300.png
 excerpt: >-
- With web 3, you can listen for contract events on the blockchain and specify actions to trigger when certain criteria are met.
+ Using OPENROWSET and OPENJSON makes it easy for you to import JSON data into your database.
 ---
 
-With [web3.js](https://web3js.readthedocs.io), you can query and listen for contract events on the Ethereum blockchain, so that you can specify actions to trigger when certain criteria are met.
+The JSON format is great for sharing data because it's portable, parseable and simple. But what do you do when you need to do some serious manipulation or analysis of the data? Or you just want to keep it around? Data worth keeping belongs in a database.
 
-In this guide I'll demonstrate the different methods for querying and listening for contract events with web3. I've designed this post so that you can use it as a reference and skip forward to the part you need. If you already know how to set up web3 you can skip to [making an event query](###-Making-a-Query).
-
-Here's what I'll be covering in this post. 
+Luckily, SQL Server has some functions that make it easy for you to import JSON data into your database.
 
 * ToC
 {:toc}
 
-## Setting up the Contract
+## 1. Import the JSON as String Data
 
-You need to instantiate a contract before you can query events for it.
+You can bulk import any kind of text file, including JSON files, into SQL with the [`OPENROWSET`](https://docs.microsoft.com/en-us/sql/t-sql/functions/openrowset-transact-sql?view=sql-server-2017) function.
 
-```javascript
-const Web3 = require('web3'); 
-const client = require('node-rest-client-promise').Client();
-const INFURA_KEY = "SECRET_INFURA_KEY"; // Insert your own key here :)
-const ETHERSCAN_API_KEY = "SECRET_ETHERSCAN_KEY";
-const web3 = new Web3('wss://mainnet.infura.io/ws/v3/'  +  INFURA_KEY);
-const CONTRACT_ADDRESS = "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2";
-const etherescan_url = `http://api.etherscan.io/api?module=contract&action=getabi&address=${CONTRACT_ADDRESS}&apikey=${ETHERSCAN_API_KEY}`
+To import the json as a text file, use the `OPENROWSET` function with the `BULK` option enabled.
 
-async function getContractAbi() {
-    const etherescan_response = await client.getPromise(etherescan_url)
-    const CONTRACT_ABI = JSON.parse(etherescan_response.data.result);
-    return CONTRACT_ABI;
-}
+`OPENROWSET` returns a single string field with `BulkColumn` as its column name.
 
-async function eventQuery(){
-const CONTRACT_ABI = getContractAbi();
-const contract = new web3.eth.Contract(CONTRACT_ABI, CONTRACT_ADDRESS);
-/*    Code to query events here       */    
-}
+Let's assign it to a variable so we can work with it:
 
-eventQuery();
+```sql
+DECLARE @JSON VARCHAR(MAX)
+
+SELECT @JSON = BulkColumn
+FROM OPENROWSET 
+(BULK 'C:\file-location\my-data.json', SINGLE_CLOB) 
+AS j
+```
+You need to pass in a second argument to tell `OPENROWSET` what kind of data type to import. Since this is a text string, use `SINGLE_CLOB`.[^fn1]
+
+`OPENROWSET` will then read the file as `VARCHAR(MAX)`. This is the same data type as the `@JSON` variable we declared.
+
+Use `ISJSON` to make sure the JSON is valid. `ISJSON` will return 1 if the string is a properly formatted JSON object. 
+
+```sql
+SELECT ISJSON(@JSON) 
+```
+You can select the variable to see the contents:
+```sql
+If (ISJSON(@JSON)=1)
+SELECT @JSON AS 'JSON Text'
 ```
 
-The contract examples I use in this post all use the [wrapped ether](https://weth.io/) token. Because it's one of the most popular tokens in Ethereum, the contract has a high volume of transactions, making it a great address to use for testing event listening.
+In this example, the JSON is from an API call for a set of land parcels from a virtual reality platform[^fn2] (to make things interesting &#x1f995;):
 
-## Making a Event Query
-
-There are two primary use cases for interacting with Ethereum contract events. You can:
-
-- query a contract's past events for analysis or storage on a local database
-
-- create an event listener for a contract's events to specify actions you want to trigger in specific circumstances
-
-
-## Query Past Events with `getPastEvents()`
-
-You can use web3 to query all past events that a contract has ever emitted. The `getPastEvents()` will return an **array** of event objects. However it is currently limited to one thousand results at a time - `getPastEvents()` will return an error if more results would be returned.
-
-The first argument allows you to specify the event type to query, or `allEvents` to return all event types.
-The second argument is a filter object that allows you to filter by start[^fn1] and end block as shown below:
 
 ```javascript
-const START_BLOCK = 7700000;
-const END_BLOCK = 7701000;
-contract.getPastEvents("allEvents",
-    {                               
-        fromBlock: START_BLOCK,     
-        toBlock: END_BLOCK // You can also specify 'latest'          
-    })                              
-.then(events => console.log(events))
-.catch((err) => console.error(err));
-```
-You can also specify the type of event your want to query. Let's use `Transfer` , since it is a required event for ERC-20 and ERC-721 tokens:
-
-```javascript
-contract.getPastEvents("Transfer",
-//...
-```
-See the sample output for an event in [Appendix A: The content of an event](#appendix-a-the-content-of-an-event)
-
-## Create an Event Listener for a Contract's Events
-
-You can also create an event listening to upcoming events, and specify a callback that will occur when the event is emitted.
-
-You can use `contract.events.allEvents()` to specify a callback for all events.
-
-```javascript
-contract.events.allEvents()
-.on('data', (event) => {
-	console.log(event);
-});
-```
-See the sample output for an event in [Appendix A: The content of an event](#appendix-a-the-content-of-an-event)
-
-## Create an Event Listener for a Specific Event Type
-
-You can use `contract.events.EventName()` to specify actions for specific event types. For example, `Transfer`:
-
-```javascript
-contract.events.Transfer()
-.on('data', (event) => {
-	console.log(event);
-});
-.on('error', console.error);
-```
-See the sample output for an event below.
-
-## Filter by Event Parameters
-
-> Up to 3 parameters can be indexed. For example, a proposed token standard has: event Transfer(address indexed _from, address indexed _to, uint256 _value) . This means that a frontend can efficiently just watch for token transfers that are:
-> sent by an address tokenContract.Transfer({_from: senderAddress})
-> or received by an address tokenContract.Transfer({_to: receiverAddress})
-> or sent by an address to a specific address 
-> tokenContract.Transfer({_from: senderAddress, _to: receiverAddress})
-
-
-
-## Full example
-
-
-
-## Appendix A: The content of an event
-
-### Sample output
-
-```javascript
-{ 
-  removed: false, 
-  logIndex: 53,
-  transactionIndex: 65, 
-  transactionHash: '0x778b776cb1a4998fb681081a79c4e2e8afea877644747cfc64e6dd36f6fda7f2',
-  blockHash: '0x1eab83d59f65ab513681ad1314c4b334cca301def37e29ce098dfb293fd24181',
-  blockNumber: 7907793,
-  address: '0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2',
-  id: 'log_0x03168f825cef626f45228ae375b310303c66b79ed364a46119e7e004794af27c',
-  returnValues:
-   { '0': '0xad9EB619Ce1033Cc710D9f9806A2330F85875f22',
-     '1': '0x39755357759cE0d7f32dC8dC45414CCa409AE24e',
-     '2': BigNumber { _hex: '0x01158e460913d00000' },
-     src: '0xad9EB619Ce1033Cc710D9f9806A2330F85875f22',
-     dst: '0x39755357759cE0d7f32dC8dC45414CCa409AE24e',
-     wad: BigNumber { _hex: '0x01158e460913d00000' } },
-  event: 'Transfer',
-  signature: '0xddf252ad1be2c89b69c2b068fc378daa952ba7f163c4a11628f55a4df523b3ef',
-  raw:
-   { data: '0x000000000000000000000000000000000000000000000001158e460913d00000',
-     topics:
-      [ '0xddf252ad1be2c89b69c2b068fc378daa952ba7f163c4a11628f55a4df523b3ef',
-        '0x000000000000000000000000ad9eb619ce1033cc710d9f9806a2330f85875f22',
-        '0x00000000000000000000000039755357759ce0d7f32dc8dc45414cca409ae24e' ] 
-   } 
+{
+  "ok": true,
+  "data": {
+    "assets": {
+      "parcels": [{ 
+        "id": "51,100",
+        "x": 51,
+        "y": 100,
+        "auction_price": 4444,
+        "district_id": "77909d00",
+        "owner": "Dr Cornwallis",
+        "data": { "version": 0 }
+        }, 
+        //...+ 2499 more objects in the parcels array
+      ],
+      total: 2500
+    },
+  },
 }
 ```
 
-### Properties
+
+When selected, the entire JSON will be listed in a single-column row:
 
 {: .table .table-bordered .table-dark}
-| name             | type             | description                                                  |
-| ---------------- | ---------------- | ------------------------------------------------------------ |
-| id               | String           |                                                              |
-| event            | String           | The event name                                               |
-| signature        | String\|Null     | The event signature, null if it’s an anonymous event.        |
-| address          | String           | Address this event originated from.                          |
-| returnValues     | Object           | The return values coming from the event, e.g. `{from: '0x123...', to: '0x234...', amount: 100}`. |
-| logIndex         | Number           | Integer of the event index position in the block.            |
-| transactionIndex | Number           | Integer of the transaction’s index position the event was created in. |
-| transactionHash  | 32 Bytes\|String | Hash of the transaction this event was created in.           |
-| blockHash        | 32 Bytes\|String | Hash of the block this event was created in. null when it’s still pending. |
-| blockNumber      | Number           | The block number this log was created in. null when still pending. |
-| raw.data         | String           | The data containing non-indexed log parameter.               |
-| raw.topics       | Array            | An array with max 4 32 Byte topics, topic 1-3 contains indexed parameters of the event. |
+|  | JSON Text |
+|--|--|
+|  |{"ok":true,"data":{"assets":{"parcels":[{"id":"51,100","x":51,"y":100,"auction_...|
+
+## 2. Use OpenJSON To Parse the Text
+
+Now that the JSON data is accessible as a string variable, you can use [`OPENJSON`](https://docs.microsoft.com/en-us/sql/t-sql/functions/openjson-transact-sql?view=sql-server-2017) to parse it.
+
+```sql
+Select * FROM OPENJSON (@JSON) 
+```
+
+By default, `OPENJSON` will return three columns, the key name, the value and the data type for each `{key:value}` pair it finds:
+
+{: .table .table-bordered .table-dark}
+| key | value | type |
+|--|--|--|
+| ok | true | 3 |
+| data | {"assets": {parcels":[{"id":"51,100","x":51,"y":100,... | 5 |
+
+The type column will return an int that signifies the `{key:value}` data type:
+
+{: .table .table-bordered .table-striped .width-not-set}
+| Type Value | Data Type |
+|--|--|
+| 0 | null |
+| 1 |string |
+| 2 | int |
+| 3 | true/false |
+| 4 | array |
+| 5 | object |
+
+## 3. Use Path Variables To Access Nested Data
+
+By default, `OPENJSON` will parse only the root level of the JSON passed to it.
+However, most JSON data contains deeply-nested objects. For example, looking at the JSON we are importing, we see that we really just want to import the `parcels` array:
+
+```javascript
+{
+  "ok": true,
+  "data": {
+    "assets": {
+      "parcels": [{ //This is the array that we want to import
+        "id": "51,100",
+        "x": 51,
+        "y": 100,
+        //...more fields...
+        }, 
+        //...+ 2499 more objects in the parcels array
+      ],
+      total: 2500
+    },
+  },
+}
+```
+`OPENJSON` can take a second optional argument as the path to specify for nested objects or arrays. `OPENJSON` will return the `{key:value}` pairs located in this path.
+For example, running the following query from our JSON:
+
+```sql
+Select * FROM OPENJSON (@JSON, /* optional*/ '$.data') 
+```
+returns:
+
+{: .table .table-bordered .table-dark}
+| key | value | type |
+|--|--|--|
+| assets | {"parcels":[{"id":"51,100","x":51,"y":100,"auction_price":null,... | 5 |
+| total | 2500 | 2 |
+
+The path variable implements the same dot notation that is used in Javascript objects. To select the `parcels` array in our [JSON](#3-use-path-variables-to-access-nested-data), we specify the path:
+
+```sql
+SELECT * FROM OPENJSON (@JSON, '$.data.assets.parcels')
+```
+Because `parcels` is an array, `OPENJSON` will convert all of the array elements to rows:
+
+{: .table .table-bordered .table-dark}
+<table>
+    <thead>
+        <tr>
+          <th></th>
+            <th>key</th>
+            <th>value</th>
+            <th>type</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>1</td>
+            <td>0</td>
+            <td>{"id":"1,1","x":1,"y":1,...</td>
+            <td>5</td>
+        </tr>
+         <tr>
+            <td>2</td>
+            <td>1</td>
+            <td>{"id":"1,2","x":1,"y":2,...</td>
+            <td>5</td>
+        </tr>
+         <tr>
+            <td>3</td>
+            <td>2</td>
+            <td>{"id":"1,3","x":1,"y":3,...</td>
+            <td>5</td>
+        </tr>
+        <tr>
+            <td colspan="4">...lines 4 to 2499...</td>
+        </tr>
+        <tr>
+            <td>2500</td>
+            <td>2499</td>
+            <td>{"id":"50,50","x":50,"y":50,...</td>
+            <td>5</td>
+        </tr>
+    </tbody>
+</table>
+
+## 4. Specify an Explicit Schema Using the `WITH` Clause
+
+Now we have a rowset with JSON text for each row that we want to import. How do we generate columns and populate them with the `{key:pair}` data?
+
+`OPENJSON` can be used in conjunction with the `WITH` clause to format the output.[^fn3] Using the `WITH` clause allows you to specify the the data types and (if you want) the columns names of the resulting rowset. 
+
+The `WITH` clause must follow the `OPENJSON` selection. It is passed a set of column names with the path specified:
+
+{: .table .table-dark}
+<table>
+    <thead>
+        <tr>
+          <th></th>
+            <th>column name</th>
+            <th>data-type</th>
+            <th>JSON path (optional)</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td><pre class="highlight"><code><span class="k">WITH</span></code></pre></td>
+            <td><pre class="highlight"><code><span class="p">(</span><span class="n">price</span></code></pre></td>
+            <td><pre class="highlight"><code><span class="n">INT</span></code></pre></td>
+            <td><pre class="highlight"><code><span class="s1">$.auction_price</span><span class="p">)</span></code></pre></td>
+        </tr>
+    </tbody>
+</table>
 
 
-[^fn1]:  The `fromBlock` property argument is specified as optional in the [documentation](https://web3js.readthedocs.io/en/1.0/web3-eth-contract.html#id37), but in the current web3 version (1.0.0-beta.55) the method will fail without a filter object argument with this property.
+
+
+By default, `OPENJSON` will match columns names to keys, so it's only necessary to include the JSON path when you wish to choose a column name different to the key name:
+
+```sql
+SELECT *
+FROM OPENJSON (@JSON, '$.data.assets.parcels') 
+WITH (id VARCHAR(7), 
+		x INT,
+		y INT,
+		price INT '$.auction_price') -- new column name
+)
+```
+Only the keys included in the `WITH` clause will be returned:
+
+{: .table .table-bordered .table-dark}
+| id | x| y | price |
+|--|--|--|--|--|--|
+| 51,78 | 51 | 78 | 8790 |
+| 51,79 | 51 | 79 |1000 |
+| 51,80 | 51 | 80 | 2815 |
+
+## 5. Save the Rowsets into a Table
+
+Now that you've specified the fields you want to extract from the JSON, you can save the rowsets to a table. Here is the full solution:
+
+```sql
+
+DECLARE @JSON VARCHAR(MAX)
+
+SELECT @JSON = BulkColumn
+FROM OPENROWSET 
+(BULK 'C:\file-location\my-data.json', SINGLE_CLOB) 
+AS j
+
+SELECT id, x, y, auction_price, district_id, [owner], [data]
+INTO MyTableName
+  FROM OPENJSON (@JSON, '$.data.assets.parcels')
+  WITH (id VARCHAR(7),
+    x INT,
+    y INT,
+    auction_price INT,
+    district_id VARCHAR(50),
+    [owner] VARCHAR(50), -- Encase SQL keywords in square brackets
+    [data] NVARCHAR(MAX) AS JSON)  -- Specify the JSON format when necessary
+```
+As noted above in the `[data]` comment, if the property contains an inner JSON object or array, you must append the `AS JSON` option so that it will be imported in JSON format.
+
+## Footnotes
+
+[^fn1]: **CLOB** stands for **C**haracter **L**arge **OB**ject. Depending on your requirements, you can also use:
+	- `SINGLE_BLOB`, which reads a file as `varbinary(max)`
+	- `SINGLE_NCLOB`, which reads a file as `nvarchar(max)`
+
+[^fn2]: Aka [Decentraland](https://docs.decentraland.org/decentraland/introduction/), an exciting virtual reality platform powered by the Ethereum blockchain. 
+
+[^fn3]: Not to be confused with the [Common Table Expression `WITH` clause](https://docs.microsoft.com/en-us/sql/t-sql/queries/with-common-table-expression-transact-sql?view=sql-server-2017#syntax)
+
+
 
