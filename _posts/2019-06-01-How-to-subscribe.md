@@ -5,7 +5,7 @@ published: true
 image-attributions: Photo by Giallo from Pexels
 image_url: /images/400-300px/time-400-300.png
 excerpt: >-
- With web 3, you can listen for contract events on the blockchain and specify actions to trigger when certain criteria are met.
+ With web3, you can query and listen for contract events on the Ethereum blockchain.
 ---
 
 With [web3.js](https://web3js.readthedocs.io), you can query and listen for contract events on the Ethereum blockchain, so that you can specify actions to trigger when certain criteria are met.
@@ -93,6 +93,7 @@ contract.events.allEvents()
 .on('data', (event) => {
 	console.log(event);
 });
+.on('error', console.error);
 ```
 See the sample output for an event in [Appendix A: The content of an event](#appendix-a-the-content-of-an-event)
 
@@ -108,20 +109,6 @@ contract.events.Transfer()
 .on('error', console.error);
 ```
 See the sample output for an event below.
-
-## Filter by Event Parameters
-
-> Up to 3 parameters can be indexed. For example, a proposed token standard has: event Transfer(address indexed _from, address indexed _to, uint256 _value) . This means that a frontend can efficiently just watch for token transfers that are:
-> sent by an address tokenContract.Transfer({_from: senderAddress})
-> or received by an address tokenContract.Transfer({_to: receiverAddress})
-> or sent by an address to a specific address 
-> tokenContract.Transfer({_from: senderAddress, _to: receiverAddress})
-
-
-
-## Full example
-
-
 
 ## Appendix A: The content of an event
 
