@@ -30,6 +30,12 @@ code {
 
 // This was all added be me
 
+
+div.highlight {
+    padding-top: 0;
+    padding-bottom: 0;
+}
+
 .highlight,
 pre.highlight {
     background: #282c34;
@@ -37,6 +43,7 @@ pre.highlight {
     display: inline-block;
     min-width: 100%;
     max-width: 100%;
+    margin: 0;
 }
 
 .highlight::-webkit-scrollbar-track
