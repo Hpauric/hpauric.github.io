@@ -16,6 +16,12 @@ text-align: center;
   overflow: auto;
 }
 
+
+
+
+
+
+
 code {
   font-family:'Bitstream Vera Sans Mono','Courier', monospace;
   background-color: #efefef;
@@ -29,8 +35,50 @@ pre.highlight {
     background: #282c34;
     color: #abb2bf;
     display: inline-block;
-    min-width: 100%
+    min-width: 100%;
+    max-width: 100%;
 }
+
+.highlight::-webkit-scrollbar-track
+{
+	-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+	border-radius: 10px;
+	background-color: $light-cream;
+}
+
+.highlight::-webkit-scrollbar
+{
+	width: 8px;
+	height: 8px;
+	background-color: $steel-blue;
+}
+
+.highlight::-webkit-scrollbar-thumb
+{
+	border-radius: 10px;
+	-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.3);
+	background-color: white;
+}
+
+div.content > pre.javascript::-webkit-scrollbar
+{
+	height: 8px;
+	background-color: $dark-gray;
+}
+
+div.content > pre.javascript::-webkit-scrollbar-thumb
+{
+	border-radius: 10px;
+	-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.3);
+	background-color: white;
+}
+
+
+
+
+
+
+
 
 .highlight pre {
     background: #282c34
