@@ -16,6 +16,12 @@ text-align: center;
   overflow: auto;
 }
 
+
+
+
+
+
+
 code {
   font-family:'Bitstream Vera Sans Mono','Courier', monospace;
   background-color: #efefef;
@@ -24,13 +30,62 @@ code {
 
 // This was all added be me
 
+
+div.highlight {
+    padding-top: 0;
+    padding-bottom: 0;
+}
+
 .highlight,
 pre.highlight {
     background: #282c34;
     color: #abb2bf;
     display: inline-block;
-    min-width: 100%
+    min-width: 100%;
+    max-width: 100%;
+    margin: 0;
 }
+
+.highlight::-webkit-scrollbar-track
+{
+	-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+	border-radius: 10px;
+	background-color: #282c34;
+}
+
+.highlight::-webkit-scrollbar
+{
+	width: 8px;
+	height: 8px;
+	background-color: #282c34;
+}
+
+.highlight::-webkit-scrollbar-thumb
+{
+	border-radius: 10px;
+	-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.3);
+	background-color: #abb2bf;
+}
+
+div.content > pre.javascript::-webkit-scrollbar
+{
+	height: 8px;
+	background-color: #5c6370;
+}
+
+div.content > pre.javascript::-webkit-scrollbar-thumb
+{
+	border-radius: 10px;
+	-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.3);
+	background-color: white;
+}
+
+
+
+
+
+
+
 
 .highlight pre {
     background: #282c34
