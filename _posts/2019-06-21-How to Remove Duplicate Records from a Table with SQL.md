@@ -4,6 +4,8 @@ title: How to Remove Duplicate Records from a Table with SQL
 published: true
 image-attributions: Photo by Giallo from Pexels
 image_url: /images/400-300px/duplicate-400-300.png
+related: [
+    "How to Import JSON to SQL Server"]
 excerpt: >-
  In this guide, I walk through how to check you table for duplicates, and how to remove them.
 ---
