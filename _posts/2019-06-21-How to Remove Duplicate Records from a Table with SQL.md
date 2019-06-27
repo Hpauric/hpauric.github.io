@@ -7,7 +7,7 @@ image_url: /images/400-300px/duplicate-400-300.png
 related: [
     "How to Import JSON to SQL Server"]
 excerpt: >-
- In this guide, I walk through how to check you table for duplicates, and how to remove them.
+ In this guide, I walk through how to check a table for duplicates, and how to remove them.
 ---
 
 
@@ -22,7 +22,7 @@ There are certain situations where duplicate records might get into your databas
 
 I came across this problem working on my project [Mana Wisdom](https://manawisdom.com/), when I was importing orders into my database. I needed to check if any duplicates had been imported by mistake.
 
-In this guide, I walk through how to check you table for duplicates, and how to remove them.
+In this guide, I walk through how to check a table for duplicates, and how to remove them.
 
 
 
