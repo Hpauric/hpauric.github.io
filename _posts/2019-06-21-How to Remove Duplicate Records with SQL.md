@@ -1,6 +1,6 @@
 ---
 layout: post
-title: How to Remove Duplicate Records from a Table with SQL
+title: How to Remove Duplicate Records with SQL
 published: true
 image-attributions: Photo by Giallo from Pexels
 image_url: /images/400-300px/duplicate-400-300.png
