@@ -10,11 +10,8 @@ excerpt: >-
  In this guide, I walk through how to check a table for duplicates, and how to remove them.
 ---
 
-
-
 * ToC
 {:toc}
-
 
 ## Intro
 
@@ -23,8 +20,6 @@ There are certain situations where duplicate records might get into your databas
 I came across this problem working on my project [Mana Wisdom](https://manawisdom.com/), when I was importing orders into my database. I needed to check if any duplicates had been imported by mistake.
 
 In this guide, I walk through how to check a table for duplicates, and how to remove them.
-
-
 
 ## Confirm that you do have duplicate records
 
@@ -141,4 +136,37 @@ FROM #TempTable
 
 DROP TABLE #TempTable
 ```
+
+## Removing Duplicates: The Fancy Way
+
+There is a faster way to remove duplicates: by using the `ROW_NUMBER` function in SQL Server. The `ROW_NUMBER` function assigns an ascending row number based on the criteria you specify in the `OVER` clause. For example, you can assign a row number that will count the number of name duplications:
+
+```sql
+SELECT *,
+ROW_NUMBER() OVER (PARTITION BY firstname, lastname ORDER BY firstname, lastname) AS 'row number'
+FROM [dbo].[Users]
+```
+
+The row number count is informed by the `ORDER BY` statement in the `OVER` clause. In this case, it is **firstname**. So the first *James* record get a row number of one; the next *James* get's a row number of two, and so on:
+
+| FirstName | LastName | DateCreated         | Email                   | Source              | row number |
+| --------- | -------- | ------------------- | ----------------------- | ------------------- | ---------- |
+| James     | Goodman  | 2007-05-08 12:35:29 | Goodman@gmail.com       | Paper Subscription  | 1          |
+| James     | Goodman  | 2007-05-08 12:35:29 | Goodman@gmail.com       | Online              | 2          |
+| Mad Dog   | Jones    | 2007-05-08 12:35:29 | Mad.Dog.Jones@gmail.com | Online Subscription | 1          |
+| Mad Dog   | Jones    | 2019-07-02 19:46:34 | Mad.Dog.Jones@gmail.com | Online Subscription | 2          |
+
+If you're happy to just delete any record that duplicates the columns you specified, you can encase the query in a common table expression and directly delete records with a row number greater than 1:
+
+
+```sql
+WITH CTE AS(
+   SELECT *,
+ROW_NUMBER() OVER (PARTITION BY firstname, lastname ORDER BY firstname) AS 'row number'
+FROM [dbo].[Users]
+)
+DELETE FROM CTE WHERE 'row number' > 1
+
+```
+
 
