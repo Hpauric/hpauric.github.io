@@ -149,6 +149,7 @@ FROM [dbo].[Users]
 
 The row number count is informed by the `ORDER BY` statement in the `OVER` clause. In this case, it is **firstname**. So the first *James* record get a row number of one; the next *James* get's a row number of two, and so on:
 
+{: .table .table-bordered .table-dark}
 | FirstName | LastName | DateCreated         | Email                   | Source              | row number |
 | --------- | -------- | ------------------- | ----------------------- | ------------------- | ---------- |
 | James     | Goodman  | 2007-05-08 12:35:29 | Goodman@gmail.com       | Paper Subscription  | 1          |
