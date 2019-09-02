@@ -94,7 +94,7 @@ You can use `contract.events.allEvents()` to specify a callback for all events.
 contract.events.allEvents()
 .on('data', (event) => {
 	console.log(event);
-});
+})
 .on('error', console.error);
 ```
 See the sample output for an event in [Appendix A: The content of an event](#appendix-a-the-content-of-an-event)
@@ -107,7 +107,7 @@ You can use `contract.events.EventName()` to specify actions for specific event 
 contract.events.Transfer()
 .on('data', (event) => {
 	console.log(event);
-});
+})
 .on('error', console.error);
 ```
 See the sample output for an event below.
