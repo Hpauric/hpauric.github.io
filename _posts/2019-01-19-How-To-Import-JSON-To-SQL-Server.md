@@ -4,7 +4,7 @@ title: How to Import JSON to SQL Server
 published: true
 image_url: /images/400-300px/assembly-line-400-300.png
 related: [
-    "How to Remove Duplicate Records from a Table with SQL"]
+    "How to Remove Duplicate Records with SQL"]
 excerpt: >-
  Using OPENROWSET and OPENJSON makes it easy for you to import JSON data into your database.
 ---
