@@ -4,6 +4,8 @@ title: How to Query and Monitor Ethereum Contract Events with Web3
 published: true
 image-attributions: Photo by Giallo from Pexels
 image_url: /images/400-300px/time-400-300.png
+related: [
+    "How to Hack Ethereum Contracts the Easy Way"]
 excerpt: >-
  With web3, you can query and listen for contract events on the Ethereum blockchain.
 ---
